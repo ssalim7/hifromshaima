@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skills — Shaima Salim</title>
+  <meta name="description" content="Skills & tools — Business × Tech × Design by Shaima Salim." />
+  <style>
+    :root{
+      --burgundy:#7A1F2B; --charcoal:#1F1F1F;
+      --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
+      --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
+    }
+    [data-theme="dark"]{
+      --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
+      --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
+    }
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;background:var(--mist);color:var(--text);line-height:1.6}
+    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);
+           background:color-mix(in oklab,var(--paper) 75%,transparent);border-bottom:1px solid var(--smoke)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
+    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .title{font-weight:700;letter-spacing:.2px}
+    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .btn{appearance:none;border:1px solid var(--smoke);background:var(--paper);color:var(--text);
+         padding:.55rem .8rem;border-radius:999px;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block}
+    .btn:hover{border-color:var(--burgundy)}
+    .btn-ghost{border-color:transparent;background:transparent}
+    .btn.active{border-color:var(--burgundy)}
+
+    /* Moving banner */
+    .code-banner{position:relative;overflow:hidden;border-radius:18px;margin:1rem 0 1.25rem;
+                 background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+                 border:1px solid var(--smoke)}
+    .marquee{display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+             font-family:ui-monospace,Menlo,Consolas,monospace;animation:scroll 22s linear infinite;
+             color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem}
+    .code-chip{background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));border:1px solid var(--smoke);
+               padding:.35rem .6rem;border-radius:10px}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Layout + cards */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:center}
+    .card{background:var(--paper);border:1px solid var(--smoke);border-radius:16px;padding:1rem;box-shadow:0 10px 24px rgb(0 0 0/0.04)}
+    .section-title{display:flex;gap:.6rem;align-items:center;font-size:1.1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);margin-top:2rem}
+    .grid{display:grid;gap:1rem}
+    .two-col{grid-template-columns:1.1fr .9fr}
+    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
+    .sub{color:var(--muted)}
+    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);
+                padding:.4rem .6rem;border-radius:10px;font-style:italic}
+
+    /* Photo */
+    .photo{width:100%;height:260px;border-radius:999px;object-fit:cover;border:2px solid var(--smoke);background:#fff}
+
+    /* Skill bars */
+    .skill{display:grid;grid-template-columns:160px 1fr;gap:.6rem;align-items:center}
+    .skill-name{font-weight:600}
+    .bar{height:10px;background:var(--smoke);border-radius:999px;overflow:hidden}
+    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--accent));border-radius:999px;transition:width 1s ease}
+
+    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+
+    /* Toast + confetti */
+    .toast{position:fixed;inset:auto 0 1rem 0;margin-inline:auto;width:max-content;max-width:90vw;z-index:60;
+           background:var(--charcoal);color:#fff;padding:.6rem .9rem;border-radius:12px;transform:translateY(30px);opacity:0;transition:all .3s}
+    .toast.show{transform:translateY(0);opacity:1}
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+    .piece{position:absolute;width:8px;height:14px;border-radius:2px;opacity:.9;animation:fall 1200ms ease-out forwards}
+    @keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
+
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .skill{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with inline SVG logo so it always loads -->
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="logo"
+             alt="Letter S in burgundy logo"
+             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
+        <span class="title">Shaima Salim</span>
+      </a>
+      <div class="nav-links">
+        <a class="btn btn-ghost" href="index.html">Home</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
+        <a class="btn btn-ghost active" href="skills.html" aria-current="page">Skills</a>
+        <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
+        <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
+        <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Moving banner -->
+    <div class="code-banner" aria-hidden="true">
+      <div class="marquee">
+        <span class="code-chip">welcome to shaima’s world</span>
+        <span class="code-chip">love · live · laugh</span>
+        <span class="code-chip">business × tech × design</span>
+        <span class="code-chip">learn &gt; fear</span>
+        <span class="code-chip">curiosity++ · empathy++</span>
+        <!-- duplicate for seamless loop -->
+        <span class="code-chip">welcome to shaima’s world</span>
+        <span class="code-chip">love · live · laugh</span>
+        <span class="code-chip">business × tech × design</span>
+        <span class="code-chip">learn &gt; fear</span>
+        <span class="code-chip">curiosity++ · empathy++</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="title">
+      <div class="card">
+        <span class="tag">Skills &amp; Tools</span>
+        <h1 id="title" style="margin:.4rem 0 .5rem">Creative business thinker with hands-on tech.</h1>
+        <p class="sub">A blend of business insight, data literacy, and digital creativity — here’s what I use to bring ideas to life.</p>
+        <div style="margin-top:.6rem">
+          <span class="pill">Business analysis</span>
+          <span class="pill">Data visualisation</span>
+          <span class="pill">Web prototyping</span>
+          <span class="pill">UX thinking</span>
+        </div>
+      </div>
+      <div class="card" role="img" aria-label="Shaima photo">
+        <img id="shaima-photo" class="photo" alt="Photo of Shaima" />
+        <p class="sub" style="margin:.6rem 0 0">Click the photo for a hi 👋</p>
+      </div>
+    </section>
+
+    <!-- Business & Analytical Skills -->
+    <h2 class="section-title">Business &amp; Analytical Skills</h2>
+    <div class="grid two-col">
+      <article class="card">
+        <p>I combine strategy and evidence, using data to support decisions and keep the user in focus.</p>
+        <ul>
+          <li><strong>Market &amp; competitor analysis</strong> — gather insights, spot trends, benchmark positioning.</li>
+          <li><strong>Customer insight &amp; CX</strong> — map journeys, identify pain points, prioritise fixes.</li>
+          <li><strong>Data interpretation &amp; reporting</strong> — turn spreadsheets into clear, visual stories.</li>
+          <li><strong>Project &amp; workflow</strong> — Trello/Notion/MS Teams; version control with GitHub.</li>
+        </ul>
+        <p class="sub">These skills help me frame the right question first, then recommend actions teams can actually use.</p>
+      </article>
+      <aside class="card">
+        <p class="chip-quote">“Technology drives business — but people drive success.”</p>
+        <p style="margin:.5rem 0 0">I like to keep solutions simple, ethical, and accessible for real users.</p>
+      </aside>
+    </div>
+
+    <!-- Digital & Technical Tools -->
+    <h2 class="section-title">Digital &amp; Technical Tools</h2>
+    <div class="grid two-col">
+      <section class="card" aria-labelledby="data-tools">
+        <h3 id="data-tools" style="margin-top:0">Data &amp; Analysis</h3>
+        <div class="skill" data-toast="Excel level up! ✨">
+          <div class="skill-name">Excel (pivots, lookups, cleaning)</div>
+          <div class="bar"><span style="--w:80%"></span></div>
+        </div>
+        <div class="skill" data-toast="Power BI flow activated 📈">
+          <div class="skill-name">Power BI (dashboards)</div>
+          <div class="bar"><span style="--w:65%"></span></div>
+        </div>
+        <div class="skill" data-toast="Pandas and plots incoming 🐍">
+          <div class="skill-name">Python (pandas, charts)</div>
+          <div class="bar"><span style="--w:60%"></span></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="web-tools">
+        <h3 id="web-tools" style="margin-top:0">Web &amp; Content</h3>
+        <div class="skill" data-toast="Clean responsive layouts ✅">
+          <div class="skill-name">HTML &amp; CSS (responsive UI)</div>
+          <div class="bar"><span style="--w:80%"></span></div>
+        </div>
+        <div class="skill" data-toast="Tiny interactions FTW ⚡">
+          <div class="skill-name">JavaScript (interactivity)</div>
+          <div class="bar"><span style="--w:60%"></span></div>
+        </div>
+        <div class="skill" data-toast="Commit. Push. Repeat. 🔁">
+          <div class="skill-name">Git/GitHub (version control)</div>
+          <div class="bar"><span style="--w:60%"></span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="grid two-col" style="margin-top:1rem">
+      <section class="card" aria-labelledby="design-tools">
+        <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
+        <div class="skill" data-toast="Wireframe to mockup 🎨">
+          <div class="skill-name">Figma/Canva (wireframes, posts)</div>
+          <div class="bar"><span style="--w:75%"></span></div>
+        </div>
+        <div class="skill" data-toast="Compose the story 📷">
+          <div class="skill-name">Photography (composition)</div>
+          <div class="bar"><span style="--w:60%"></span></div>
+        </div>
+      </section>
+
+      <!-- Soft skills -->
+      <section class="card" aria-labelledby="soft-skills">
+        <h3 id="soft-skills" style="margin-top:0">Soft Skills</h3>
+        <ul>
+          <li><strong>Communication</strong> — clear handovers, concise updates.</li>
+          <li><strong>Teamwork</strong> — support roles, step up when busy.</li>
+          <li><strong>Time management</strong> — balance uni + shifts.</li>
+          <li><strong>Adaptability</strong> — fast-paced environments.</li>
+          <li><strong>Customer service</strong> — empathy + problem solving.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Skills in Action -->
+    <h2 class="section-title">Skills in Action</h2>
+    <section class="card">
+      <p>See how I’ve applied these in coursework and projects — from web prototypes to dashboards and process improvements.</p>
+      <a class="btn" href="showcase.html" style="background:var(--burgundy);color:#fff;border-color:var(--burgundy)">View My Work →</a>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span>
+    </footer>
+  </main>
+
+  <!-- toast + confetti roots -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script>
+    // Theme toggle (matches other pages)
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+      const modeBtn = document.getElementById('mode');
+      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
+      setIcon();
+      modeBtn.addEventListener('click', () => {
+        const next = isDark() ? '' : 'dark';
+        if(next){ document.documentElement.setAttribute('data-theme', next); } else { document.documentElement.removeAttribute('data-theme'); }
+        localStorage.setItem('theme', next);
+        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
+        setIcon();
+      });
+    })();
+
+    // Toast + confetti
+    const confettiRoot = document.getElementById('confetti');
+    const toast = document.getElementById('toast');
+    function toastIt(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2200);
+      const colors = ['#7A1F2B','#b84a59','#ffd166','#1F1F1F','#eceff4'];
+      for(let i=0;i<80;i++){
+        const el = document.createElement('div');
+        el.className = 'piece';
+        const size = Math.random()*8+6, left = Math.random()*100, delay = Math.random()*300;
+        el.style.left = left + 'vw';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.width = size + 'px'; el.style.height = (size*1.4) + 'px';
+        el.style.animationDelay = (delay/1000) + 's';
+        confettiRoot.appendChild(el);
+        setTimeout(()=> el.remove(), 1400 + delay);
+      }
+    }
+
+    // Animate bars when visible
+    const bars = Array.from(document.querySelectorAll('.bar > span'));
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target;
+          el.style.width = getComputedStyle(el).getPropertyValue('--w') || '70%';
+          io.unobserve(el);
+        }
+      });
+    }, {threshold: .4});
+    bars.forEach(b=>io.observe(b));
+
+    // Click to toast on skill rows
+    document.querySelectorAll('.skill').forEach(s=>{
+      s.style.cursor='pointer';
+      s.addEventListener('click', ()=> toastIt(s.dataset.toast || 'Nice!'));
+      s.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toastIt(s.dataset.toast || 'Nice!'); }});
+      s.setAttribute('tabindex','0');
+      s.setAttribute('role','button');
+    });
+
+    // Photo loader: tries common filenames (spaces, “ 2”, etc.)
+    (function(){
+      const img = document.getElementById('shaima-photo');
+      const candidates = [
+        'Screenshot 2025-11-13 at 10.42.59 2.png',
+        'Screenshot 2025-11-13 at 10.42.59.png',
+        'Screenshot 2025-11-13 at 10.42.59.png 2',
+        'Screenshot%202025-11-13%20at%2010.42.59%202.png',
+        'Screenshot%202025-11-13%20at%2010.42.59.png',
+        'shaima.jpg','shaima.png'
+      ];
+      function tryNext(i){
+        if(i>=candidates.length){ img.alt='(Add your photo to the repo root)'; return; }
+        const url = candidates[i];
+        const test = new Image();
+        test.onload = ()=>{ img.src = url; };
+        test.onerror = ()=> tryNext(i+1);
+        test.src = url;
+      }
+      tryNext(0);
+      img.addEventListener('click', ()=> toastIt('hi shaima! 🔥'));
+      img.setAttribute('tabindex','0');
+      img.setAttribute('role','button');
+      img.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
+    })();
+
+    // Reduce-motion: pause marquee animation
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){ const mq = document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState = media.matches ? 'paused':'running'; }
+    media.addEventListener('change', updateMotion); updateMotion();
+
+    // Year
+    document.getElementById('year')?.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
