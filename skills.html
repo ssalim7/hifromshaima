@@ -55,14 +55,19 @@
     .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);
                 padding:.4rem .6rem;border-radius:10px;font-style:italic}
 
-    /* Photo */
-    .photo{width:100%;height:260px;border-radius:999px;object-fit:cover;border:2px solid var(--smoke);background:#fff}
+    /* Photo — force perfect circle */
+    .photo{
+      display:block; margin:0 auto;
+      width:260px; aspect-ratio:1/1; border-radius:50%;
+      object-fit:cover; object-position:center;
+      border:2px solid var(--smoke); background:#fff;
+    }
 
     /* Skill bars */
-    .skill{display:grid;grid-template-columns:160px 1fr;gap:.6rem;align-items:center}
+    .skill{display:grid;grid-template-columns:190px 1fr;gap:.6rem;align-items:center}
     .skill-name{font-weight:600}
     .bar{height:10px;background:var(--smoke);border-radius:999px;overflow:hidden}
-    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--accent));border-radius:999px;transition:width 1s ease}
+    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--accent));border-radius:999px;transition:width 900ms ease}
 
     .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
 
@@ -157,6 +162,12 @@
       <aside class="card">
         <p class="chip-quote">“Technology drives business — but people drive success.”</p>
         <p style="margin:.5rem 0 0">I like to keep solutions simple, ethical, and accessible for real users.</p>
+        <h4 style="margin:.8rem 0 .4rem">Methods I use</h4>
+        <ul>
+          <li>SWOT, PESTLE, and Porter’s Five Forces</li>
+          <li>KPIs &amp; simple dashboards for tracking</li>
+          <li>Customer journey mapping &amp; quick A/B tests</li>
+        </ul>
       </aside>
     </div>
 
@@ -167,15 +178,15 @@
         <h3 id="data-tools" style="margin-top:0">Data &amp; Analysis</h3>
         <div class="skill" data-toast="Excel level up! ✨">
           <div class="skill-name">Excel (pivots, lookups, cleaning)</div>
-          <div class="bar"><span style="--w:80%"></span></div>
+          <div class="bar"><span data-w="80%"></span></div>
         </div>
         <div class="skill" data-toast="Power BI flow activated 📈">
           <div class="skill-name">Power BI (dashboards)</div>
-          <div class="bar"><span style="--w:65%"></span></div>
+          <div class="bar"><span data-w="65%"></span></div>
         </div>
         <div class="skill" data-toast="Pandas and plots incoming 🐍">
           <div class="skill-name">Python (pandas, charts)</div>
-          <div class="bar"><span style="--w:60%"></span></div>
+          <div class="bar"><span data-w="60%"></span></div>
         </div>
       </section>
 
@@ -183,15 +194,15 @@
         <h3 id="web-tools" style="margin-top:0">Web &amp; Content</h3>
         <div class="skill" data-toast="Clean responsive layouts ✅">
           <div class="skill-name">HTML &amp; CSS (responsive UI)</div>
-          <div class="bar"><span style="--w:80%"></span></div>
+          <div class="bar"><span data-w="80%"></span></div>
         </div>
         <div class="skill" data-toast="Tiny interactions FTW ⚡">
           <div class="skill-name">JavaScript (interactivity)</div>
-          <div class="bar"><span style="--w:60%"></span></div>
+          <div class="bar"><span data-w="60%"></span></div>
         </div>
         <div class="skill" data-toast="Commit. Push. Repeat. 🔁">
           <div class="skill-name">Git/GitHub (version control)</div>
-          <div class="bar"><span style="--w:60%"></span></div>
+          <div class="bar"><span data-w="60%"></span></div>
         </div>
       </section>
     </div>
@@ -201,11 +212,11 @@
         <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
         <div class="skill" data-toast="Wireframe to mockup 🎨">
           <div class="skill-name">Figma/Canva (wireframes, posts)</div>
-          <div class="bar"><span style="--w:75%"></span></div>
+          <div class="bar"><span data-w="75%"></span></div>
         </div>
         <div class="skill" data-toast="Compose the story 📷">
           <div class="skill-name">Photography (composition)</div>
-          <div class="bar"><span style="--w:60%"></span></div>
+          <div class="bar"><span data-w="60%"></span></div>
         </div>
       </section>
 
@@ -277,18 +288,15 @@
       }
     }
 
-    // Animate bars when visible
+    // Animate bars when visible + on load (uses data-w)
     const bars = Array.from(document.querySelectorAll('.bar > span'));
+    function fill(el){ el.style.width = el.dataset.w || '70%'; }
     const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          const el = e.target;
-          el.style.width = getComputedStyle(el).getPropertyValue('--w') || '70%';
-          io.unobserve(el);
-        }
-      });
-    }, {threshold: .4});
-    bars.forEach(b=>io.observe(b));
+      entries.forEach(e=>{ if(e.isIntersecting){ fill(e.target); io.unobserve(e.target); } });
+    }, {threshold: .35});
+    bars.forEach(b=>{ io.observe(b); });  // will fill on scroll
+    // also fill after a short delay in case observer doesn't fire
+    window.addEventListener('load', ()=> setTimeout(()=> bars.forEach(b=>{ if(parseFloat(getComputedStyle(b).width)===0) fill(b); }), 400));
 
     // Click to toast on skill rows
     document.querySelectorAll('.skill').forEach(s=>{
@@ -299,24 +307,24 @@
       s.setAttribute('role','button');
     });
 
-    // Photo loader: tries common filenames (spaces, “ 2”, etc.)
+    // Photo loader: try your exact filename + encoded versions + fallbacks
     (function(){
       const img = document.getElementById('shaima-photo');
       const candidates = [
-        'Screenshot 2025-11-13 at 10.42.59 2.png',
-        'Screenshot 2025-11-13 at 10.42.59.png',
         'Screenshot 2025-11-13 at 10.42.59.png 2',
-        'Screenshot%202025-11-13%20at%2010.42.59%202.png',
+        'Screenshot 2025-11-13 at 10.42.59.png',
+        'Screenshot%202025-11-13%20at%2010.42.59.png%202',
         'Screenshot%202025-11-13%20at%2010.42.59.png',
-        'shaima.jpg','shaima.png'
+        'shaima.png','shaima.jpg',
+        // final fallback placeholder:
+        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
       ];
       function tryNext(i){
-        if(i>=candidates.length){ img.alt='(Add your photo to the repo root)'; return; }
-        const url = candidates[i];
+        if(i>=candidates.length){ return; }
         const test = new Image();
-        test.onload = ()=>{ img.src = url; };
+        test.onload = ()=>{ img.src = test.src; };
         test.onerror = ()=> tryNext(i+1);
-        test.src = url;
+        test.src = candidates[i];
       }
       tryNext(0);
       img.addEventListener('click', ()=> toastIt('hi shaima! 🔥'));
@@ -330,7 +338,7 @@
     function updateMotion(){ const mq = document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState = media.matches ? 'paused':'running'; }
     media.addEventListener('change', updateMotion); updateMotion();
 
-    // Year
+    // Year (just in case)
     document.getElementById('year')?.textContent = new Date().getFullYear();
   </script>
 </body>
