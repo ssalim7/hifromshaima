@@ -16,80 +16,117 @@
       --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
     }
     html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;background:var(--mist);color:var(--text);line-height:1.6}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:var(--mist);
+      color:var(--text);
+      line-height:1.6;
+    }
     .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
 
     /* Header */
-    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);
-           background:color-mix(in oklab,var(--paper) 75%,transparent);border-bottom:1px solid var(--smoke)}
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:color-mix(in oklab,var(--paper) 75%,transparent);
+      border-bottom:1px solid var(--smoke);
+    }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
     .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
     .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
     .title{font-weight:700;letter-spacing:.2px}
     .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-    .btn{appearance:none;border:1px solid var(--smoke);background:var(--paper);color:var(--text);
-         padding:.55rem .8rem;border-radius:999px;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block}
+    .btn{
+      appearance:none;border:1px solid var(--smoke);
+      background:var(--paper);color:var(--text);
+      padding:.55rem .8rem;border-radius:999px;
+      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+    }
     .btn:hover{border-color:var(--burgundy)}
     .btn-ghost{border-color:transparent;background:transparent}
     .btn.active{border-color:var(--burgundy)}
 
     /* Moving banner */
-    .code-banner{position:relative;overflow:hidden;border-radius:18px;margin:1rem 0 1.25rem;
-                 background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-                 border:1px solid var(--smoke)}
-    .marquee{display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
-             font-family:ui-monospace,Menlo,Consolas,monospace;animation:scroll 22s linear infinite;
-             color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem}
-    .code-chip{background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));border:1px solid var(--smoke);
-               padding:.35rem .6rem;border-radius:10px}
+    .code-banner{
+      position:relative;overflow:hidden;border-radius:18px;
+      margin:1rem 0 1.25rem;
+      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+      border:1px solid var(--smoke)
+    }
+    .marquee{
+      display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      animation:scroll 22s linear infinite;
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+    }
+    .code-chip{
+      background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
+      border:1px solid var(--smoke);
+      padding:.35rem .6rem;border-radius:10px
+    }
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* Layout + cards */
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:center}
-    .card{background:var(--paper);border:1px solid var(--smoke);border-radius:16px;padding:1rem;box-shadow:0 10px 24px rgb(0 0 0/0.04)}
-    .section-title{display:flex;gap:.6rem;align-items:center;font-size:1.1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);margin-top:2rem}
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0/0.04)
+    }
+    .section-title{
+      display:flex;gap:.6rem;align-items:center;
+      font-size:1.1rem;text-transform:uppercase;
+      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+    }
     .grid{display:grid;gap:1rem}
     .two-col{grid-template-columns:1.1fr .9fr}
     .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
     .sub{color:var(--muted)}
-    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);
-                padding:.4rem .6rem;border-radius:10px;font-style:italic}
+    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);padding:.4rem .6rem;border-radius:10px;font-style:italic}
 
-    /* Photo — force perfect circle */
+    /* Photo */
     .photo{
-      display:block; margin:0 auto;
-      width:260px; aspect-ratio:1/1; border-radius:50%;
-      object-fit:cover; object-position:center;
-      border:2px solid var(--smoke); background:#fff;
+      display:block;margin:0 auto;
+      width:260px;aspect-ratio:1/1;border-radius:50%;
+      object-fit:cover;object-position:center;
+      border:2px solid var(--smoke);background:#fff;
     }
 
-    /* Skill bars */
-    .skill{display:grid;grid-template-columns:190px 1fr;gap:.6rem;align-items:center}
+    /* Stars */
+    .skill-row{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:.75rem;margin:.4rem 0
+    }
     .skill-name{font-weight:600}
-    .bar{height:10px;background:var(--smoke);border-radius:999px;overflow:hidden}
-    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--accent));border-radius:999px;transition:width 900ms ease}
+    .stars{font-size:1rem;letter-spacing:2px;user-select:none}
+    .stars .on{color:var(--burgundy)}
+    .stars .off{color:var(--smoke)}
 
-    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
 
-    /* Toast + confetti */
-    .toast{position:fixed;inset:auto 0 1rem 0;margin-inline:auto;width:max-content;max-width:90vw;z-index:60;
-           background:var(--charcoal);color:#fff;padding:.6rem .9rem;border-radius:12px;transform:translateY(30px);opacity:0;transition:all .3s}
+    /* Toast & confetti (for fun clicks) */
+    .toast{
+      position:fixed;inset:auto 0 1rem 0;margin-inline:auto;
+      width:max-content;max-width:90vw;z-index:60;
+      background:var(--charcoal);color:#fff;
+      padding:.6rem .9rem;border-radius:12px;
+      transform:translateY(30px);opacity:0;transition:all .3s
+    }
     .toast.show{transform:translateY(0);opacity:1}
     .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
     .piece{position:absolute;width:8px;height:14px;border-radius:2px;opacity:.9;animation:fall 1200ms ease-out forwards}
     @keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
 
-    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
-
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
       .two-col{grid-template-columns:1fr}
-      .skill{grid-template-columns:1fr}
+      .skill-row{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
 <body>
-  <!-- Header with inline SVG logo so it always loads -->
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Home">
@@ -118,7 +155,6 @@
         <span class="code-chip">business × tech × design</span>
         <span class="code-chip">learn &gt; fear</span>
         <span class="code-chip">curiosity++ · empathy++</span>
-        <!-- duplicate for seamless loop -->
         <span class="code-chip">welcome to shaima’s world</span>
         <span class="code-chip">love · live · laugh</span>
         <span class="code-chip">business × tech × design</span>
@@ -141,7 +177,14 @@
         </div>
       </div>
       <div class="card" role="img" aria-label="Shaima photo">
-        <img id="shaima-photo" class="photo" alt="Photo of Shaima" />
+        <!-- 🔽 THIS IMAGE WILL ALWAYS LOAD (placeholder) -->
+        <!-- To use your own, upload e.g. shaima.jpg and change src to "shaima.jpg" -->
+        <img
+          id="shaima-photo"
+          class="photo"
+          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
+          alt="Photo of Shaima (placeholder)"
+        />
         <p class="sub" style="margin:.6rem 0 0">Click the photo for a hi 👋</p>
       </div>
     </section>
@@ -176,33 +219,51 @@
     <div class="grid two-col">
       <section class="card" aria-labelledby="data-tools">
         <h3 id="data-tools" style="margin-top:0">Data &amp; Analysis</h3>
-        <div class="skill" data-toast="Excel level up! ✨">
+
+        <div class="skill-row" data-toast="Excel level up! ✨">
           <div class="skill-name">Excel (pivots, lookups, cleaning)</div>
-          <div class="bar"><span data-w="80%"></span></div>
+          <div class="stars" aria-label="4 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+          </div>
         </div>
-        <div class="skill" data-toast="Power BI flow activated 📈">
+
+        <div class="skill-row" data-toast="Power BI flow activated 📈">
           <div class="skill-name">Power BI (dashboards)</div>
-          <div class="bar"><span data-w="65%"></span></div>
+          <div class="stars" aria-label="3 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
+          </div>
         </div>
-        <div class="skill" data-toast="Pandas and plots incoming 🐍">
+
+        <div class="skill-row" data-toast="Pandas and plots incoming 🐍">
           <div class="skill-name">Python (pandas, charts)</div>
-          <div class="bar"><span data-w="60%"></span></div>
+          <div class="stars" aria-label="3 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
+          </div>
         </div>
       </section>
 
       <section class="card" aria-labelledby="web-tools">
         <h3 id="web-tools" style="margin-top:0">Web &amp; Content</h3>
-        <div class="skill" data-toast="Clean responsive layouts ✅">
+
+        <div class="skill-row" data-toast="Clean responsive layouts ✅">
           <div class="skill-name">HTML &amp; CSS (responsive UI)</div>
-          <div class="bar"><span data-w="80%"></span></div>
+          <div class="stars" aria-label="4 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+          </div>
         </div>
-        <div class="skill" data-toast="Tiny interactions FTW ⚡">
+
+        <div class="skill-row" data-toast="Tiny interactions FTW ⚡">
           <div class="skill-name">JavaScript (interactivity)</div>
-          <div class="bar"><span data-w="60%"></span></div>
+          <div class="stars" aria-label="3 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
+          </div>
         </div>
-        <div class="skill" data-toast="Commit. Push. Repeat. 🔁">
+
+        <div class="skill-row" data-toast="Commit. Push. Repeat. 🔁">
           <div class="skill-name">Git/GitHub (version control)</div>
-          <div class="bar"><span data-w="60%"></span></div>
+          <div class="stars" aria-label="3 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
+          </div>
         </div>
       </section>
     </div>
@@ -210,13 +271,19 @@
     <div class="grid two-col" style="margin-top:1rem">
       <section class="card" aria-labelledby="design-tools">
         <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
-        <div class="skill" data-toast="Wireframe to mockup 🎨">
+
+        <div class="skill-row" data-toast="Wireframe to mockup 🎨">
           <div class="skill-name">Figma/Canva (wireframes, posts)</div>
-          <div class="bar"><span data-w="75%"></span></div>
+          <div class="stars" aria-label="4 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+          </div>
         </div>
-        <div class="skill" data-toast="Compose the story 📷">
+
+        <div class="skill-row" data-toast="Compose the story 📷">
           <div class="skill-name">Photography (composition)</div>
-          <div class="bar"><span data-w="60%"></span></div>
+          <div class="stars" aria-label="3 out of 5">
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
+          </div>
         </div>
       </section>
 
@@ -250,7 +317,7 @@
   <div class="confetti" id="confetti" aria-hidden="true"></div>
 
   <script>
-    // Theme toggle (matches other pages)
+    // Dark mode toggle
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -275,7 +342,7 @@
       toast.classList.add('show');
       setTimeout(()=>toast.classList.remove('show'), 2200);
       const colors = ['#7A1F2B','#b84a59','#ffd166','#1F1F1F','#eceff4'];
-      for(let i=0;i<80;i++){
+      for(let i=0;i<60;i++){
         const el = document.createElement('div');
         el.className = 'piece';
         const size = Math.random()*8+6, left = Math.random()*100, delay = Math.random()*300;
@@ -288,58 +355,28 @@
       }
     }
 
-    // Animate bars when visible + on load (uses data-w)
-    const bars = Array.from(document.querySelectorAll('.bar > span'));
-    function fill(el){ el.style.width = el.dataset.w || '70%'; }
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ fill(e.target); io.unobserve(e.target); } });
-    }, {threshold: .35});
-    bars.forEach(b=>{ io.observe(b); });  // will fill on scroll
-    // also fill after a short delay in case observer doesn't fire
-    window.addEventListener('load', ()=> setTimeout(()=> bars.forEach(b=>{ if(parseFloat(getComputedStyle(b).width)===0) fill(b); }), 400));
-
-    // Click to toast on skill rows
-    document.querySelectorAll('.skill').forEach(s=>{
-      s.style.cursor='pointer';
-      s.addEventListener('click', ()=> toastIt(s.dataset.toast || 'Nice!'));
-      s.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toastIt(s.dataset.toast || 'Nice!'); }});
-      s.setAttribute('tabindex','0');
-      s.setAttribute('role','button');
+    // Make skill rows & photo clickable
+    document.querySelectorAll('.skill-row').forEach(r=>{
+      r.style.cursor='pointer';
+      r.setAttribute('tabindex','0');
+      r.setAttribute('role','button');
+      const fire=()=>toastIt(r.dataset.toast || 'Nice!');
+      r.addEventListener('click', fire);
+      r.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fire(); }});
     });
 
-    // Photo loader: try your exact filename + encoded versions + fallbacks
-    (function(){
-      const img = document.getElementById('shaima-photo');
-      const candidates = [
-        'Screenshot 2025-11-13 at 10.42.59.png 2',
-        'Screenshot 2025-11-13 at 10.42.59.png',
-        'Screenshot%202025-11-13%20at%2010.42.59.png%202',
-        'Screenshot%202025-11-13%20at%2010.42.59.png',
-        'shaima.png','shaima.jpg',
-        // final fallback placeholder:
-        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
-      ];
-      function tryNext(i){
-        if(i>=candidates.length){ return; }
-        const test = new Image();
-        test.onload = ()=>{ img.src = test.src; };
-        test.onerror = ()=> tryNext(i+1);
-        test.src = candidates[i];
-      }
-      tryNext(0);
-      img.addEventListener('click', ()=> toastIt('hi shaima! 🔥'));
-      img.setAttribute('tabindex','0');
-      img.setAttribute('role','button');
-      img.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
-    })();
+    const photo = document.getElementById('shaima-photo');
+    photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
+    photo.setAttribute('tabindex','0');
+    photo.setAttribute('role','button');
+    photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
 
-    // Reduce-motion: pause marquee animation
+    // reduce-motion: pause marquee
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){ const mq = document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState = media.matches ? 'paused':'running'; }
+    function updateMotion(){ const mq=document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState=media.matches?'paused':'running'; }
     media.addEventListener('change', updateMotion); updateMotion();
 
-    // Year (just in case)
-    document.getElementById('year')?.textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
