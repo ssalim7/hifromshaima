@@ -106,10 +106,36 @@
 
     /* Image gallery */
     .image-grid{
-      display:grid;
-      gap:1rem;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-    }
+  position:relative;
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  overflow:hidden;
+}
+
+/* Floating Japanese food words */
+.image-grid::before{
+  content:"ラーメン   ご飯   焼き鳥   味   食";
+  position:absolute;
+  inset:10% 0 auto 0;
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:2.4rem;
+  text-align:center;
+  letter-spacing:.35em;
+  opacity:0.08;
+  pointer-events:none;
+  background:linear-gradient(90deg,var(--burgundy),var(--charcoal));
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:floatText 18s linear infinite;
+  white-space:nowrap;
+  z-index:0;
+}
+
+@keyframes floatText{
+  from{transform:translateX(0);}
+  to{transform:translateX(-40%);}
+}
     .image-card{
       background:var(--paper);
       border-radius:16px;
@@ -332,30 +358,30 @@
     </section>
 
     <!-- FOOD / VISUAL MOODBOARD (USING interior1.jpg) -->
-    <h2 class="section-title">Visual Moodboard</h2>
-    <section class="image-grid">
-      <article class="image-card">
-        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 1">
-        <div class="image-card-body">
-          <h4>Warm, layered dishes</h4>
-          <p>Bowls and plates that feel comforting, colourful, and made to share.</p>
-        </div>
-      </article>
-      <article class="image-card">
-        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 2">
-        <div class="image-card-body">
-          <h4>Textured presentation</h4>
-          <p>Mix of grilled, crunchy, and soft elements that photograph well.</p>
-        </div>
-      </article>
-      <article class="image-card">
-        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 3">
-        <div class="image-card-body">
-          <h4>Brand consistency</h4>
-          <p>Dishes and visuals matching the cosy, modern brand feel of the space.</p>
-        </div>
-      </article>
-    </section>
+   <h2 class="section-title">Visual Moodboard</h2>
+<section class="image-grid">
+  <article class="image-card">
+    <img src="food1.jpg" alt="Food dish from Nori &amp; Ember concept 1">
+    <div class="image-card-body">
+      <h4>Warm, layered dishes</h4>
+      <p>Bowls and plates that feel comforting, colourful, and made to share.</p>
+    </div>
+  </article>
+  <article class="image-card">
+    <img src="food2.jpg" alt="Food dish from Nori &amp; Ember concept 2">
+    <div class="image-card-body">
+      <h4>Textured presentation</h4>
+      <p>Mix of grilled, crunchy, and soft elements that photograph well.</p>
+    </div>
+  </article>
+  <article class="image-card">
+    <img src="food3.jpg" alt="Food dish from Nori &amp; Ember concept 3">
+    <div class="image-card-body">
+      <h4>Brand consistency</h4>
+      <p>Dishes and visuals matching the cosy, modern brand feel of the space.</p>
+    </div>
+  </article>
+</section>
 
     <!-- INTERIOR CONCEPT -->
     <h2 class="section-title">Interior Concept &amp; Atmosphere</h2>
