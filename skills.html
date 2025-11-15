@@ -297,184 +297,162 @@
       </section>
     </div>
 
-    <!-- Mini Game — Memory Match -->
-    <h2 class="section-title">Mini Game — Memory Match</h2>
-    <section class="card" id="memory-game-card" style="text-align:center;">
-      <p class="sub">Tiny coding break — flip the cards and match the pairs 🎉</p>
+      <!-- MINI GAME — MEMORY MATCH -->
+  <h2 class="section-title">Mini Game — Memory Match</h2>
 
-      <div class="memory-game" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:1rem;">
-        <div class="memory-card" data-symbol="💻">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">💻</div>
-          </div>
-        </div>
-        <div class="memory-card" data-symbol="💻">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">💻</div>
-          </div>
-        </div>
+  <section class="card">
+    <p style="text-align:center;margin-bottom:1rem;">
+      Tiny coding break — flip the cards and match the pairs 🎉
+    </p>
 
-        <div class="memory-card" data-symbol="📊">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">📊</div>
-          </div>
-        </div>
-        <div class="memory-card" data-symbol="📊">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">📊</div>
-          </div>
-        </div>
-
-        <div class="memory-card" data-symbol="🎨">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">🎨</div>
-          </div>
-        </div>
-        <div class="memory-card" data-symbol="🎨">
-          <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back">🎨</div>
-          </div>
-        </div>
+    <!-- GAME WRAPPER -->
+    <div id="memory-game" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+      max-width:420px;
+      margin:0 auto;
+    ">
+      <!-- 8 cards, 4 pairs -->
+      <div class="memory-card" data-symbol="🌸">
+        <div class="front">?</div><div class="back">🌸</div>
       </div>
 
-      <p id="game-message" style="margin-top:1rem;font-weight:600;"></p>
-    </section>
+      <div class="memory-card" data-symbol="🌸">
+        <div class="front">?</div><div class="back">🌸</div>
+      </div>
 
-    <footer>
-      © <span id="year"></span> Shaima Salim • Theme:
-      <span style="color:var(--burgundy)">Burgundy</span> ×
-      <span style="color:var(--charcoal)">Charcoal</span>
-    </footer>
-  </main>
+      <div class="memory-card" data-symbol="💻">
+        <div class="front">?</div><div class="back">💻</div>
+      </div>
 
-  <!-- toast + confetti roots -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="confetti" id="confetti" aria-hidden="true"></div>
+      <div class="memory-card" data-symbol="💻">
+        <div class="front">?</div><div class="back">💻</div>
+      </div>
 
-  <script>
-    // Dark mode toggle
-    (function(){
-      const saved = localStorage.getItem('theme');
-      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
-      const modeBtn = document.getElementById('mode');
-      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
-      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
-      setIcon();
-      modeBtn.addEventListener('click', () => {
-        const next = isDark() ? '' : 'dark';
-        if(next){ document.documentElement.setAttribute('data-theme', next); } else { document.documentElement.removeAttribute('data-theme'); }
-        localStorage.setItem('theme', next);
-        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
-        setIcon();
-      });
-    })();
+      <div class="memory-card" data-symbol="📊">
+        <div class="front">?</div><div class="back">📊</div>
+      </div>
 
-    // Toast + confetti
-    const confettiRoot = document.getElementById('confetti');
-    const toast = document.getElementById('toast');
-    function toastIt(msg){
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(()=>toast.classList.remove('show'), 2200);
-      const colors = ['#7A1F2B','#b84a59','#ffd166','#1F1F1F','#eceff4'];
-      for(let i=0;i<60;i++){
-        const el = document.createElement('div');
-        el.className = 'piece';
-        const size = Math.random()*8+6, left = Math.random()*100, delay = Math.random()*300;
-        el.style.left = left + 'vw';
-        el.style.background = colors[Math.floor(Math.random()*colors.length)];
-        el.style.width = size + 'px'; el.style.height = (size*1.4) + 'px';
-        el.style.animationDelay = (delay/1000) + 's';
-        confettiRoot.appendChild(el);
-        setTimeout(()=> el.remove(), 1400 + delay);
-      }
+      <div class="memory-card" data-symbol="📊">
+        <div class="front">?</div><div class="back">📊</div>
+      </div>
+
+      <div class="memory-card" data-symbol="🎨">
+        <div class="front">?</div><div class="back">🎨</div>
+      </div>
+
+      <div class="memory-card" data-symbol="🎨">
+        <div class="front">?</div><div class="back">🎨</div>
+      </div>
+    </div>
+
+    <p id="game-message" style="text-align:center;margin-top:1rem;font-weight:600;color:var(--burgundy);">
+      Flip two cards to start!
+    </p>
+  </section>
+/* Memory game card styles */
+.memory-card{
+  position:relative;
+  width:100%;
+  padding-top:100%;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:transform .45s ease;
+  border-radius:14px;
+}
+
+.memory-card.flipped{
+  transform:rotateY(180deg);
+}
+
+.memory-card .front,
+.memory-card .back{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  border-radius:14px;
+  backface-visibility:hidden;
+}
+
+.memory-card .front{
+  background:var(--burgundy);
+  color:#fff;
+}
+
+.memory-card .back{
+  background:var(--paper);
+  border:2px solid var(--burgundy);
+  transform:rotateY(180deg);
+}
+document.getElementById('year').textContent = new Date().getFullYear();
+/* -------------------------
+   MEMORY GAME LOGIC
+------------------------- */
+(function(){
+  const game = document.getElementById('memory-game');
+  if(!game) return; // if game is not on this page, do nothing
+
+  const cards = Array.from(document.querySelectorAll('.memory-card'));
+  const msg = document.getElementById('game-message');
+
+  let first = null;
+  let lock = false;
+
+  // Shuffle card order visually
+  cards.forEach(card => {
+    card.style.order = Math.floor(Math.random() * 12);
+  });
+
+  // Clicking a card
+  cards.forEach(card => {
+    card.addEventListener('click', () => flip(card));
+  });
+
+  function flip(card){
+    if(lock || card.classList.contains('flipped')) return;
+
+    card.classList.add('flipped');
+
+    if(!first){
+      first = card;
+      return;
     }
 
-    // Make skill rows & photo clickable
-    document.querySelectorAll('.skill-row').forEach(r=>{
-      r.style.cursor='pointer';
-      r.setAttribute('tabindex','0');
-      r.setAttribute('role','button');
-      const fire=()=>toastIt(r.dataset.toast || 'Nice!');
-      r.addEventListener('click', fire);
-      r.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fire(); }});
-    });
+    const second = card;
+    checkMatch(first, second);
+    first = null;
+  }
 
-    const photo = document.getElementById('shaima-photo');
-    if(photo){
-      photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
-      photo.setAttribute('tabindex','0');
-      photo.setAttribute('role','button');
-      photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
-    }
+  function checkMatch(a, b){
+    if(a.dataset.symbol === b.dataset.symbol){
+      // MATCH
+      if(typeof toastIt === 'function'){
+        toastIt('Matched! 🎉');
+      }
+      msg.textContent = 'Nice! You found a pair ✨';
 
-    // Memory game logic
-    (function(){
-      const cards = Array.from(document.querySelectorAll('.memory-card'));
-      if(!cards.length) return;
-      let first = null;
-      let lock = false;
-      const msg = document.getElementById('game-message');
-
-      // shuffle cards visually
-      cards.forEach(card=>{
-        card.style.order = Math.floor(Math.random()*12);
-      });
-
-      cards.forEach(card=>{
-        card.addEventListener('click', () => handleFlip(card));
-      });
-
-      function handleFlip(card){
-        if(lock || card.classList.contains('flipped')) return;
-        card.classList.add('flipped');
-
-        if(!first){
-          first = card;
-          return;
-        }
-
-        const second = card;
-        checkMatch(first, second);
-        first = null;
+      // check for win
+      if(cards.every(c => c.classList.contains('flipped'))){
+        msg.textContent = 'You matched all pairs — well done! 👑';
       }
 
-      function checkMatch(a,b){
-        if(a.dataset.symbol === b.dataset.symbol){
-          if(typeof toastIt === 'function'){
-            toastIt('Match! 🌟');
-          }
-          msg.textContent = 'You matched a pair! Keep going 👀';
-          // check if all are flipped
-          if(cards.every(c => c.classList.contains('flipped'))){
-            msg.textContent = 'All matched — nice memory! 🎉';
-          }
-        }else{
-          lock = true;
-          setTimeout(()=>{
-            a.classList.remove('flipped');
-            b.classList.remove('flipped');
-            lock = false;
-          }, 700);
-        }
-      }
-    })();
-
-    // reduce-motion: pause marquee
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){
-      const mq=document.querySelector('.code-banner .marquee');
-      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    } else {
+      // NO MATCH
+      lock = true;
+      setTimeout(() => {
+        a.classList.remove('flipped');
+        b.classList.remove('flipped');
+        lock = false;
+      }, 650);
     }
-    media.addEventListener('change', updateMotion); updateMotion();
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  }
+})();
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+    
 </body>
 </html>
