@@ -6,194 +6,189 @@
   <title>Business Showcase — Nori & Ember | Shaima Salim</title>
   <meta name="description" content="Business showcase of Nori & Ember — a Japanese-inspired restaurant concept in Salford by Shaima Salim." />
   <style>
-    :root{
-      --burgundy:#7A1F2B; --charcoal:#1F1F1F;
-      --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
-      --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
-    }
-    [data-theme="dark"]{
-      --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
-      --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-      background:var(--mist);
-      color:var(--text);
-      line-height:1.6;
-    }
-    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
+  :root{
+    --burgundy:#7A1F2B; --charcoal:#1F1F1F;
+    --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
+    --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
+  }
+  [data-theme="dark"]{
+    --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
+    --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
+  }
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+    background:var(--mist);
+    color:var(--text);
+    line-height:1.6;
+  }
+  .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
 
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:40;
-      backdrop-filter:saturate(1.2) blur(6px);
-      background:color-mix(in oklab,var(--paper) 75%,transparent);
-      border-bottom:1px solid var(--smoke);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
-    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
-    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
-    .title{font-weight:700;letter-spacing:.2px}
-    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-    .btn{
-      appearance:none;border:1px solid var(--smoke);
-      background:var(--paper);color:var(--text);
-      padding:.55rem .8rem;border-radius:999px;
-      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
-    }
-    .btn:hover{border-color:var(--burgundy)}
-    .btn-ghost{border-color:transparent;background:transparent}
-    .btn.active{border-color:var(--burgundy)}
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter:saturate(1.2) blur(6px);
+    background:color-mix(in oklab,var(--paper) 75%,transparent);
+    border-bottom:1px solid var(--smoke);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+  .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
+  .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+  .title{font-weight:700;letter-spacing:.2px}
+  .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .btn{
+    appearance:none;border:1px solid var(--smoke);
+    background:var(--paper);color:var(--text);
+    padding:.55rem .8rem;border-radius:999px;
+    cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+  }
+  .btn:hover{border-color:var(--burgundy)}
+  .btn-ghost{border-color:transparent;background:transparent}
+  .btn.active{border-color:var(--burgundy)}
 
-    /* Moving banner */
-    .code-banner{
-      position:relative;overflow:hidden;border-radius:18px;
-      margin:1rem 0 1.25rem;
-      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-      border:1px solid var(--smoke)
-    }
-    .marquee{
-      display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
-      font-family:ui-monospace,Menlo,Consolas,monospace;
-      animation:scroll 22s linear infinite;
-      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
-    }
-    .code-chip{
-      background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
-      border:1px solid var(--smoke);
-      padding:.35rem .6rem;border-radius:10px
-    }
-    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* Moving banner */
+  .code-banner{
+    position:relative;overflow:hidden;border-radius:18px;
+    margin:1rem 0 1.25rem;
+    background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+    border:1px solid var(--smoke)
+  }
+  .marquee{
+    display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    animation:scroll 22s linear infinite;
+    color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+  }
+  .code-chip{
+    background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
+    border:1px solid var(--smoke);
+    padding:.35rem .6rem;border-radius:10px
+  }
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* Layout + cards */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center}
-    .card{
-      background:var(--paper);border:1px solid var(--smoke);
-      border-radius:16px;padding:1rem;
-      box-shadow:0 10px 24px rgb(0 0 0/0.04)
-    }
-    .section-title{
-      display:flex;gap:.6rem;align-items:center;
-      font-size:1.1rem;text-transform:uppercase;
-      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
-    }
-    .grid{display:grid;gap:1rem}
-    .two-col{grid-template-columns:1.1fr .9fr}
-    .three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
-    .sub{color:var(--muted)}
-    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
-    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);padding:.4rem .6rem;border-radius:10px;font-style:italic}
-    .steps-list{margin:.4rem 0 0;padding-left:1.2rem}
-    .steps-list li{margin:.15rem 0}
-    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+  /* Layout + cards */
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center}
+  .card{
+    background:var(--paper);border:1px solid var(--smoke);
+    border-radius:16px;padding:1rem;
+    box-shadow:0 10px 24px rgb(0 0 0/0.04)
+  }
+  .section-title{
+    display:flex;gap:.6rem;align-items:center;
+    font-size:1.1rem;text-transform:uppercase;
+    letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+  }
+  .grid{display:grid;gap:1rem}
+  .two-col{grid-template-columns:1.1fr .9fr}
+  .three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
+  .sub{color:var(--muted)}
+  .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+  .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);padding:.4rem .6rem;border-radius:10px;font-style:italic}
+  .steps-list{margin:.4rem 0 0;padding-left:1.2rem}
+  .steps-list li{margin:.15rem 0}
+  footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
 
-    .map-wrapper{
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid var(--smoke);
-      box-shadow:0 10px 24px rgb(0 0 0/0.04);
-      background:#000;
-    }
-    .map-wrapper iframe{
-      display:block;
-      width:100%;
-      height:260px;
-      border:0;
-    }
+  /* Map */
+  .map-wrapper{
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--smoke);
+    box-shadow:0 10px 24px rgb(0 0 0/0.04);
+    background:#000;
+  }
+  .map-wrapper iframe{
+    display:block;
+    width:100%;
+    height:260px;
+    border:0;
+  }
 
-    /* Image gallery */
-    .image-grid{
-  position:relative;
-  display:grid;
-  gap:1rem;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  overflow:hidden;
-}
+  /* Image gallery */
+  .image-grid{
+    position:relative;
+    display:grid;
+    gap:1rem;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    overflow:hidden;
+  }
 
-/* Floating Japanese food words */
-/* Floating Japanese words behind the grid */
-.image-grid::before{
-  content:"ラーメン   ご飯   焼き鳥   味   食";
-  position:absolute;
-  inset:5% 0 auto 0;
-  font-family:ui-monospace,Menlo,Consolas,monospace;
-  font-size:2.6rem;
-  text-align:center;
-  letter-spacing:.35em;
-  opacity:0.22;
-  pointer-events:none;
-  color:var(--burgundy);
-  white-space:nowrap;
-  animation:floatText 18s linear infinite;
-  z-index:0;
-}
+  .image-card{
+    position:relative;           /* sit above background text */
+    z-index:1;
+    background:var(--paper);
+    border-radius:16px;
+    border:1px solid var(--smoke);
+    overflow:hidden;
+    box-shadow:0 8px 20px rgb(0 0 0 / 0.04);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .image-card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    display:block;
+  }
+  .image-card-body{
+    padding:.6rem .75rem .75rem;
+  }
+  .image-card-body h4{
+    margin:.1rem 0 .25rem;
+    font-size:.95rem;
+  }
+  .image-card-body p{
+    margin:0;
+    font-size:.85rem;
+    color:var(--muted);
+  }
 
-@keyframes floatText{
-  from{transform:translateX(0);}
-  to{transform:translateX(-40%);}
-}
+  /* Floating Japanese words behind the food cards */
+  .image-grid::before{
+    content:"ラーメン   ご飯   焼き鳥   味   食";
+    position:absolute;
+    inset:5% 0 auto 0;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:2.6rem;
+    text-align:center;
+    letter-spacing:.35em;
+    opacity:0.22;
+    pointer-events:none;
+    color:var(--burgundy);
+    white-space:nowrap;
+    animation:floatText 18s linear infinite;
+    z-index:0;
+  }
 
-@keyframes floatText{
-  from{transform:translateX(0);}
-  to{transform:translateX(-40%);}
-}
-   .image-card{
-  position:relative;    /* NEW */
-  z-index:1;            /* NEW */
-  
-  background:var(--paper);
-  border-radius:16px;
-  border:1px solid var(--smoke);
-  overflow:hidden;
-  box-shadow:0 8px 20px rgb(0 0 0 / 0.04);
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-    .image-card img{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-      display:block;
-    }
-    .image-card-body{
-      padding:.6rem .75rem .75rem;
-    }
-    .image-card-body h4{
-      margin:.1rem 0 .25rem;
-      font-size:.95rem;
-    }
-    .image-card-body p{
-      margin:0;
-      font-size:.85rem;
-      color:var(--muted);
-    }
+  @keyframes floatText{
+    from{transform:translateX(0);}
+    to{transform:translateX(-40%);}
+  }
 
-    .interior-plan{
-      border-radius:16px;
-      border:1px dashed var(--burgundy);
-      padding:.9rem;
-      background:color-mix(in oklab,var(--paper) 85%,var(--burgundy));
-      font-size:.9rem;
-    }
-    .interior-img{
-      width:100%;
-      max-height:220px;
-      object-fit:cover;
-      border-radius:14px;
-      margin-bottom:.6rem;
-      border:1px solid var(--smoke);
-    }
+  .interior-plan{
+    border-radius:16px;
+    border:1px dashed var(--burgundy);
+    padding:.9rem;
+    background:color-mix(in oklab,var(--paper) 85%,var(--burgundy));
+    font-size:.9rem;
+  }
+  .interior-img{
+    width:100%;
+    max-height:220px;
+    object-fit:cover;
+    border-radius:14px;
+    margin-bottom:.6rem;
+    border:1px solid var(--smoke);
+  }
 
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr}
-      .two-col,.three-col{grid-template-columns:1fr}
-      .image-grid{grid-template-columns:1fr}
-    }
-  </style>
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr}
+    .two-col,.three-col{grid-template-columns:1fr}
+    .image-grid{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
   <header>
