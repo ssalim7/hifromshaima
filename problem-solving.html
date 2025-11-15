@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Problem-Solving — Shaima Salim</title>
+  <meta name="description" content="How Shaima approaches problem-solving across web projects, data, and business challenges." />
+  <style>
+    :root{
+      --burgundy:#7A1F2B; --charcoal:#1F1F1F;
+      --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
+      --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
+    }
+    [data-theme="dark"]{
+      --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
+      --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:var(--mist);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:color-mix(in oklab,var(--paper) 75%,transparent);
+      border-bottom:1px solid var(--smoke);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
+    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .title{font-weight:700;letter-spacing:.2px}
+    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--smoke);
+      background:var(--paper);color:var(--text);
+      padding:.55rem .8rem;border-radius:999px;
+      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+    }
+    .btn:hover{border-color:var(--burgundy)}
+    .btn-ghost{border-color:transparent;background:transparent}
+    .btn.active{border-color:var(--burgundy)}
+
+    /* Moving banner */
+    .code-banner{
+      position:relative;overflow:hidden;border-radius:18px;
+      margin:1rem 0 1.25rem;
+      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+      border:1px solid var(--smoke)
+    }
+    .marquee{
+      display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      animation:scroll 22s linear infinite;
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+    }
+    .code-chip{
+      background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
+      border:1px solid var(--smoke);
+      padding:.35rem .6rem;border-radius:10px
+    }
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Layout + cards */
+    main{position:relative;z-index:1;}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:center}
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0/0.04)
+    }
+    .section-title{
+      display:flex;gap:.6rem;align-items:center;
+      font-size:1.1rem;text-transform:uppercase;
+      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+    }
+    .grid{display:grid;gap:1rem}
+    .two-col{grid-template-columns:1.1fr .9fr}
+    .three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
+    .sub{color:var(--muted)}
+    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);padding:.4rem .6rem;border-radius:10px;font-style:italic}
+    .steps-list{margin:.4rem 0 0;padding-left:1.2rem}
+    .steps-list li{margin:.15rem 0}
+
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+
+    /* Roses layer */
+    .roses-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .rose{
+      position:absolute;
+      top:-10%;
+      font-size:22px;
+      opacity:.9;
+      animation:roseFall 6s linear forwards;
+    }
+    @keyframes roseFall{
+      0%{transform:translateY(-10%) rotate(0deg);}
+      100%{transform:translateY(120vh) rotate(360deg);}
+    }
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .two-col,.three-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="logo"
+             alt="Letter S in burgundy logo"
+             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
+        <span class="title">Shaima Salim</span>
+      </a>
+      <div class="nav-links">
+        <a class="btn btn-ghost" href="index.html">Home</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
+        <a class="btn btn-ghost" href="skills.html">Skills</a>
+        <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
+        <a class="btn btn-ghost active" href="problem-solving.html" aria-current="page">Problem-Solving</a>
+        <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- roses background layer -->
+  <div class="roses-layer" id="roses-layer" aria-hidden="true"></div>
+
+  <main class="container">
+    <!-- Moving banner -->
+    <div class="code-banner" aria-hidden="true">
+      <div class="marquee">
+        <span class="code-chip">debug &gt; panic</span>
+        <span class="code-chip">break problems into steps</span>
+        <span class="code-chip">test • learn • iterate</span>
+        <span class="code-chip">business × tech × design</span>
+        <span class="code-chip">data before drama</span>
+        <span class="code-chip">empathy is a feature</span>
+      </div>
+    </div>
+
+    <!-- Hero / overview -->
+    <section class="hero" aria-labelledby="ps-title">
+      <article class="card">
+        <span class="tag">Problem-Solving</span>
+        <h1 id="ps-title" style="margin:.4rem 0 .5rem">How I approach problem-solving.</h1>
+        <p class="sub">
+          I treat most problems like mini-projects: define what’s actually going wrong, test one change at a time, and use data or feedback instead of guessing. 
+          Whether it’s a broken layout, a messy spreadsheet, or a customer issue, I focus on staying calm, writing the problem down, and improving the solution step by step.
+        </p>
+        <ul class="steps-list">
+          <li><strong>1. Clarify</strong> – what is the real problem?</li>
+          <li><strong>2. Explore</strong> – research options, ask questions.</li>
+          <li><strong>3. Test</strong> – try a small change first.</li>
+          <li><strong>4. Review</strong> – what worked and why?</li>
+          <li><strong>5. Improve</strong> – refine, document, repeat.</li>
+        </ul>
+      </article>
+
+      <aside class="card">
+        <p class="chip-quote">“Good problem-solvers stay curious, not stressed.”</p>
+        <p class="sub" style="margin:.6rem 0 1rem">
+          I use the same mindset across coursework, my website, and work experience.
+        </p>
+        <button id="roses-btn" class="btn" style="background:var(--burgundy);color:#fff;border-color:var(--burgundy);width:100%;">
+          Make the roses fall 🌹
+        </button>
+        <p class="sub" style="margin-top:.6rem;font-size:.9rem;">
+          A small reminder that even tricky bugs can sit under something beautiful.
+        </p>
+      </aside>
+    </section>
+
+    <!-- Web problem-solving -->
+    <h2 class="section-title">Solving Problems in My Website</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0">Fixing layout and styling bugs</h3>
+        <p>
+          When my pages don’t look right – especially on mobile – I start by breaking the layout into sections and checking my HTML structure.
+        </p>
+        <ul class="steps-list">
+          <li>Used the browser inspector to spot missing closing tags or nested elements.</li>
+          <li>Temporarily removed extra CSS to find which rule was breaking the layout.</li>
+          <li>Tested the site on different screen sizes to make sure grids and cards stayed readable.</li>
+        </ul>
+        <p class="sub">
+          This helped me build cleaner, more responsive pages and gave me confidence reading my own code instead of panicking.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Debugging interactions with JavaScript</h3>
+        <p>
+          When buttons or interactive features didn’t work, I treated the issue like a small investigation.
+        </p>
+        <ul class="steps-list">
+          <li>Checked the browser console for error messages and line numbers.</li>
+          <li>Used <code>console.log()</code> to see what values my code was using.</li>
+          <li>Looked up simpler code examples and compared them with my version.</li>
+          <li>Fixed one thing at a time and re-tested instead of changing everything at once.</li>
+        </ul>
+        <p class="sub">
+          This taught me how to read error messages, stay patient, and understand solutions rather than just copying them.
+        </p>
+      </article>
+    </section>
+
+    <!-- Business problem: Nori & Ember -->
+    <h2 class="section-title">Using Data to Solve Business Problems (Nori &amp; Ember)</h2>
+    <section class="grid three-col">
+      <article class="card">
+        <h3 style="margin-top:0">The challenge</h3>
+        <p>
+          In my restaurant concept Nori &amp; Ember, weekday evenings were much quieter than weekends. 
+          This meant lower revenue and more risk of food waste from fresh ingredients.
+        </p>
+        <p class="sub">
+          I framed the problem as: <em>“How can we increase weekday bookings without damaging the weekend experience?”</em>
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">How I analysed it</h3>
+        <ul class="steps-list">
+          <li>Built a simple Excel table of daily sales and number of covers for a typical month.</li>
+          <li>Created a line chart to compare weekday vs weekend performance.</li>
+          <li>Grouped sales by time slot to see when the quietest hours were.</li>
+          <li>Imagined a short feedback survey asking customers why they chose particular days.</li>
+        </ul>
+        <p class="sub">
+          This helped me see patterns instead of relying on random guesses.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Solutions I proposed</h3>
+        <ul class="steps-list">
+          <li>Introduced a “Midweek Bento &amp; Bowl” set menu with slightly lower prices.</li>
+          <li>Targeted local students with early-evening offers and social media posts.</li>
+          <li>Promoted lighter dishes at lunch to reduce evening food waste.</li>
+          <li>Planned to review sales data monthly to see if changes actually worked.</li>
+        </ul>
+        <p class="sub">
+          The focus was on testing small, data-informed ideas first, then scaling what worked.
+        </p>
+      </article>
+    </section>
+
+    <!-- Real-life problem-solving -->
+    <h2 class="section-title">Problem-Solving in Real Spaces</h2>
+    <section class="card">
+      <h3 style="margin-top:0">Supporting smoother service at Billy’s Bagel</h3>
+      <p>
+        At Billy’s Bagel, busy mornings sometimes created long queues and confused customers, especially when people didn’t know where to wait or collect orders.
+      </p>
+      <ul class="steps-list">
+        <li>Watched the customer flow to see where people were hesitating or blocking space.</li>
+        <li>Suggested clearer signs for “Order Here” and “Collect Here” near the counter.</li>
+        <li>Helped trial a simple system where we repeated orders back and placed them in one organised area.</li>
+        <li>Shared feedback from customers who said it felt quicker and less stressful.</li>
+      </ul>
+      <p class="sub">
+        This showed me how small changes in layout, communication, and signage can solve real problems without needing complicated tech.
+      </p>
+    </section>
+
+    <!-- Reflection -->
+    <h2 class="section-title">What I’ve Learned About Problem-Solving</h2>
+    <section class="card">
+      <ul class="steps-list">
+        <li>Writing the problem down helps me separate facts from feelings.</li>
+        <li>Testing small changes is usually faster and safer than aiming for a “perfect” solution first time.</li>
+        <li>Data from tools like Excel, surveys, and simple charts can make decisions more confident and professional.</li>
+        <li>Talking to people – customers, classmates, staff – often reveals context that numbers alone can’t show.</li>
+        <li>I want to take this mindset into a future data analyst role, where I can help teams turn messy data into practical, ethical solutions.</li>
+      </ul>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
+    </footer>
+  </main>
+
+  <script>
+    // Dark mode toggle (same pattern as other pages)
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+      const modeBtn = document.getElementById('mode');
+      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
+      setIcon();
+      modeBtn.addEventListener('click', () => {
+        const next = isDark() ? '' : 'dark';
+        if(next){ document.documentElement.setAttribute('data-theme', next); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        localStorage.setItem('theme', next);
+        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
+        setIcon();
+      });
+    })();
+
+    // Rose shower
+    (function(){
+      const btn = document.getElementById('roses-btn');
+      const layer = document.getElementById('roses-layer');
+      if(!btn || !layer) return;
+
+      btn.addEventListener('click', () => {
+        // create a burst of roses
+        for(let i = 0; i < 40; i++){
+          const r = document.createElement('div');
+          r.className = 'rose';
+          r.textContent = '🌹';
+          r.style.left = Math.random()*100 + 'vw';
+          const delay = Math.random()*2;
+          const duration = 4 + Math.random()*3;
+          r.style.animationDelay = delay + 's';
+          r.style.animationDuration = duration + 's';
+          layer.appendChild(r);
+          setTimeout(() => r.remove(), (duration + delay) * 1000);
+        }
+      });
+    })();
+
+    // reduce-motion: pause marquee
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq=document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    }
+    media.addEventListener('change', updateMotion); updateMotion();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
