@@ -265,7 +265,7 @@
       </section>
     </div>
 
-    <div class="grid two-col" style="margin-top:1rem">
+       <div class="grid two-col" style="margin-top:1rem">
       <section class="card" aria-labelledby="design-tools">
         <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
 
@@ -297,15 +297,59 @@
       </section>
     </div>
 
-    <!-- Skills in Action -->
-    <h2 class="section-title">Skills in Action</h2>
-    <section class="card">
-      <p>See how I’ve applied these in coursework and projects — from web prototypes to dashboards and process improvements.</p>
-      <a class="btn" href="showcase.html" style="background:var(--burgundy);color:#fff;border-color:var(--burgundy)">View My Work →</a>
+    <!-- Mini Game — Memory Match -->
+    <h2 class="section-title">Mini Game — Memory Match</h2>
+    <section class="card" id="memory-game-card" style="text-align:center;">
+      <p class="sub">Tiny coding break — flip the cards and match the pairs 🎉</p>
+
+      <div class="memory-game" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:1rem;">
+        <div class="memory-card" data-symbol="💻">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">💻</div>
+          </div>
+        </div>
+        <div class="memory-card" data-symbol="💻">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">💻</div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-symbol="📊">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">📊</div>
+          </div>
+        </div>
+        <div class="memory-card" data-symbol="📊">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">📊</div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-symbol="🎨">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">🎨</div>
+          </div>
+        </div>
+        <div class="memory-card" data-symbol="🎨">
+          <div class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">🎨</div>
+          </div>
+        </div>
+      </div>
+
+      <p id="game-message" style="margin-top:1rem;font-weight:600;"></p>
     </section>
 
     <footer>
-      © <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
     </footer>
   </main>
 
@@ -363,14 +407,71 @@
     });
 
     const photo = document.getElementById('shaima-photo');
-    photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
-    photo.setAttribute('tabindex','0');
-    photo.setAttribute('role','button');
-    photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
+    if(photo){
+      photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
+      photo.setAttribute('tabindex','0');
+      photo.setAttribute('role','button');
+      photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
+    }
+
+    // Memory game logic
+    (function(){
+      const cards = Array.from(document.querySelectorAll('.memory-card'));
+      if(!cards.length) return;
+      let first = null;
+      let lock = false;
+      const msg = document.getElementById('game-message');
+
+      // shuffle cards visually
+      cards.forEach(card=>{
+        card.style.order = Math.floor(Math.random()*12);
+      });
+
+      cards.forEach(card=>{
+        card.addEventListener('click', () => handleFlip(card));
+      });
+
+      function handleFlip(card){
+        if(lock || card.classList.contains('flipped')) return;
+        card.classList.add('flipped');
+
+        if(!first){
+          first = card;
+          return;
+        }
+
+        const second = card;
+        checkMatch(first, second);
+        first = null;
+      }
+
+      function checkMatch(a,b){
+        if(a.dataset.symbol === b.dataset.symbol){
+          if(typeof toastIt === 'function'){
+            toastIt('Match! 🌟');
+          }
+          msg.textContent = 'You matched a pair! Keep going 👀';
+          // check if all are flipped
+          if(cards.every(c => c.classList.contains('flipped'))){
+            msg.textContent = 'All matched — nice memory! 🎉';
+          }
+        }else{
+          lock = true;
+          setTimeout(()=>{
+            a.classList.remove('flipped');
+            b.classList.remove('flipped');
+            lock = false;
+          }, 700);
+        }
+      }
+    })();
 
     // reduce-motion: pause marquee
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){ const mq=document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState=media.matches?'paused':'running'; }
+    function updateMotion(){
+      const mq=document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    }
     media.addEventListener('change', updateMotion); updateMotion();
 
     document.getElementById('year').textContent = new Date().getFullYear();
