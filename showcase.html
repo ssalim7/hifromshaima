@@ -146,6 +146,14 @@
       background:color-mix(in oklab,var(--paper) 85%,var(--burgundy));
       font-size:.9rem;
     }
+    .interior-img{
+      width:100%;
+      max-height:220px;
+      object-fit:cover;
+      border-radius:14px;
+      margin-bottom:.6rem;
+      border:1px solid var(--smoke);
+    }
 
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
@@ -323,28 +331,28 @@
       </article>
     </section>
 
-    <!-- FOOD GALLERY -->
-    <h2 class="section-title">Menu Moodboard (Food)</h2>
+    <!-- FOOD / VISUAL MOODBOARD (USING interior1.jpg) -->
+    <h2 class="section-title">Visual Moodboard</h2>
     <section class="image-grid">
       <article class="image-card">
-        <img src="food1.jpg" alt="Food dish from Nori &amp; Ember concept 1">
+        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 1">
         <div class="image-card-body">
-          <h4>Spicy Miso Chicken Bowl</h4>
-          <p>Comfort food with a kick — balanced carbs, protein, and greens.</p>
+          <h4>Warm, layered dishes</h4>
+          <p>Bowls and plates that feel comforting, colourful, and made to share.</p>
         </div>
       </article>
       <article class="image-card">
-        <img src="food2.jpg" alt="Food dish from Nori &amp; Ember concept 2">
+        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 2">
         <div class="image-card-body">
-          <h4>Crispy Tofu &amp; Sesame Greens</h4>
-          <p>Plant-based option that still feels indulgent and filling.</p>
+          <h4>Textured presentation</h4>
+          <p>Mix of grilled, crunchy, and soft elements that photograph well.</p>
         </div>
       </article>
       <article class="image-card">
-        <img src="food3.jpg" alt="Food dish from Nori &amp; Ember concept 3">
+        <img src="interior1.jpg" alt="Concept visual for Nori &amp; Ember 3">
         <div class="image-card-body">
-          <h4>Charcoal-Grilled Sharing Plate</h4>
-          <p>Designed for groups to mix, share, and try different flavours.</p>
+          <h4>Brand consistency</h4>
+          <p>Dishes and visuals matching the cosy, modern brand feel of the space.</p>
         </div>
       </article>
     </section>
@@ -353,6 +361,7 @@
     <h2 class="section-title">Interior Concept &amp; Atmosphere</h2>
     <section class="grid two-col">
       <article class="card">
+        <img src="interior1.jpg" alt="Interior concept for Nori &amp; Ember" class="interior-img" />
         <h3 style="margin-top:0">How the space feels</h3>
         <p>
           The interior is designed to feel warm, calm, and slightly tucked-away — like a small escape from busy streets and noisy lecture days.
@@ -380,6 +389,43 @@
         </div>
         <p class="sub" style="margin-top:.6rem;">
           In a full project, I would translate this into a real floor plan sketch, but this description shows how the customer journey is considered from door to table.
+        </p>
+      </article>
+    </section>
+
+    <!-- TECHY BIT: DIGITAL SYSTEMS & TECHNOLOGY -->
+    <h2 class="section-title">Digital Systems &amp; Technology</h2>
+    <section class="grid three-col">
+      <article class="card">
+        <h3 style="margin-top:0">Customer-facing tech</h3>
+        <ul class="steps-list">
+          <li>Simple website with menu, opening times, and online booking.</li>
+          <li>Click-and-collect ordering for students on the go.</li>
+          <li>QR codes on tables linking to menus and feedback forms.</li>
+          <li>Social media integration for campaigns and limited-time specials.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">In-store systems</h3>
+        <ul class="steps-list">
+          <li>Point-of-sale (POS) system that records dish-level sales data.</li>
+          <li>Table management to see which seats are free or reserved.</li>
+          <li>Basic inventory tracking to reduce waste and avoid stock-outs.</li>
+          <li>Staff rota planning tied to real peak-hour patterns.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Data &amp; analysis tools</h3>
+        <ul class="steps-list">
+          <li>Exporting POS data into Excel for weekly summaries.</li>
+          <li>Using simple dashboards (e.g. Power BI) to visualise busy times.</li>
+          <li>Segmenting feedback by day/time to spot service issues.</li>
+          <li>Testing offers and tracking which ones actually increase bookings.</li>
+        </ul>
+        <p class="sub">
+          This connects directly to how I’d like to work as a future data analyst: using real numbers to improve decisions.
         </p>
       </article>
     </section>
