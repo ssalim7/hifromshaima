@@ -104,6 +104,40 @@
     .stars .on{color:var(--burgundy)}
     .stars .off{color:var(--smoke)}
 
+    /* Memory game card styles */
+    .memory-card{
+      position:relative;
+      width:100%;
+      padding-top:100%;
+      cursor:pointer;
+      transform-style:preserve-3d;
+      transition:transform .45s ease;
+      border-radius:14px;
+    }
+    .memory-card.flipped{
+      transform:rotateY(180deg);
+    }
+    .memory-card .front,
+    .memory-card .back{
+      position:absolute;top:0;left:0;
+      width:100%;height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+      border-radius:14px;
+      backface-visibility:hidden;
+    }
+    .memory-card .front{
+      background:var(--burgundy);
+      color:#fff;
+    }
+    .memory-card .back{
+      background:var(--paper);
+      border:2px solid var(--burgundy);
+      transform:rotateY(180deg);
+    }
+
     footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
 
     /* Toast & confetti (for fun clicks) */
@@ -151,15 +185,10 @@
     <div class="code-banner" aria-hidden="true">
       <div class="marquee">
         <span class="code-chip">welcome to shaima’s world</span>
-        <span class="code-chip">love · live · laugh</span>
+        <span class="code-chip">love • live • laugh</span>
         <span class="code-chip">business × tech × design</span>
-        <span class="code-chip">learn &gt; fear</span>
-        <span class="code-chip">curiosity++ · empathy++</span>
+        <span class="code-chip">curiosity++ • empathy++</span>
         <span class="code-chip">welcome to shaima’s world</span>
-        <span class="code-chip">love · live · laugh</span>
-        <span class="code-chip">business × tech × design</span>
-        <span class="code-chip">learn &gt; fear</span>
-        <span class="code-chip">curiosity++ · empathy++</span>
       </div>
     </div>
 
@@ -168,7 +197,9 @@
       <div class="card">
         <span class="tag">Skills &amp; Tools</span>
         <h1 id="title" style="margin:.4rem 0 .5rem">Creative business thinker with hands-on tech.</h1>
-        <p class="sub">A blend of business insight, data literacy, and digital creativity — here’s what I use to bring ideas to life.</p>
+        <p class="sub">
+          A blend of business insight, data literacy, and digital creativity — here’s what I use to bring ideas to life.
+        </p>
         <div style="margin-top:.6rem">
           <span class="pill">Business analysis</span>
           <span class="pill">Data visualisation</span>
@@ -176,16 +207,18 @@
           <span class="pill">UX thinking</span>
         </div>
       </div>
+
       <div class="card" role="img" aria-label="Shaima photo">
-  <img
-    id="shaima-photo"
-    class="photo"
-    src="shaima.jpg"
-    alt="Photo of Shaima"
-  />
-  <p class="sub" style="margin:.6rem 0 0">Click the photo for a hi 👋</p>
-</div>
+        <img
+          id="shaima-photo"
+          class="photo"
+          src="shaima.jpg"
+          alt="Photo of Shaima"
+        />
+        <p class="sub" style="margin-top:.6rem 0 0;text-align:center">Click the photo for a hi 👋</p>
+      </div>
     </section>
+
     <!-- Business & Analytical Skills -->
     <h2 class="section-title">Business &amp; Analytical Skills</h2>
     <div class="grid two-col">
@@ -199,9 +232,10 @@
         </ul>
         <p class="sub">These skills help me frame the right question first, then recommend actions teams can actually use.</p>
       </article>
+
       <aside class="card">
         <p class="chip-quote">“Technology drives business — but people drive success.”</p>
-        <p style="margin:.5rem 0 0">I like to keep solutions simple, ethical, and accessible for real users.</p>
+        <p style="margin:.6rem 0">I like to keep solutions simple, ethical, and accessible for real users.</p>
         <h4 style="margin:.8rem 0 .4rem">Methods I use</h4>
         <ul>
           <li>SWOT, PESTLE, and Porter’s Five Forces</li>
@@ -216,22 +250,19 @@
     <div class="grid two-col">
       <section class="card" aria-labelledby="data-tools">
         <h3 id="data-tools" style="margin-top:0">Data &amp; Analysis</h3>
-
-        <div class="skill-row" data-toast="Excel level up! ✨">
+        <div class="skill-row" data-toast="Excel level up! 📊">
           <div class="skill-name">Excel (pivots, lookups, cleaning)</div>
           <div class="stars" aria-label="4 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
           </div>
         </div>
-
-        <div class="skill-row" data-toast="Power BI flow activated 📈">
+        <div class="skill-row" data-toast="Power BI dashboards activated 📈">
           <div class="skill-name">Power BI (dashboards)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
-
-        <div class="skill-row" data-toast="Pandas and plots incoming 🐍">
+        <div class="skill-row" data-toast="Pandas & plots incoming 🐍">
           <div class="skill-name">Python (pandas, charts)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
@@ -241,41 +272,34 @@
 
       <section class="card" aria-labelledby="web-tools">
         <h3 id="web-tools" style="margin-top:0">Web &amp; Content</h3>
-
-        <div class="skill-row" data-toast="Clean responsive layouts ✅">
+        <div class="skill-row" data-toast="Clean responsive layouts 💻">
           <div class="skill-name">HTML &amp; CSS (responsive UI)</div>
           <div class="stars" aria-label="4 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
           </div>
         </div>
-
         <div class="skill-row" data-toast="Tiny interactions FTW ⚡">
           <div class="skill-name">JavaScript (interactivity)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
-
-        <div class="skill-row" data-toast="Commit. Push. Repeat. 🔁">
+        <div class="skill-row" data-toast="Commit. Push. Repeat. 💾">
           <div class="skill-name">Git/GitHub (version control)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
       </section>
-    </div>
 
-       <div class="grid two-col" style="margin-top:1rem">
       <section class="card" aria-labelledby="design-tools">
         <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
-
         <div class="skill-row" data-toast="Wireframe to mockup 🎨">
           <div class="skill-name">Figma/Canva (wireframes, posts)</div>
           <div class="stars" aria-label="4 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
           </div>
         </div>
-
         <div class="skill-row" data-toast="Compose the story 📷">
           <div class="skill-name">Photography (composition)</div>
           <div class="stars" aria-label="3 out of 5">
@@ -297,162 +321,194 @@
       </section>
     </div>
 
-      <!-- MINI GAME — MEMORY MATCH -->
-  <h2 class="section-title">Mini Game — Memory Match</h2>
+    <!-- MINI GAME — MEMORY MATCH -->
+    <h2 class="section-title">Mini Game — Memory Match</h2>
+    <section class="card">
+      <p style="text-align:center;margin-bottom:1rem;">
+        Tiny coding break — flip the cards and match the pairs 🎉
+      </p>
 
-  <section class="card">
-    <p style="text-align:center;margin-bottom:1rem;">
-      Tiny coding break — flip the cards and match the pairs 🎉
-    </p>
+      <div id="memory-game" style="
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        gap:12px;
+        max-width:420px;
+        margin:0 auto;
+      ">
+        <div class="memory-card" data-symbol="🌸">
+          <div class="front">?</div><div class="back">🌸</div>
+        </div>
+        <div class="memory-card" data-symbol="🌸">
+          <div class="front">?</div><div class="back">🌸</div>
+        </div>
 
-    <!-- GAME WRAPPER -->
-    <div id="memory-game" style="
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:12px;
-      max-width:420px;
-      margin:0 auto;
-    ">
-      <!-- 8 cards, 4 pairs -->
-      <div class="memory-card" data-symbol="🌸">
-        <div class="front">?</div><div class="back">🌸</div>
+        <div class="memory-card" data-symbol="💻">
+          <div class="front">?</div><div class="back">💻</div>
+        </div>
+        <div class="memory-card" data-symbol="💻">
+          <div class="front">?</div><div class="back">💻</div>
+        </div>
+
+        <div class="memory-card" data-symbol="📊">
+          <div class="front">?</div><div class="back">📊</div>
+        </div>
+        <div class="memory-card" data-symbol="📊">
+          <div class="front">?</div><div class="back">📊</div>
+        </div>
+
+        <div class="memory-card" data-symbol="🎨">
+          <div class="front">?</div><div class="back">🎨</div>
+        </div>
+        <div class="memory-card" data-symbol="🎨">
+          <div class="front">?</div><div class="back">🎨</div>
+        </div>
       </div>
 
-      <div class="memory-card" data-symbol="🌸">
-        <div class="front">?</div><div class="back">🌸</div>
-      </div>
+      <p id="game-message" style="text-align:center;margin-top:1rem;font-weight:600;color:var(--burgundy);">
+        Flip two cards to start!
+      </p>
+    </section>
 
-      <div class="memory-card" data-symbol="💻">
-        <div class="front">?</div><div class="back">💻</div>
-      </div>
+    <footer>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
+    </footer>
+  </main>
 
-      <div class="memory-card" data-symbol="💻">
-        <div class="front">?</div><div class="back">💻</div>
-      </div>
+  <!-- toast + confetti roots -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
 
-      <div class="memory-card" data-symbol="📊">
-        <div class="front">?</div><div class="back">📊</div>
-      </div>
+  <script>
+    // Dark mode toggle
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+      const modeBtn = document.getElementById('mode');
+      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
+      setIcon();
+      modeBtn.addEventListener('click', () => {
+        const next = isDark() ? '' : 'dark';
+        if(next){ document.documentElement.setAttribute('data-theme', next); } else { document.documentElement.removeAttribute('data-theme'); }
+        localStorage.setItem('theme', next);
+        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
+        setIcon();
+      });
+    })();
 
-      <div class="memory-card" data-symbol="📊">
-        <div class="front">?</div><div class="back">📊</div>
-      </div>
-
-      <div class="memory-card" data-symbol="🎨">
-        <div class="front">?</div><div class="back">🎨</div>
-      </div>
-
-      <div class="memory-card" data-symbol="🎨">
-        <div class="front">?</div><div class="back">🎨</div>
-      </div>
-    </div>
-
-    <p id="game-message" style="text-align:center;margin-top:1rem;font-weight:600;color:var(--burgundy);">
-      Flip two cards to start!
-    </p>
-  </section>
-/* Memory game card styles */
-.memory-card{
-  position:relative;
-  width:100%;
-  padding-top:100%;
-  cursor:pointer;
-  transform-style:preserve-3d;
-  transition:transform .45s ease;
-  border-radius:14px;
-}
-
-.memory-card.flipped{
-  transform:rotateY(180deg);
-}
-
-.memory-card .front,
-.memory-card .back{
-  position:absolute;top:0;left:0;
-  width:100%;height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:2rem;
-  border-radius:14px;
-  backface-visibility:hidden;
-}
-
-.memory-card .front{
-  background:var(--burgundy);
-  color:#fff;
-}
-
-.memory-card .back{
-  background:var(--paper);
-  border:2px solid var(--burgundy);
-  transform:rotateY(180deg);
-}
-document.getElementById('year').textContent = new Date().getFullYear();
-/* -------------------------
-   MEMORY GAME LOGIC
-------------------------- */
-(function(){
-  const game = document.getElementById('memory-game');
-  if(!game) return; // if game is not on this page, do nothing
-
-  const cards = Array.from(document.querySelectorAll('.memory-card'));
-  const msg = document.getElementById('game-message');
-
-  let first = null;
-  let lock = false;
-
-  // Shuffle card order visually
-  cards.forEach(card => {
-    card.style.order = Math.floor(Math.random() * 12);
-  });
-
-  // Clicking a card
-  cards.forEach(card => {
-    card.addEventListener('click', () => flip(card));
-  });
-
-  function flip(card){
-    if(lock || card.classList.contains('flipped')) return;
-
-    card.classList.add('flipped');
-
-    if(!first){
-      first = card;
-      return;
+    // Toast + confetti
+    const confettiRoot = document.getElementById('confetti');
+    const toast = document.getElementById('toast');
+    function toastIt(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2200);
+      const colors = ['#7A1F2B','#b84a59','#ffd166','#1F1F1F','#eceff4'];
+      for(let i=0;i<60;i++){
+        const el = document.createElement('div');
+        el.className = 'piece';
+        const size = Math.random()*8+6, left = Math.random()*100, delay = Math.random()*300;
+        el.style.left = left + 'vw';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.width = size + 'px'; el.style.height = (size*1.4) + 'px';
+        el.style.animationDelay = (delay/1000) + 's';
+        confettiRoot.appendChild(el);
+        setTimeout(()=> el.remove(), 1400 + delay);
+      }
     }
 
-    const second = card;
-    checkMatch(first, second);
-    first = null;
-  }
+    // Make skill rows & photo clickable
+    document.querySelectorAll('.skill-row').forEach(r=>{
+      r.style.cursor='pointer';
+      r.setAttribute('tabindex','0');
+      r.setAttribute('role','button');
+      const fire=()=>toastIt(r.dataset.toast || 'Nice!');
+      r.addEventListener('click', fire);
+      r.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fire(); }});
+    });
 
-  function checkMatch(a, b){
-    if(a.dataset.symbol === b.dataset.symbol){
-      // MATCH
-      if(typeof toastIt === 'function'){
-        toastIt('Matched! 🎉');
-      }
-      msg.textContent = 'Nice! You found a pair ✨';
-
-      // check for win
-      if(cards.every(c => c.classList.contains('flipped'))){
-        msg.textContent = 'You matched all pairs — well done! 👑';
-      }
-
-    } else {
-      // NO MATCH
-      lock = true;
-      setTimeout(() => {
-        a.classList.remove('flipped');
-        b.classList.remove('flipped');
-        lock = false;
-      }, 650);
+    const photo = document.getElementById('shaima-photo');
+    if(photo){
+      photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
+      photo.setAttribute('tabindex','0');
+      photo.setAttribute('role','button');
+      photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
     }
-  }
-})();
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-    
+
+    /* -------------------------
+       MEMORY GAME LOGIC
+    ------------------------- */
+    (function(){
+      const game = document.getElementById('memory-game');
+      if(!game) return; // if game is not on this page, do nothing
+
+      const cards = Array.from(document.querySelectorAll('.memory-card'));
+      const msg = document.getElementById('game-message');
+
+      let first = null;
+      let lock = false;
+
+      // Shuffle card order visually
+      cards.forEach(card => {
+        card.style.order = Math.floor(Math.random() * 12);
+      });
+
+      // Clicking a card
+      cards.forEach(card => {
+        card.addEventListener('click', () => flip(card));
+      });
+
+      function flip(card){
+        if(lock || card.classList.contains('flipped')) return;
+
+        card.classList.add('flipped');
+
+        if(!first){
+          first = card;
+          return;
+        }
+
+        const second = card;
+        checkMatch(first, second);
+        first = null;
+      }
+
+      function checkMatch(a, b){
+        if(a.dataset.symbol === b.dataset.symbol){
+          // MATCH
+          if(typeof toastIt === 'function'){
+            toastIt('Matched! 🎉');
+          }
+          msg.textContent = 'Nice! You found a pair ✨';
+
+          // check for win
+          if(cards.every(c => c.classList.contains('flipped'))){
+            msg.textContent = 'You matched all pairs — well done! 👑';
+          }
+
+        } else {
+          // NO MATCH
+          lock = true;
+          setTimeout(() => {
+            a.classList.remove('flipped');
+            b.classList.remove('flipped');
+            lock = false;
+          }, 650);
+        }
+      }
+    })();
+
+    // reduce-motion: pause marquee
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq=document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    }
+    media.addEventListener('change', updateMotion); updateMotion();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
