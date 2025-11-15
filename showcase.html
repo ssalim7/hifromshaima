@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Business Showcase — Nori & Ember | Shaima Salim</title>
+  <meta name="description" content="Business showcase of Nori & Ember — a Japanese-inspired restaurant concept in Salford by Shaima Salim." />
+  <style>
+    :root{
+      --burgundy:#7A1F2B; --charcoal:#1F1F1F;
+      --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
+      --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
+    }
+    [data-theme="dark"]{
+      --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
+      --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:var(--mist);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:color-mix(in oklab,var(--paper) 75%,transparent);
+      border-bottom:1px solid var(--smoke);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
+    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .title{font-weight:700;letter-spacing:.2px}
+    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--smoke);
+      background:var(--paper);color:var(--text);
+      padding:.55rem .8rem;border-radius:999px;
+      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+    }
+    .btn:hover{border-color:var(--burgundy)}
+    .btn-ghost{border-color:transparent;background:transparent}
+    .btn.active{border-color:var(--burgundy)}
+
+    /* Moving banner */
+    .code-banner{
+      position:relative;overflow:hidden;border-radius:18px;
+      margin:1rem 0 1.25rem;
+      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+      border:1px solid var(--smoke)
+    }
+    .marquee{
+      display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      animation:scroll 22s linear infinite;
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+    }
+    .code-chip{
+      background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
+      border:1px solid var(--smoke);
+      padding:.35rem .6rem;border-radius:10px
+    }
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Layout + cards */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center}
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0/0.04)
+    }
+    .section-title{
+      display:flex;gap:.6rem;align-items:center;
+      font-size:1.1rem;text-transform:uppercase;
+      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+    }
+    .grid{display:grid;gap:1rem}
+    .two-col{grid-template-columns:1.1fr .9fr}
+    .three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
+    .sub{color:var(--muted)}
+    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0}
+    .chip-quote{display:inline-block;background:color-mix(in oklab,var(--paper) 70%,var(--burgundy));border:1px solid var(--smoke);padding:.4rem .6rem;border-radius:10px;font-style:italic}
+    .steps-list{margin:.4rem 0 0;padding-left:1.2rem}
+    .steps-list li{margin:.15rem 0}
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+
+    .map-wrapper{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--smoke);
+      box-shadow:0 10px 24px rgb(0 0 0/0.04);
+      background:#000;
+    }
+    .map-wrapper iframe{
+      display:block;
+      width:100%;
+      height:260px;
+      border:0;
+    }
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .two-col,.three-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="logo"
+             alt="Letter S in burgundy logo"
+             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
+        <span class="title">Shaima Salim</span>
+      </a>
+      <div class="nav-links">
+        <a class="btn btn-ghost" href="index.html">Home</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
+        <a class="btn btn-ghost" href="skills.html">Skills</a>
+        <a class="btn btn-ghost active" href="showcase.html" aria-current="page">Business Showcase</a>
+        <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
+        <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Moving banner -->
+    <div class="code-banner" aria-hidden="true">
+      <div class="marquee">
+        <span class="code-chip">Nori &amp; Ember • Salford</span>
+        <span class="code-chip">bowls × grills × warm light</span>
+        <span class="code-chip">data-informed decisions</span>
+        <span class="code-chip">student &amp; local friendly</span>
+        <span class="code-chip">sustainable choices</span>
+        <span class="code-chip">concept • customers • location</span>
+      </div>
+    </div>
+
+    <!-- HERO / OVERVIEW -->
+    <section class="hero" aria-labelledby="hero-title">
+      <article class="card">
+        <span class="tag">Business Showcase</span>
+        <h1 id="hero-title" style="margin:.4rem 0 .5rem">Nori &amp; Ember — modern bowls &amp; grills in Salford.</h1>
+        <p class="sub">
+          Nori &amp; Ember is my restaurant concept: a Japanese-inspired space serving rice bowls, grilled small plates, and shareable sides in a warm, intimate atmosphere.
+          It’s designed for students, young professionals, and locals who want quality food that feels special but still fits everyday budgets.
+        </p>
+        <p class="sub" style="margin-top:.6rem">
+          This page showcases how I think about concept design, location, target customers, and data-informed decisions — linking my Business Management (Innovation &amp; Technology) degree with real-world hospitality ideas.
+        </p>
+        <div style="margin-top:.6rem">
+          <span class="pill">Concept design</span>
+          <span class="pill">Market needs</span>
+          <span class="pill">Location choice</span>
+          <span class="pill">Data insight</span>
+        </div>
+      </article>
+
+      <aside class="card">
+        <p class="chip-quote">“Comfort food, modern energy, and space to breathe.”</p>
+        <p class="sub" style="margin-top:.6rem">
+          Think soft lighting, natural textures, playlists that match the time of day, and dishes that look good in real life — not just on Instagram.
+        </p>
+        <ul class="steps-list">
+          <li><strong>Style:</strong> Japanese-inspired bowls &amp; grills</li>
+          <li><strong>Vibe:</strong> cosy, social, laptop-friendly before 6pm</li>
+          <li><strong>Price point:</strong> mid-range, student-conscious</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- LOCATION + MAP -->
+    <h2 class="section-title">Location &amp; Map</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0">Why Salford works for Nori &amp; Ember</h3>
+        <p>
+          I imagine Nori &amp; Ember on or near a busy route between the University of Salford and key transport links into Manchester.
+          This means a steady flow of students, commuters, and local residents throughout the day.
+        </p>
+        <ul class="steps-list">
+          <li><strong>Students</strong> — looking for warm, filling food after lectures.</li>
+          <li><strong>Young professionals</strong> — casual dinners and small-group meetups.</li>
+          <li><strong>Local residents</strong> — a nearby “regular” spot for date nights or catch-ups.</li>
+        </ul>
+        <p class="sub">
+          Being close to campus and bus routes also supports click-and-collect orders and delivery partnerships in the future.
+        </p>
+      </article>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Fictional location map</h3>
+        <p class="sub" style="margin-bottom:.5rem">
+          This map shows a sample area around Salford to represent where Nori &amp; Ember could be based.
+        </p>
+        <div class="map-wrapper" aria-label="Map showing a sample area around Salford for the Nori &amp; Ember concept">
+          <iframe 
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-2.315%2C53.47%2C-2.25%2C53.50&amp;layer=mapnik&amp;marker=53.48%2C-2.28"
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="sub" style="margin-top:.5rem;font-size:.9rem;">
+          Marker used as a fictional example — in a real project, I’d choose a specific unit based on rent, footfall, and competition.
+        </p>
+      </aside>
+    </section>
+
+    <!-- TARGET CUSTOMERS & MARKET NEED -->
+    <h2 class="section-title">Target Customers &amp; Market Need</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0">Who it’s for</h3>
+        <ul class="steps-list">
+          <li><strong>Students</strong> who want somewhere nicer than a takeaway, but not as formal as fine dining.</li>
+          <li><strong>Young professionals</strong> looking for relaxed dinners and after-work meetups.</li>
+          <li><strong>Health-aware guests</strong> who value balanced portions, fresh ingredients, and clear menu labelling.</li>
+          <li><strong>Social groups</strong> that want shareable plates and a cosy space for conversation.</li>
+        </ul>
+        <p class="sub">
+          These groups all benefit from a space that feels modern, safe, and welcoming — with predictable quality and prices.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">What problem it solves</h3>
+        <ul class="steps-list">
+          <li>Many options are either fast-food only or too expensive for regular visits.</li>
+          <li>Some places don’t balance atmosphere with practicality (lighting, seating, plug sockets, Wi-Fi).</li>
+          <li>Menus can be confusing, with little information about ingredients or dietary options.</li>
+        </ul>
+        <p class="sub">
+          Nori &amp; Ember aims to sit in the middle: comfort food with care, in a setting where people feel looked after and never rushed.
+        </p>
+      </article>
+    </section>
+
+    <!-- VALUE PROPOSITION -->
+    <h2 class="section-title">Value Proposition &amp; Key Features</h2>
+    <section class="grid three-col">
+      <article class="card">
+        <h3 style="margin-top:0">Menu &amp; food concept</h3>
+        <ul class="steps-list">
+          <li>Core menu of rice bowls, grilled skewers, and small plates.</li>
+          <li>Clear labels for veggie, vegan, and high-protein options.</li>
+          <li>Rotating seasonal specials based on local produce.</li>
+        </ul>
+        <p class="sub">The menu is built to be flexible for both quick solo meals and longer group visits.</p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Space &amp; experience</h3>
+        <ul class="steps-list">
+          <li>Zoned seating: window bar, small tables, and a couple of group spots.</li>
+          <li>Soft, warm lighting and playlists tuned to time of day.</li>
+          <li>Friendly, approachable service style with clear recommendations.</li>
+        </ul>
+        <p class="sub">
+          The environment supports both social evenings and quieter laptop sessions before the evening rush.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Sustainability &amp; ethics</h3>
+        <ul class="steps-list">
+          <li>Focus on reducing food waste through portion planning and specials.</li>
+          <li>Encouraging re-usable containers for regular takeaway customers.</li>
+          <li>Transparent information on sourcing where possible.</li>
+        </ul>
+        <p class="sub">
+          This connects to my interest in ethical, sustainable business and responsible design decisions.
+        </p>
+      </article>
+    </section>
+
+    <!-- DATA SNAPSHOT -->
+    <h2 class="section-title">Data Snapshot (Concept)</h2>
+    <section class="card">
+      <h3 style="margin-top:0">Imagined weekly performance snapshot</h3>
+      <p class="sub">
+        To link the concept with data, I created a simple “imagined” snapshot of how a typical week might look for Nori &amp; Ember.
+      </p>
+      <div class="grid three-col" style="margin-top:.75rem">
+        <div>
+          <h4 style="margin:.2rem 0;">Busiest times</h4>
+          <ul class="steps-list">
+            <li>Weekdays: 6–8pm</li>
+            <li>Friday &amp; Saturday: 7–9pm</li>
+            <li>Sunday: 12–2pm brunch window</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin:.2rem 0;">Top dishes</h4>
+          <ul class="steps-list">
+            <li>Spicy Miso Chicken Bowl</li>
+            <li>Crispy Tofu &amp; Sesame Greens</li>
+            <li>Charcoal-grilled Skewer Set</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin:.2rem 0;">What the data suggests</h4>
+          <ul class="steps-list">
+            <li>Opportunity to promote earlier weekday sittings (4–6pm).</li>
+            <li>Scope for a lighter lunch menu for students on campus days.</li>
+            <li>Special campaigns around top dishes during quieter evenings.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub" style="margin-top:.6rem;">
+        In a real setting, I’d use tools like Excel or Power BI to track actual sales, identify trends, and measure whether new ideas are working.
+      </p>
+    </section>
+
+    <!-- LINK BACK TO SKILLS -->
+    <h2 class="section-title">How This Links to My Skills</h2>
+    <section class="card">
+      <p>
+        Nori &amp; Ember is more than a creative idea — it shows how I combine business thinking, data awareness, and digital design:
+      </p>
+      <ul class="steps-list">
+        <li><strong>Business &amp; analysis</strong> — defining a clear target market and value proposition.</li>
+        <li><strong>Data mindset</strong> — imagining how sales and feedback data would shape decisions.</li>
+        <li><strong>Design &amp; UX</strong> — thinking carefully about space, atmosphere, and how people move through the restaurant.</li>
+        <li><strong>Digital skills</strong> — presenting the concept clearly through this website, using layouts, maps, and structured content.</li>
+      </ul>
+      <p class="sub" style="margin-top:.6rem;">
+        Together, these elements reflect how I’d like to work in the future: blending data, creativity, and human experience to help businesses make better choices.
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
+    </footer>
+  </main>
+
+  <script>
+    // Dark mode toggle
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+      const modeBtn = document.getElementById('mode');
+      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
+      setIcon();
+      modeBtn.addEventListener('click', () => {
+        const next = isDark() ? '' : 'dark';
+        if(next){ document.documentElement.setAttribute('data-theme', next); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        localStorage.setItem('theme', next);
+        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
+        setIcon();
+      });
+    })();
+
+    // reduce-motion: pause marquee
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq=document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    }
+    media.addEventListener('change', updateMotion); updateMotion();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
