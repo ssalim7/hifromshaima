@@ -104,9 +104,53 @@
       border:0;
     }
 
+    /* Image gallery */
+    .image-grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+    .image-card{
+      background:var(--paper);
+      border-radius:16px;
+      border:1px solid var(--smoke);
+      overflow:hidden;
+      box-shadow:0 8px 20px rgb(0 0 0 / 0.04);
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+    .image-card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+    }
+    .image-card-body{
+      padding:.6rem .75rem .75rem;
+    }
+    .image-card-body h4{
+      margin:.1rem 0 .25rem;
+      font-size:.95rem;
+    }
+    .image-card-body p{
+      margin:0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    .interior-plan{
+      border-radius:16px;
+      border:1px dashed var(--burgundy);
+      padding:.9rem;
+      background:color-mix(in oklab,var(--paper) 85%,var(--burgundy));
+      font-size:.9rem;
+    }
+
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
       .two-col,.three-col{grid-template-columns:1fr}
+      .image-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -275,6 +319,104 @@
         </ul>
         <p class="sub">
           This connects to my interest in ethical, sustainable business and responsible design decisions.
+        </p>
+      </article>
+    </section>
+
+    <!-- FOOD GALLERY -->
+    <h2 class="section-title">Menu Moodboard (Food)</h2>
+    <section class="image-grid">
+      <article class="image-card">
+        <img src="food1.jpg" alt="Food dish from Nori &amp; Ember concept 1">
+        <div class="image-card-body">
+          <h4>Spicy Miso Chicken Bowl</h4>
+          <p>Comfort food with a kick — balanced carbs, protein, and greens.</p>
+        </div>
+      </article>
+      <article class="image-card">
+        <img src="food2.jpg" alt="Food dish from Nori &amp; Ember concept 2">
+        <div class="image-card-body">
+          <h4>Crispy Tofu &amp; Sesame Greens</h4>
+          <p>Plant-based option that still feels indulgent and filling.</p>
+        </div>
+      </article>
+      <article class="image-card">
+        <img src="food3.jpg" alt="Food dish from Nori &amp; Ember concept 3">
+        <div class="image-card-body">
+          <h4>Charcoal-Grilled Sharing Plate</h4>
+          <p>Designed for groups to mix, share, and try different flavours.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- INTERIOR CONCEPT -->
+    <h2 class="section-title">Interior Concept &amp; Atmosphere</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0">How the space feels</h3>
+        <p>
+          The interior is designed to feel warm, calm, and slightly tucked-away — like a small escape from busy streets and noisy lecture days.
+          I combine natural textures (wood, plants, soft fabrics) with clean lines and subtle lighting.
+        </p>
+        <ul class="steps-list">
+          <li><strong>Seating zones</strong> — window bar for solo guests, 2–4 person tables, and a couple of shared benches.</li>
+          <li><strong>Lighting</strong> — softer in the evening, brighter in the day for reading and studying.</li>
+          <li><strong>Sound</strong> — playlists that match time of day; not too loud to talk or work.</li>
+          <li><strong>Accessibility</strong> — clear walkways, easy-to-read menus, and staff ready to explain dishes.</li>
+        </ul>
+        <p class="sub">
+          This layout supports both quick solo visits and slower social evenings, without the space feeling chaotic.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Simple interior plan (concept)</h3>
+        <div class="interior-plan">
+          <p><strong>Front of house:</strong> glass frontage with a view into the warm, lit interior and window bar seating.</p>
+          <p><strong>Left side:</strong> 2-seater tables that can be pushed together for small groups.</p>
+          <p><strong>Right side:</strong> bench-style seating along the wall, with small tables for flexible layouts.</p>
+          <p><strong>Back:</strong> semi-open kitchen pass where dishes are served out, adding energy without being noisy.</p>
+          <p><strong>Details:</strong> plants, soft textures, and a consistent colour palette that matches the brand visuals online.</p>
+        </div>
+        <p class="sub" style="margin-top:.6rem;">
+          In a full project, I would translate this into a real floor plan sketch, but this description shows how the customer journey is considered from door to table.
+        </p>
+      </article>
+    </section>
+
+    <!-- MARKETING STRATEGY -->
+    <h2 class="section-title">Marketing Strategy</h2>
+    <section class="grid three-col">
+      <article class="card">
+        <h3 style="margin-top:0">Digital awareness</h3>
+        <ul class="steps-list">
+          <li>Instagram and TikTok content featuring dishes, behind-the-scenes prep, and cosy interiors.</li>
+          <li>Short Reels of “bowl builds” and grill moments to highlight freshness and texture.</li>
+          <li>Student ambassadors sharing honest reviews and study-night visits.</li>
+          <li>QR codes on flyers linking to menu, booking, and social pages.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Local engagement</h3>
+        <ul class="steps-list">
+          <li>Partnerships with the University of Salford for student discount evenings.</li>
+          <li>Loyalty stamps or digital cards for regulars (e.g. “Every 7th bowl free”).</li>
+          <li>Themed nights like “Ramen &amp; Revision” or “Small Plates Social”.</li>
+          <li>Collaborations with nearby gyms or studios for high-protein post-workout options.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 style="margin-top:0">Data-driven decisions</h3>
+        <ul class="steps-list">
+          <li>Tracking which dishes sell best at different times of day.</li>
+          <li>Monitoring peak hours to staff shifts efficiently and reduce wait times.</li>
+          <li>Collecting feedback through QR surveys on receipts or table talkers.</li>
+          <li>Testing campaigns and measuring which ones increase off-peak bookings.</li>
+        </ul>
+        <p class="sub">
+          This links directly to my interest in using data and tools like Excel or Power BI to guide real decisions.
         </p>
       </article>
     </section>
