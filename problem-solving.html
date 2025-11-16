@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Problem-Solving — Nori &amp; Ember | Shaima Salim</title>
-  <meta name="description" content="Problem-solving and digital transformation case study for Nori & Ember by Shaima Salim." />
+  <title>Business Showcase — Shaima Salim</title>
+  <meta name="description" content="Business project showcase including Nori & Ember, a digital transformation case study, and Shaima’s portfolio site." />
+
+  <!-- Leaflet for the map -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
   <style>
     :root{
       --burgundy:#7A1F2B; --charcoal:#1F1F1F;
@@ -23,47 +32,64 @@
       color:var(--text);
       line-height:1.6;
     }
-    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
+    .container{
+      max-width:1100px;
+      margin-inline:auto;
+      padding:1rem 1.25rem 4rem;
+    }
 
-    /* Header */
+    /* Header / nav */
     header{
       position:sticky;top:0;z-index:40;
       backdrop-filter:saturate(1.2) blur(6px);
       background:color-mix(in oklab,var(--paper) 75%,transparent);
       border-bottom:1px solid var(--smoke);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
-    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
-    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:.75rem;padding:.75rem 1.25rem;
+    }
+    .brand{
+      display:flex;gap:.75rem;align-items:center;
+      text-decoration:none;color:inherit;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:50%;
+      border:2px solid var(--burgundy);background:#fff;object-fit:cover;
+    }
     .title{font-weight:700;letter-spacing:.2px}
-    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .nav-links{
+      display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;
+    }
     .btn{
       appearance:none;border:1px solid var(--smoke);
       background:var(--paper);color:var(--text);
       padding:.55rem .8rem;border-radius:999px;
-      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+      cursor:pointer;font-weight:600;
+      text-decoration:none;display:inline-block;
     }
     .btn:hover{border-color:var(--burgundy)}
     .btn-ghost{border-color:transparent;background:transparent}
     .btn.active{border-color:var(--burgundy)}
+    #mode{min-width:2.4rem;text-align:center}
 
     /* Moving banner */
     .code-banner{
       position:relative;overflow:hidden;border-radius:18px;
       margin:1rem 0 1.25rem;
       background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-      border:1px solid var(--smoke)
+      border:1px solid var(--smoke);
     }
     .marquee{
       display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
       font-family:ui-monospace,Menlo,Consolas,monospace;
       animation:scroll 22s linear infinite;
-      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem;
     }
     .code-chip{
       background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
       border:1px solid var(--smoke);
-      padding:.35rem .6rem;border-radius:10px
+      padding:.35rem .6rem;border-radius:10px;
     }
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -71,145 +97,127 @@
     .section-title{
       display:flex;gap:.6rem;align-items:center;
       font-size:1.1rem;text-transform:uppercase;
-      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+      letter-spacing:.12em;color:var(--burgundy);
+      margin-top:2rem;
+    }
+    .section-kicker{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
     }
     .hero{
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:1.2fr .8fr;
       gap:1.25rem;
       align-items:center;
-      margin-top:1rem;
+      margin-top:.75rem;
     }
     .card{
       background:var(--paper);
       border:1px solid var(--smoke);
       border-radius:16px;
-      padding:1rem;
+      padding:1.1rem 1.25rem;
       box-shadow:0 10px 24px rgb(0 0 0/0.04);
     }
-    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
-    .sub{color:var(--muted)}
-    .grid{display:grid;gap:1rem}
-    .two-col{grid-template-columns:1.1fr .9fr}
-    .pill{display:inline-block;border:1px solid var(--smoke);background:var(--paper);padding:.35rem .6rem;border-radius:999px;margin:.2rem .3rem 0 0;font-size:.85rem}
-    .steps-list{margin:.4rem 0 0;padding-left:1.2rem}
-    .steps-list li{margin:.15rem 0}
-    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
-
-    .highlight-box{
-      border-radius:16px;
-      border:1px dashed var(--burgundy);
-      background:color-mix(in oklab,var(--paper) 85%,var(--burgundy));
-      padding:.9rem;
-      font-size:.9rem;
-    }
-
-    .interior-img{
-      width:100%;
-      max-height:240px;
-      object-fit:cover;
-      border-radius:14px;
-      border:1px solid var(--smoke);
-    }
-
-    .contact-strip{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:1rem;
-      align-items:flex-start;
-    }
-    .contact-block strong{
-      display:block;
-      font-size:.9rem;
-      margin-bottom:.15rem;
-    }
-    .social-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.45rem;
-      margin-top:.35rem;
-    }
-    .social-pill{
-      padding:.3rem .6rem;
-      border-radius:999px;
-      border:1px solid var(--smoke);
-      background:var(--paper);
-      font-size:.85rem;
-      text-decoration:none;
-      color:var(--text);
-    }
-    .social-pill:hover{
-      border-color:var(--burgundy);
-    }
-
-    /* Form */
-    .ps-form-row{
-      display:grid;
-      gap:.6rem;
-    }
-    .ps-form-row.two{
-      grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-    .ps-label{
-      font-size:.85rem;
-      font-weight:600;
-      margin-bottom:.15rem;
-      display:block;
-    }
-    .ps-input, .ps-select, .ps-textarea{
-      width:100%;
-      border-radius:10px;
-      border:1px solid var(--smoke);
-      padding:.4rem .6rem;
-      font-size:.85rem;
-      font-family:inherit;
-      background:var(--paper);
-      color:var(--text);
-      box-sizing:border-box;
-    }
-    .ps-input:focus,
-    .ps-select:focus,
-    .ps-textarea:focus{
-      outline:none;
-      border-color:var(--burgundy);
-      box-shadow:0 0 0 1px color-mix(in oklab,var(--burgundy) 60%,transparent);
-    }
-    .ps-textarea{
-      min-height:90px;
-      resize:vertical;
-    }
-    .ps-actions{
-      margin-top:.8rem;
-      display:flex;
-      justify-content:flex-end;
-      gap:.5rem;
-      flex-wrap:wrap;
-    }
-    .ps-btn{
-      appearance:none;
-      border-radius:999px;
-      border:1px solid var(--burgundy);
+    .tag{
+      display:inline-block;
+      font-weight:700;
       background:var(--burgundy);
       color:#fff;
-      font-weight:600;
-      padding:.45rem .9rem;
+      padding:.25rem .6rem;
+      border-radius:999px;
+      font-size:.8rem;
+      letter-spacing:.2px;
+    }
+    .sub{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    .two-col{grid-template-columns:1.15fr .85fr}
+    .pill{
+      display:inline-block;
+      border-radius:999px;
+      border:1px solid var(--smoke);
+      padding:.3rem .6rem;
       font-size:.85rem;
-      cursor:pointer;
+      margin:.15rem .25rem 0 0;
+      background:var(--paper);
     }
-    .ps-btn.secondary{
-      background:transparent;
-      color:var(--burgundy);
+    .project-heading{
+      margin-top:0;
+      margin-bottom:.3rem;
     }
-    .ps-note{
-      font-size:.78rem;
+    .project-meta{
+      font-size:.9rem;
       color:var(--muted);
-      margin-top:.4rem;
+      margin-bottom:.4rem;
+    }
+    ul{padding-left:1.1rem}
+
+    /* Map + food gallery */
+    #map{
+      width:100%;
+      height:220px;
+      border-radius:14px;
+      border:1px solid var(--smoke);
+      margin-bottom:.75rem;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.4rem;
+    }
+    .food-card{
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+      cursor:pointer;
+      border:1px solid var(--smoke);
+      transition:border .25s, transform .25s;
+    }
+    .food-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:filter .25s, transform .25s;
+    }
+    .food-card::after{
+      content:"Tap to highlight";
+      position:absolute;
+      inset:auto .35rem .35rem .35rem;
+      font-size:.75rem;
+      padding:.15rem .4rem;
+      border-radius:999px;
+      background:color-mix(in oklab,var(--paper) 80%,var(--burgundy));
+      color:var(--charcoal);
+      text-align:center;
+      opacity:.85;
+      pointer-events:none;
+    }
+    .food-card.active{
+      border-color:var(--burgundy);
+      transform:translateY(-2px);
+    }
+    .food-card.active img{
+      filter:saturate(1.2) contrast(1.1);
+      transform:scale(1.03);
+    }
+    .food-card.active::after{
+      content:"Highlighted dish";
+      background:var(--burgundy);
+      color:#fff;
+    }
+
+    /* Extra */
+    footer{
+      margin-top:2.5rem;
+      color:var(--muted);
+      font-size:.95rem;
     }
 
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
       .grid.two-col{grid-template-columns:1fr}
-      .contact-strip{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -217,17 +225,18 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Home">
+        <!-- S logo -->
         <img class="logo"
              alt="Letter S in burgundy logo"
-             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
+             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
         <span class="title">Shaima Salim</span>
       </a>
       <div class="nav-links">
         <a class="btn btn-ghost" href="index.html">Home</a>
-        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <a class="btn btn-ghost" href="skills.html">Skills</a>
-        <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
-        <a class="btn btn-ghost active" href="problem-solving.html" aria-current="page">Problem-Solving</a>
+        <a class="btn btn-ghost active" href="showcase.html" aria-current="page">Business Showcase</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
+        <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
         <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </div>
     </nav>
@@ -237,203 +246,221 @@
     <!-- Moving banner -->
     <div class="code-banner" aria-hidden="true">
       <div class="marquee">
-        <span class="code-chip">caseStudy = "Nori &amp; Ember";</span>
-        <span class="code-chip">focus = "digital problem-solving";</span>
-        <span class="code-chip">stack = ["HTML5","CSS3","JavaScript","UX"];</span>
-        <span class="code-chip">goal = "better bookings &amp; communication";</span>
-        <span class="code-chip">if (issue) { analyse(); design(); test(); }</span>
+        <span class="code-chip">projects = ["Nori & Ember","Problem-Solving Page","Portfolio Site"];</span>
+        <span class="code-chip">role = "Business × Tech × Design";</span>
+        <span class="code-chip">if (problem) { research(); prototype(); test(); }</span>
+        <span class="code-chip">caseStudy("digital transformation", "Salford");</span>
+        <span class="code-chip">console.log("portfolio in progress…")</span>
+        <span class="code-chip">businessShowcase.render();</span>
       </div>
     </div>
 
-    <!-- Hero / business context -->
-    <section class="hero" aria-labelledby="ps-title">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="bs-title">
       <article class="card">
-        <span class="tag">Digital Problem-Solving · Case Study</span>
-        <h1 id="ps-title" style="margin:.4rem 0 .5rem">
-          Digital problem-solving for Nori &amp; Ember
-        </h1>
+        <span class="tag">Business Showcase</span>
+        <h1 id="bs-title" style="margin:.6rem 0 .4rem;">Projects that mix business, design, and code.</h1>
         <p class="sub">
-          Nori &amp; Ember is a Japanese-inspired restaurant concept I created for my Business Management with
-          Innovation &amp; Technology coursework. I treated it as a real business case and asked: how could a small,
-          independent restaurant in Salford use digital tools to improve customer engagement, modernise communication,
-          and make bookings less stressful for both staff and guests?
+          This page presents three projects I’ve worked on as part of my Business Management with
+          Innovation &amp; Technology journey. Each project highlights my role, the problem I was trying
+          to solve, and the outcome — from a restaurant concept to a digital case study and my own
+          portfolio website.
         </p>
-        <p class="sub">
-          This page shows how I used HTML5, CSS3, and JavaScript to design simple, realistic digital solutions for
-          Nori &amp; Ember’s website — from contact and social media integration to an interactive booking and feedback form.
-        </p>
+        <div style="margin-top:.6rem">
+          <span class="pill">Digital transformation</span>
+          <span class="pill">UX &amp; content</span>
+          <span class="pill">Data-aware thinking</span>
+          <span class="pill">Front-end skills</span>
+        </div>
       </article>
-      <aside class="card" aria-label="Restaurant interior concept">
-        <img src="interior1.jpg" alt="Concept interior for Nori &amp; Ember" class="interior-img" />
+
+      <aside class="card">
+        <p class="section-kicker">Overview</p>
         <p class="sub">
-          The digital experience is designed to match the physical space: warm, modern, and welcoming, with clear
-          information and low stress for visitors.
+          Together, these projects show how I:
+        </p>
+        <ul class="sub" style="padding-left:1.1rem;margin-top:.2rem;">
+          <li>Analyse a business context and spot digital opportunities.</li>
+          <li>Use HTML5, CSS3, and JavaScript to build practical solutions.</li>
+          <li>Structure information clearly so users aren’t overwhelmed.</li>
+          <li>Connect what I’m learning at university to real, applied work.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Project 1: Nori & Ember -->
+    <h2 class="section-title">Project 1 · Nori &amp; Ember Restaurant Concept</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 class="project-heading">Digital-first concept for a Japanese-inspired restaurant in Salford</h3>
+        <p class="project-meta">
+          <strong>Role:</strong> Concept creator, business analyst &amp; junior UX designer
+        </p>
+        <p class="sub">
+          Nori &amp; Ember is a restaurant concept I designed for my coursework, focusing on Japanese-inspired
+          bowls, skewers and small plates aimed at students and young professionals near Salford Quays / MediaCity.
+        </p>
+
+        <h4>Problem</h4>
+        <ul>
+          <li>Independent restaurants often struggle to stand out online against big chains.</li>
+          <li>Customers want to see the location, food style, and price level before visiting.</li>
+          <li>Without a clear digital presence, it’s harder to build trust and repeat visits.</li>
+        </ul>
+
+        <h4>My approach</h4>
+        <ul>
+          <li>Defined a clear target audience: students, young professionals, and local residents.</li>
+          <li>Designed a simple, modern layout with strong visuals and short, focused text.</li>
+          <li>Included location and food imagery to give a realistic “feel” of the brand.</li>
+          <li>Considered how data (e.g. bookings, peak times) could be used later to improve decisions.</li>
+        </ul>
+
+        <h4>Outcome</h4>
+        <ul>
+          <li>A concept restaurant page that showcases location, food style, and brand story.</li>
+          <li>A stronger understanding of how digital tools support hospitality businesses.</li>
+          <li>A foundation I can build on in future modules (e.g. adding bookings or loyalty features).</li>
+        </ul>
+      </article>
+
+      <aside class="card" aria-label="Map and food visuals for Nori & Ember">
+        <p class="section-kicker">Location &amp; visuals</p>
+        <p class="sub" style="margin-top:.1rem;">
+          Placing Nori &amp; Ember near Salford Quays makes sense for tram links, office workers,
+          and student housing. The map and imagery help customers imagine the experience.
+        </p>
+
+        <!-- Map -->
+        <div id="map" aria-label="Concept location near Salford Quays"></div>
+
+        <!-- Food gallery -->
+        <div class="gallery" aria-label="Food visuals">
+          <div class="food-card" data-label="Signature bowl">
+            <img src="food1.jpg" alt="Japanese-inspired bowl dish" />
+          </div>
+          <div class="food-card" data-label="Grilled skewers">
+            <img src="food2.jpg" alt="Grilled skewers and small plates" />
+          </div>
+          <div class="food-card" data-label="Shared small plates">
+            <img src="food3.jpg" alt="Shared small plates selection" />
+          </div>
+        </div>
+        <p class="sub" style="margin-top:.4rem;font-size:.9rem;">Tap a dish to highlight it — this is how I hint at interactivity while keeping the design simple.</p>
+      </aside>
+    </section>
+
+    <!-- Project 2: Problem-Solving Page design concept -->
+    <h2 class="section-title">Project 2 · Problem-Solving Page Design Concept</h2>
+    <section class="card">
+      <p class="section-kicker">Assignment-linked digital transformation case study</p>
+      <p class="project-meta">
+        <strong>Role:</strong> Designer, content writer &amp; front-end developer
+      </p>
+
+      <h3 class="project-heading">Turning a brief into a clear digital case study</h3>
+      <p class="sub">
+        The Problem-Solving page was built directly from my assignment brief. I needed to show a digital
+        transformation case study for the Nori &amp; Ember concept, including context, goals, contact, social
+        integration, and an interactive form that generates an email.
+      </p>
+
+      <h4>Problem</h4>
+      <ul>
+        <li>The brief required a single page that explained the restaurant’s digital transformation goals clearly.</li>
+        <li>I had to organise a lot of information (business context, goals, contact, form) without overwhelming the reader.</li>
+        <li>The solution needed to use HTML5, CSS3, and JavaScript to simulate real functionality (e.g. a booking/feedback form).</li>
+      </ul>
+
+      <h4>Design concept &amp; structure</h4>
+      <ul>
+        <li>
+          <strong>Top: Business context &amp; interior visual</strong> — I used a two-column layout with text and
+          the <code>interior1.jpg</code> image to connect the digital story with the physical restaurant feel.
+        </li>
+        <li>
+          <strong>Middle: Digital transformation goals</strong> — I separated “Why Salford?” and “Digital challenges”
+          into cards so the case study reads like a real consultancy-style breakdown.
+        </li>
+        <li>
+          <strong>Contact &amp; social integration</strong> — I added clear concept contact details and placeholder
+          social links (Instagram, TikTok, X, Facebook) to show how communication would flow in real life.
+        </li>
+        <li>
+          <strong>Interactive form with JavaScript mailto</strong> — the form collects name, enquiry type, and details,
+          then a JS function builds a <code>mailto:</code> link that opens the user’s email app with a pre-filled message.
+        </li>
+        <li>
+          <strong>Reflection section</strong> — at the end, I explain how this page demonstrates my problem-solving
+          process and links directly back to my degree.
+        </li>
+      </ul>
+
+      <h4>Outcome</h4>
+      <ul>
+        <li>A structured, assignment-ready case study that clearly shows business context, goals, and solution.</li>
+        <li>A working interactive form that demonstrates JavaScript being used to solve a realistic business need.</li>
+        <li>A page that my marker can easily follow, because the layout mirrors the logic of the brief itself.</li>
+      </ul>
+    </section>
+
+    <!-- Project 3: Portfolio site -->
+    <h2 class="section-title">Project 3 · Personal Portfolio Website</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <p class="section-kicker">HTML5 · CSS3 · JavaScript</p>
+        <h3 class="project-heading">Building a portfolio that feels like “me” but still looks professional</h3>
+        <p class="project-meta">
+          <strong>Role:</strong> Front-end developer, content creator &amp; designer of my own brand
+        </p>
+
+        <h4>Problem</h4>
+        <ul>
+          <li>I needed a way to present my skills, assignments, and projects in a more engaging way than a PDF CV.</li>
+          <li>The portfolio had to follow the assignment brief, but I also wanted it to reflect my personality and interests.</li>
+          <li>I wanted to practise real front-end skills: structure (HTML5), layout and theme (CSS3), and interactivity (JavaScript).</li>
+        </ul>
+
+        <h4>My role &amp; key decisions</h4>
+        <ul>
+          <li>Designed a consistent burgundy × charcoal theme across all pages, with a custom “S” logo.</li>
+          <li>Built multiple pages: Home, Skills, Business Showcase, Contact, and Problem-Solving.</li>
+          <li>Used semantic HTML sections and headings so the content is clear and accessible.</li>
+          <li>Added fun but controlled interactivity: dark mode toggle, mini memory game, clickable images, and confetti.</li>
+        </ul>
+
+        <h4>Outcome</h4>
+        <ul>
+          <li>A live portfolio that showcases my work, not just lists it.</li>
+          <li>Evidence that I can turn a written brief into a working multi-page website using front-end tools.</li>
+          <li>A base I can keep updating for placements, internships, and future roles in data or tech.</li>
+        </ul>
+      </article>
+
+      <aside class="card">
+        <h3 style="margin-top:0;">Features that show my skills</h3>
+        <ul>
+          <li><strong>Dark mode toggle</strong> — uses localStorage and a data-theme attribute for a better user experience.</li>
+          <li><strong>AI-style helper</strong> — a small JS-powered chat widget that answers questions about my work and the Nori &amp; Ember concept.</li>
+          <li><strong>Skills mini-game</strong> — a Memory Match game coded in JavaScript to demonstrate logic and user interaction.</li>
+          <li><strong>Interactive images</strong> — clickable photos and cards that trigger toasts, highlights, or subtle animations.</li>
+        </ul>
+        <p class="sub">
+          This project brings together everything from my degree so far: business communication, technology,
+          design, and the confidence to experiment and learn by doing.
         </p>
       </aside>
     </section>
 
-    <!-- Why Salford + challenges -->
-    <h2 class="section-title">Business context</h2>
-    <section class="grid two-col">
-      <article class="highlight-box">
-        <h3 style="margin-top:0">Why Salford?</h3>
-        <p>
-          Salford Quays and MediaCity bring together students, young professionals, and local residents. Most of these
-          customers are very digital: they check maps, Instagram, and online menus before choosing where to eat.
-        </p>
-        <p>
-          For a new restaurant like Nori &amp; Ember, a clear, responsive website is essential for standing out against
-          bigger chains and for showing exactly what the restaurant offers before customers even walk in.
-        </p>
-      </article>
-      <article class="card">
-        <h3 style="margin-top:0">Digital challenges identified</h3>
-        <ul class="steps-list">
-          <li>Customers need to quickly understand the concept, menu style, and price point.</li>
-          <li>Bookings and feedback can easily get lost or be difficult to track if done manually.</li>
-          <li>Students and young professionals often judge restaurants by their online presence first.</li>
-          <li>Social media engagement is important but messy without a clear website to link back to.</li>
-          <li>Small teams cannot answer questions 24/7, even though customers expect instant responses.</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- Digital transformation goals -->
-    <h2 class="section-title">Digital transformation goals</h2>
-    <section class="grid two-col">
-      <article class="card">
-        <h3 style="margin-top:0">What the website needs to achieve</h3>
-        <ul class="steps-list">
-          <li><strong>Improve customer engagement</strong> with clear visuals, simple sections, and an easy-to-read layout.</li>
-          <li><strong>Modernise communication</strong> through integrated social links, a clear contact panel, and consistent brand voice.</li>
-          <li><strong>Streamline bookings and feedback</strong> using an interactive form that automatically generates an email.</li>
-          <li><strong>Build an online presence</strong> that connects the website with Instagram, TikTok, and X for ongoing engagement.</li>
-          <li><strong>Show smart use of technology</strong> (HTML5, CSS3, JavaScript, and optional AI support) to solve practical business problems.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3 style="margin-top:0">How this links to my degree</h3>
-        <p class="sub">
-          This case study lets me combine business thinking with digital skills. From my Business Management with
-          Innovation &amp; Technology course, I apply:
-        </p>
-        <ul class="steps-list">
-          <li><strong>Strategy</strong> — understanding who Nori &amp; Ember is for and how it competes.</li>
-          <li><strong>Customer experience</strong> — mapping the journey from “searching online” to “making a booking”.</li>
-          <li><strong>Technology</strong> — using front-end tools to make communication smoother and more organised.</li>
-          <li><strong>Problem-solving</strong> — turning messy, real-world issues into clear digital features.</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- Social + contact -->
-    <h2 class="section-title">Contact &amp; social presence</h2>
-    <section class="card">
-      <div class="contact-strip">
-        <div class="contact-block">
-          <strong>Restaurant contact details</strong>
-          <p class="sub" style="margin-bottom:.2rem">
-            <span style="display:block;"><strong>Concept name:</strong> Nori &amp; Ember</span>
-            <span style="display:block;"><strong>Location:</strong> Near MediaCity, Salford Quays, M50 (concept address)</span>
-            <span style="display:block;"><strong>Phone:</strong> 0161 000 0000 (concept number)</span>
-            <span style="display:block;"><strong>Email:</strong> hello@nori-ember.co.uk (concept email)</span>
-          </p>
-          <p class="sub">
-            These details are used within the form and email link to simulate how a real restaurant would handle enquiries.
-          </p>
-        </div>
-        <div>
-          <strong>Social media integration</strong>
-          <p class="sub" style="margin-bottom:.25rem">
-            To keep customers engaged beyond the website, Nori &amp; Ember would connect its pages with social platforms:
-          </p>
-          <div class="social-links">
-            <a class="social-pill" href="#" aria-label="Visit Nori & Ember Instagram">📸 Instagram</a>
-            <a class="social-pill" href="#" aria-label="Visit Nori & Ember TikTok">🎥 TikTok</a>
-            <a class="social-pill" href="#" aria-label="Visit Nori & Ember X (Twitter)">𝕏 Twitter</a>
-            <a class="social-pill" href="#" aria-label="Visit Nori & Ember Facebook">📘 Facebook</a>
-          </div>
-          <p class="ps-note">
-            Links are placeholders for the prototype, but the layout shows how social media would be integrated in a real launch.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive form -->
-    <h2 class="section-title">Interactive booking &amp; feedback form</h2>
-    <section class="card">
-      <p class="sub">
-        This form is designed to collect key information and then generate an email using the user’s own email app.
-        This keeps the solution simple (no live database) but still realistic for a small restaurant team.
-      </p>
-      <form id="ps-form">
-        <div class="ps-form-row two">
-          <div>
-            <label class="ps-label" for="ps-name">Name *</label>
-            <input class="ps-input" type="text" id="ps-name" required />
-          </div>
-          <div>
-            <label class="ps-label" for="ps-email">Email</label>
-            <input class="ps-input" type="email" id="ps-email" placeholder="you@example.com" />
-          </div>
-        </div>
-
-        <div class="ps-form-row two" style="margin-top:.6rem">
-          <div>
-            <label class="ps-label" for="ps-type">Type of enquiry *</label>
-            <select class="ps-select" id="ps-type" required>
-              <option value="">Please select…</option>
-              <option value="Booking request">Booking request</option>
-              <option value="General question">General question</option>
-              <option value="Feedback">Feedback</option>
-            </select>
-          </div>
-          <div>
-            <label class="ps-label" for="ps-date">Preferred date &amp; time</label>
-            <input class="ps-input" type="text" id="ps-date" placeholder="e.g. Friday 7pm for 4 people" />
-          </div>
-        </div>
-
-        <div class="ps-form-row" style="margin-top:.6rem">
-          <div>
-            <label class="ps-label" for="ps-message">Message / details *</label>
-            <textarea class="ps-textarea" id="ps-message" required placeholder="Add any details, preferences, or feedback here."></textarea>
-          </div>
-        </div>
-
-        <div class="ps-actions">
-          <button type="reset" class="ps-btn secondary">Clear form</button>
-          <button type="submit" class="ps-btn">Create email</button>
-        </div>
-        <p class="ps-note">
-          When you click “Create email”, your email app will open with the details filled in, ready to send to the concept address:
-          <strong>hello@nori-ember.co.uk</strong>.
-        </p>
-      </form>
-    </section>
-
-    <!-- Reflection -->
-    <h2 class="section-title">My problem-solving approach</h2>
-    <section class="card">
-      <p class="sub">
-        Designing this page helped me practise how I break down a problem: first by understanding the business context,
-        then identifying where customers and staff struggle, and finally turning those points into small, focused digital features.
-      </p>
-      <p class="sub">
-        I used my Business Management with Innovation &amp; Technology learning to think about strategy and customer experience,
-        while my web development skills helped me build an accessible, interactive form and integrate contact, social, and
-        optional AI support. Together, these show how even a simple website can support a restaurant’s digital transformation.
-      </p>
-    </section>
-
     <footer>
-      © <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
     </footer>
   </main>
 
+  <!-- Dark mode toggle -->
   <script>
-    // Dark mode toggle
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -449,52 +476,53 @@
         modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
         setIcon();
       });
+      document.getElementById('year').textContent = new Date().getFullYear();
     })();
+  </script>
 
-    // reduce-motion for banner
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){
-      const mq=document.querySelector('.code-banner .marquee');
-      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
-    }
-    media.addEventListener('change', updateMotion); updateMotion();
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Interactive form -> email generator
+  <!-- Leaflet map script + init -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
     (function(){
-      const form = document.getElementById('ps-form');
-      if(!form) return;
+      const mapEl = document.getElementById('map');
+      if(!mapEl) return;
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
+      const map = L.map('map').setView([53.4723, -2.2935], 14); // Roughly Salford Quays
 
-        const name = document.getElementById('ps-name').value.trim();
-        const email = document.getElementById('ps-email').value.trim();
-        const type = document.getElementById('ps-type').value;
-        const date = document.getElementById('ps-date').value.trim();
-        const message = document.getElementById('ps-message').value.trim();
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
 
-        if(!name || !type || !message){
-          alert('Please fill in your name, enquiry type, and message before creating the email.');
-          return;
-        }
+      L.marker([53.4723, -2.2935])
+        .addTo(map)
+        .bindPopup('Concept location for Nori &amp; Ember<br/>Near Salford Quays / MediaCity.')
+        .openPopup();
+    })();
+  </script>
 
-        const to = 'hello@nori-ember.co.uk'; // concept restaurant email
-        const subject = encodeURIComponent(type + ' from ' + name);
-        let body = '';
-        body += 'Name: ' + name + '%0D%0A';
-        if(email){ body += 'Email: ' + email + '%0D%0A'; }
-        if(date){ body += 'Preferred date/time: ' + date + '%0D%0A'; }
-        body += '%0D%0ADetails:%0D%0A' + encodeURIComponent(message);
-
-        const mailtoLink = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
-        window.location.href = mailtoLink;
+  <!-- Food gallery interaction -->
+  <script>
+    (function(){
+      const cards = document.querySelectorAll('.food-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          // toggle highlight on this one, remove from others
+          const isActive = card.classList.contains('active');
+          cards.forEach(c => c.classList.remove('active'));
+          if(!isActive){
+            card.classList.add('active');
+          }
+        });
       });
     })();
   </script>
 
-  <!-- AI chat widget (same file used on all pages) -->
+  <!-- AI chat widget (global across pages) -->
   <script src="ai-widget.js"></script>
 </body>
 </html>
