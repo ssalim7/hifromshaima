@@ -17,6 +17,7 @@
       --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
     }
 
+    html,body{height:100%}
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
@@ -24,141 +25,258 @@
       color:var(--text);
       line-height:1.6;
     }
-    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
 
+    .container{
+      max-width:1100px;
+      margin-inline:auto;
+      padding:1rem 1.25rem 4rem;
+    }
+
+    /* Header / nav */
     header{
-      position:sticky;top:0;z-index:40;
+      position:sticky;
+      top:0;
+      z-index:40;
       backdrop-filter:saturate(1.2) blur(6px);
       background:color-mix(in oklab,var(--paper) 75%,transparent);
       border-bottom:1px solid var(--smoke);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem}
-    .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
-    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
-    .title{font-weight:700}
-
-    .nav-links{display:flex;gap:.6rem;align-items:center}
-    .btn{
-      border:1px solid var(--smoke);background:var(--paper);
-      padding:.55rem .8rem;border-radius:999px;cursor:pointer;
-      text-decoration:none;color:var(--text);font-weight:600;
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding:.75rem 1.25rem;
     }
-    .btn.active{border-color:var(--burgundy)}
+    .brand{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:2px solid var(--burgundy);
+      object-fit:cover;
+      background:#fff;
+    }
+    .title{font-weight:700;letter-spacing:.2px}
+    .nav-links{
+      display:flex;
+      gap:.6rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid var(--smoke);
+      background:var(--paper);
+      color:var(--text);
+      padding:.55rem .8rem;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+    }
     .btn:hover{border-color:var(--burgundy)}
+    .btn-ghost{border-color:transparent;background:transparent}
+    .btn.active{border-color:var(--burgundy)}
+    #mode{min-width:2.4rem;text-align:center}
 
-    h2{margin-top:1.5rem;color:var(--burgundy)}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+    /* Page layout */
+    h1{
+      margin-top:1.5rem;
+      font-size:1.9rem;
+      color:var(--burgundy);
+    }
+
+    .contact-layout{
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:2rem;
+      margin-top:1.5rem;
+    }
 
     .card{
       background:var(--paper);
       border:1px solid var(--smoke);
-      padding:1.25rem;
       border-radius:16px;
+      padding:1.25rem 1.5rem;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
     }
 
-    input,textarea{
-      width:100%;padding:.7rem;border-radius:10px;
-      border:1px solid var(--smoke);background:var(--paper);
-      font-size:1rem;margin:.4rem 0;
+    /* Form styling */
+    .contact-form label{
+      display:block;
+      font-weight:600;
+      margin-top:1rem;
+    }
+    .contact-form label:first-of-type{margin-top:0}
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:.75rem;
+      margin-top:.35rem;
+      border-radius:12px;
+      border:1px solid var(--smoke);
+      font-size:1rem;
+      background:var(--paper);
+      box-sizing:border-box;
+    }
+
+    .contact-form textarea{
+      min-height:150px;
+      resize:vertical;
     }
 
     .send-btn{
-      background:var(--burgundy);color:#fff;
-      border:none;padding:.7rem 1.2rem;
-      border-radius:999px;cursor:pointer;font-weight:600;
+      margin-top:1.2rem;
+      border:none;
+      background:var(--burgundy);
+      color:#fff;
+      padding:.75rem 1.4rem;
+      border-radius:999px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .send-btn:hover{opacity:.9}
+
+    /* Right column */
+    .contact-card h3{margin-top:0;margin-bottom:.35rem}
+    .contact-card ul{
+      padding-left:1.1rem;
+      margin:.4rem 0 1rem;
+    }
+    .contact-card li{margin:.25rem 0}
+    .contact-card a{color:var(--burgundy);text-decoration:underline}
+    .contact-card a:hover{text-decoration:none}
+
+    footer{
+      margin-top:2.5rem;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    @media (max-width:880px){
+      .contact-layout{grid-template-columns:1fr}
     }
   </style>
 </head>
-
 <body>
-<header>
-  <nav class="nav">
-    <a class="brand" href="index.html">
-      <img class="logo" src="shaima.jpg" alt="S logo" />
-      <span class="title">Shaima Salim</span>
-    </a>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Home">
+        <!-- S logo -->
+        <img class="logo"
+             alt="Letter S in burgundy logo"
+             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
+        <span class="title">Shaima Salim</span>
+      </a>
 
-    <div class="nav-links">
-      <a class="btn" href="index.html">Home</a>
-      <a class="btn" href="skills.html">Skills</a>
-      <a class="btn" href="showcase.html">Business Showcase</a>
-      <a class="btn active" href="contact.html">Contact</a>
-      <a class="btn" href="problem-solving.html">Problem-Solving</a>
+      <div class="nav-links">
+        <a class="btn btn-ghost" href="index.html">Home</a>
+        <a class="btn btn-ghost" href="skills.html">Skills</a>
+        <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
+        <a class="btn btn-ghost active" href="contact.html" aria-current="page">Contact</a>
+        <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
+        <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Send a message</h1>
+
+    <div class="contact-layout">
+      <!-- LEFT: FORM -->
+      <section class="card">
+        <form class="contact-form">
+          <label for="name">Full name</label>
+          <input id="name" type="text" name="name" placeholder="Your full name" />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="Your email" />
+
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" name="subject" placeholder="What’s the message about?" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message..."></textarea>
+
+          <button type="submit" class="send-btn">Send message</button>
+        </form>
+      </section>
+
+      <!-- RIGHT: CONTACT DETAILS + SOCIAL -->
+      <section class="card contact-card">
+        <h3>Other ways to reach me</h3>
+        <p>Prefer something else? Try these quick links:</p>
+
+        <ul>
+          <li>
+            <a href="mailto:shaimasalim295@hotmail.com">
+              ✉️ Email: shaimasalim295@hotmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/shaima-salim" target="_blank">
+              🔗 LinkedIn profile (shaima-salim)
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/ssalim7" target="_blank">
+              💻 GitHub projects (@ssalim7)
+            </a>
+          </li>
+          <li>
+            <a href="tel:07999909986">
+              📞 Phone: 07999909986
+            </a>
+          </li>
+        </ul>
+
+        <h3>Availability</h3>
+        <p>I usually reply within 1–2 days, around study hours.</p>
+
+        <h3>Feedback</h3>
+        <p>Don’t be shy — share your feedback while you're at it, I’m all ears!</p>
+      </section>
     </div>
-  </nav>
-</header>
 
-<div class="container">
+    <footer>
+      © <span id="year"></span> Shaima Salim • Theme:
+      <span style="color:var(--burgundy)">Burgundy</span> ×
+      <span style="color:var(--charcoal)">Charcoal</span>
+    </footer>
+  </main>
 
-  <h2>Send a message</h2>
+  <!-- Dark mode script -->
+  <script>
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+      const modeBtn = document.getElementById('mode');
+      const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const setIcon = () => modeBtn.textContent = isDark() ? '☀️' : '🌙';
+      setIcon();
+      modeBtn.addEventListener('click', () => {
+        const next = isDark() ? '' : 'dark';
+        if(next){ document.documentElement.setAttribute('data-theme', next); }
+        else{ document.documentElement.removeAttribute('data-theme'); }
+        localStorage.setItem('theme', next);
+        modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
+        setIcon();
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 
-  <div class="grid">
-
-    <!-- LEFT SIDE — FORM -->
-    <div class="card">
-      <form>
-
-        <label>Full name</label>
-        <input type="text" placeholder="Your full name">
-
-        <label>Email</label>
-        <input type="email" placeholder="Your email">
-
-        <label>Subject</label>
-        <input type="text" placeholder="What’s the message about?">
-
-        <label>Message</label>
-        <textarea rows="6" placeholder="Write your message..."></textarea>
-
-        <button class="send-btn">Send message</button>
-
-      </form>
-    </div>
-
-    <!-- RIGHT SIDE — SOCIAL LINKS -->
-    <div class="card">
-
-      <h3>Other ways to reach me</h3>
-      <p>Prefer something else? Try these quick links:</p>
-
-      <ul>
-        <li>
-          <a href="mailto:shaimasalim295@hotmail.com">
-            ✉️ Email: shaimasalim295@hotmail.com
-          </a>
-        </li>
-
-        <li>
-          <a href="https://www.linkedin.com/in/shaima-salim" target="_blank">
-            🔗 LinkedIn profile (shaima-salim)
-          </a>
-        </li>
-
-        <li>
-          <a href="https://github.com/ssalim7" target="_blank">
-            💻 GitHub projects (@ssalim7)
-          </a>
-        </li>
-
-        <li>
-          <a href="tel:07999909986">
-            📞 Phone: 07999909986
-          </a>
-        </li>
-      </ul>
-
-      <h3>Availability</h3>
-      <p>I usually reply within 1–2 days around study hours.</p>
-
-      <h3>Feedback</h3>
-      <p>Don’t be shy — share your feedback while you're at it, I’m all ears!</p>
-
-    </div>
-  </div>
-</div>
-
-<!-- AI Widget (works on all pages) -->
-<script src="ai-widget.js"></script>
-
+  <!-- AI chat widget (same file used on every page) -->
+  <script src="ai-widget.js"></script>
 </body>
 </html>
