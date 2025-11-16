@@ -1,0 +1,9 @@
+/* Glow hover effect for all images */
+img {
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+img:hover {
+  box-shadow: 0 0 18px rgba(122, 31, 43, 0.6); /* burgundy glow */
+  transform: translateY(-3px) scale(1.02);      /* tiny lift */
+}
