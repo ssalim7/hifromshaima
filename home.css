@@ -1,0 +1,23 @@
+/* Extra styles for SKILLS page only */
+
+body.skills-page {
+  /* soft background glow to make the page feel more "designed" */
+  background-image:
+    radial-gradient(circle at top left, rgba(122, 31, 43, 0.08), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(31, 31, 31, 0.04), transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Memory game cards: nicer hover + flipped state */
+.memory-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+}
+
+.memory-card.flipped {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
