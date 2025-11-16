@@ -94,18 +94,6 @@
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* Layout + cards */
-    .section-title{
-      display:flex;gap:.6rem;align-items:center;
-      font-size:1.1rem;text-transform:uppercase;
-      letter-spacing:.12em;color:var(--burgundy);
-      margin-top:2rem;
-    }
-    .section-kicker{
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      color:var(--muted);
-    }
     .hero{
       display:grid;
       grid-template-columns:1.2fr .8fr;
@@ -130,9 +118,22 @@
       font-size:.8rem;
       letter-spacing:.2px;
     }
+    .section-title{
+      display:flex;gap:.6rem;align-items:center;
+      font-size:1.1rem;text-transform:uppercase;
+      letter-spacing:.12em;color:var(--burgundy);
+      margin-top:2rem;
+    }
+    .section-kicker{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
     .sub{color:var(--muted)}
     .grid{display:grid;gap:1rem}
     .two-col{grid-template-columns:1.15fr .85fr}
+    ul{padding-left:1.1rem}
     .pill{
       display:inline-block;
       border-radius:999px;
@@ -151,14 +152,21 @@
       color:var(--muted);
       margin-bottom:.4rem;
     }
-    ul{padding-left:1.1rem}
 
-    /* Map + food gallery */
+    /* Map + food gallery + interior image */
     #map{
       width:100%;
       height:220px;
       border-radius:14px;
       border:1px solid var(--smoke);
+      margin-bottom:.75rem;
+    }
+    .interior{
+      width:100%;
+      height:180px;
+      border-radius:14px;
+      border:1px solid var(--smoke);
+      object-fit:cover;
       margin-bottom:.75rem;
     }
     .gallery{
@@ -208,7 +216,6 @@
       color:#fff;
     }
 
-    /* Extra */
     footer{
       margin-top:2.5rem;
       color:var(--muted);
@@ -250,7 +257,7 @@
         <span class="code-chip">role = "Business × Tech × Design";</span>
         <span class="code-chip">if (problem) { research(); prototype(); test(); }</span>
         <span class="code-chip">caseStudy("digital transformation", "Salford");</span>
-        <span class="code-chip">console.log("portfolio in progress…")</span>
+        <span class="code-chip">console.log("business showcase loaded")</span>
         <span class="code-chip">businessShowcase.render();</span>
       </div>
     </div>
@@ -259,195 +266,199 @@
     <section class="hero" aria-labelledby="bs-title">
       <article class="card">
         <span class="tag">Business Showcase</span>
-        <h1 id="bs-title" style="margin:.6rem 0 .4rem;">Projects that mix business, design, and code.</h1>
+        <h1 id="bs-title" style="margin:.6rem 0 .4rem;">Three projects that mix business, design, and code.</h1>
         <p class="sub">
-          This page presents three projects I’ve worked on as part of my Business Management with
-          Innovation &amp; Technology journey. Each project highlights my role, the problem I was trying
-          to solve, and the outcome — from a restaurant concept to a digital case study and my own
-          portfolio website.
+          This page presents three projects I’ve worked on: a restaurant concept (Nori &amp; Ember),
+          the design of my Problem-Solving page, and this portfolio website. Each project explains
+          my role, the problem I was tackling, and the outcome.
         </p>
         <div style="margin-top:.6rem">
           <span class="pill">Digital transformation</span>
           <span class="pill">UX &amp; content</span>
           <span class="pill">Data-aware thinking</span>
-          <span class="pill">Front-end skills</span>
+          <span class="pill">Front-end development</span>
         </div>
       </article>
 
       <aside class="card">
-        <p class="section-kicker">Overview</p>
+        <p class="section-kicker">What this page shows</p>
         <p class="sub">
-          Together, these projects show how I:
+          Together, these projects demonstrate how I:
         </p>
-        <ul class="sub" style="padding-left:1.1rem;margin-top:.2rem;">
+        <ul class="sub" style="margin-top:.2rem;">
           <li>Analyse a business context and spot digital opportunities.</li>
-          <li>Use HTML5, CSS3, and JavaScript to build practical solutions.</li>
-          <li>Structure information clearly so users aren’t overwhelmed.</li>
-          <li>Connect what I’m learning at university to real, applied work.</li>
+          <li>Use HTML5, CSS3, and JavaScript to solve realistic problems.</li>
+          <li>Structure content so users (and markers!) can follow it easily.</li>
+          <li>Connect my degree in Business Management with Innovation &amp; Technology to real outputs.</li>
         </ul>
       </aside>
     </section>
 
-    <!-- Project 1: Nori & Ember -->
+    <!-- PROJECT 1 -->
     <h2 class="section-title">Project 1 · Nori &amp; Ember Restaurant Concept</h2>
     <section class="grid two-col">
       <article class="card">
-        <h3 class="project-heading">Digital-first concept for a Japanese-inspired restaurant in Salford</h3>
+        <h3 class="project-heading">Japanese-inspired restaurant concept near Salford Quays</h3>
         <p class="project-meta">
           <strong>Role:</strong> Concept creator, business analyst &amp; junior UX designer
-        </p>
-        <p class="sub">
-          Nori &amp; Ember is a restaurant concept I designed for my coursework, focusing on Japanese-inspired
-          bowls, skewers and small plates aimed at students and young professionals near Salford Quays / MediaCity.
         </p>
 
         <h4>Problem</h4>
         <ul>
-          <li>Independent restaurants often struggle to stand out online against big chains.</li>
-          <li>Customers want to see the location, food style, and price level before visiting.</li>
-          <li>Without a clear digital presence, it’s harder to build trust and repeat visits.</li>
+          <li>Independent restaurants can struggle to stand out against large chains online.</li>
+          <li>Customers want to see where a place is, what the food looks like, and the vibe before visiting.</li>
+          <li>Without a clear digital presence, it’s harder to build trust, awareness, and repeat visits.</li>
         </ul>
 
         <h4>My approach</h4>
         <ul>
-          <li>Defined a clear target audience: students, young professionals, and local residents.</li>
-          <li>Designed a simple, modern layout with strong visuals and short, focused text.</li>
-          <li>Included location and food imagery to give a realistic “feel” of the brand.</li>
-          <li>Considered how data (e.g. bookings, peak times) could be used later to improve decisions.</li>
+          <li>Defined a target audience: students, young professionals, and local residents.</li>
+          <li>Created a visual concept using interior imagery and food photography.</li>
+          <li>Used a clean layout that highlights location, brand story, and menu style.</li>
+          <li>Thought about how data (bookings, feedback, peak times) could inform future decisions.</li>
         </ul>
 
         <h4>Outcome</h4>
         <ul>
-          <li>A concept restaurant page that showcases location, food style, and brand story.</li>
-          <li>A stronger understanding of how digital tools support hospitality businesses.</li>
-          <li>A foundation I can build on in future modules (e.g. adding bookings or loyalty features).</li>
+          <li>A clear digital concept that communicates the restaurant’s identity and location.</li>
+          <li>Evidence of how digital tools can support hospitality businesses.</li>
+          <li>A project I can extend later with online bookings, feedback forms, or loyalty ideas.</li>
         </ul>
       </article>
 
-      <aside class="card" aria-label="Map and food visuals for Nori & Ember">
+      <aside class="card" aria-label="Interior, map and food visuals for Nori & Ember">
         <p class="section-kicker">Location &amp; visuals</p>
         <p class="sub" style="margin-top:.1rem;">
-          Placing Nori &amp; Ember near Salford Quays makes sense for tram links, office workers,
-          and student housing. The map and imagery help customers imagine the experience.
+          To make the concept feel real, I combined an interior visual, a location map, and food imagery.
         </p>
+
+        <!-- Interior image -->
+        <img src="interior1.jpg" alt="Interior concept for Nori & Ember" class="interior" />
 
         <!-- Map -->
         <div id="map" aria-label="Concept location near Salford Quays"></div>
 
         <!-- Food gallery -->
         <div class="gallery" aria-label="Food visuals">
-          <div class="food-card" data-label="Signature bowl">
+          <div class="food-card">
             <img src="food1.jpg" alt="Japanese-inspired bowl dish" />
           </div>
-          <div class="food-card" data-label="Grilled skewers">
+          <div class="food-card">
             <img src="food2.jpg" alt="Grilled skewers and small plates" />
           </div>
-          <div class="food-card" data-label="Shared small plates">
+          <div class="food-card">
             <img src="food3.jpg" alt="Shared small plates selection" />
           </div>
         </div>
-        <p class="sub" style="margin-top:.4rem;font-size:.9rem;">Tap a dish to highlight it — this is how I hint at interactivity while keeping the design simple.</p>
+        <p class="sub" style="margin-top:.4rem;font-size:.9rem;">
+          Tap a dish to highlight it — a small interaction that hints at how the full site could react to user choices.
+        </p>
       </aside>
     </section>
 
-    <!-- Project 2: Problem-Solving Page design concept -->
+    <!-- PROJECT 2 -->
     <h2 class="section-title">Project 2 · Problem-Solving Page Design Concept</h2>
     <section class="card">
-      <p class="section-kicker">Assignment-linked digital transformation case study</p>
+      <p class="section-kicker">Digital transformation case study for Nori &amp; Ember</p>
       <p class="project-meta">
-        <strong>Role:</strong> Designer, content writer &amp; front-end developer
+        <strong>Role:</strong> Page designer, content writer &amp; front-end developer
       </p>
 
-      <h3 class="project-heading">Turning a brief into a clear digital case study</h3>
+      <h3 class="project-heading">Turning a written brief into a clear digital case study</h3>
       <p class="sub">
-        The Problem-Solving page was built directly from my assignment brief. I needed to show a digital
-        transformation case study for the Nori &amp; Ember concept, including context, goals, contact, social
-        integration, and an interactive form that generates an email.
+        The Problem-Solving page was built directly from my assignment brief. It needed to show the
+        restaurant’s digital transformation goals, integrate contact details and social links, and
+        include an interactive form that generates an email.
       </p>
 
       <h4>Problem</h4>
       <ul>
-        <li>The brief required a single page that explained the restaurant’s digital transformation goals clearly.</li>
-        <li>I had to organise a lot of information (business context, goals, contact, form) without overwhelming the reader.</li>
-        <li>The solution needed to use HTML5, CSS3, and JavaScript to simulate real functionality (e.g. a booking/feedback form).</li>
+        <li>The brief required a single page that clearly explained why Nori &amp; Ember needs digital transformation.</li>
+        <li>I had to include business context, goals, contact details, social media, and a working form — without it looking messy.</li>
+        <li>The page had to demonstrate HTML5, CSS3 and JavaScript in a realistic way.</li>
       </ul>
 
       <h4>Design concept &amp; structure</h4>
       <ul>
         <li>
-          <strong>Top: Business context &amp; interior visual</strong> — I used a two-column layout with text and
-          the <code>interior1.jpg</code> image to connect the digital story with the physical restaurant feel.
+          <strong>Top section:</strong> I introduced the restaurant’s context and goals using a clear heading and
+          a short paragraph so the user quickly understands the situation.
         </li>
         <li>
-          <strong>Middle: Digital transformation goals</strong> — I separated “Why Salford?” and “Digital challenges”
-          into cards so the case study reads like a real consultancy-style breakdown.
+          <strong>Case study cards:</strong> I then separated “Business context”, “Digital challenges” and “Goals”
+          into cards. This structure makes it easier to skim and mirrors how real case studies are written.
         </li>
         <li>
-          <strong>Contact &amp; social integration</strong> — I added clear concept contact details and placeholder
-          social links (Instagram, TikTok, X, Facebook) to show how communication would flow in real life.
+          <strong>Contact + social integration:</strong> I added a dedicated area for concept contact details and social
+          media links (Instagram, TikTok, X/Twitter, Facebook) to show how communication would happen online.
         </li>
         <li>
-          <strong>Interactive form with JavaScript mailto</strong> — the form collects name, enquiry type, and details,
-          then a JS function builds a <code>mailto:</code> link that opens the user’s email app with a pre-filled message.
+          <strong>Interactive form:</strong> The booking/feedback form uses JavaScript to build a <code>mailto:</code> link
+          so that when the user clicks submit, their email client opens with the details pre-filled.
         </li>
         <li>
-          <strong>Reflection section</strong> — at the end, I explain how this page demonstrates my problem-solving
-          process and links directly back to my degree.
+          <strong>Reflection block:</strong> At the end of the page, I explain how this design shows problem-solving,
+          linking it directly to Business Management with Innovation &amp; Technology.
         </li>
       </ul>
 
       <h4>Outcome</h4>
       <ul>
-        <li>A structured, assignment-ready case study that clearly shows business context, goals, and solution.</li>
-        <li>A working interactive form that demonstrates JavaScript being used to solve a realistic business need.</li>
-        <li>A page that my marker can easily follow, because the layout mirrors the logic of the brief itself.</li>
+        <li>A well-structured page that follows the brief step-by-step.</li>
+        <li>A working interactive form that demonstrates how JavaScript can support business communication.</li>
+        <li>A digital case study that I can refer to in future modules as an example of applied problem-solving.</li>
       </ul>
     </section>
 
-    <!-- Project 3: Portfolio site -->
+    <!-- PROJECT 3 -->
     <h2 class="section-title">Project 3 · Personal Portfolio Website</h2>
     <section class="grid two-col">
       <article class="card">
-        <p class="section-kicker">HTML5 · CSS3 · JavaScript</p>
-        <h3 class="project-heading">Building a portfolio that feels like “me” but still looks professional</h3>
+        <p class="section-kicker">Multi-page portfolio using HTML5, CSS3 &amp; JavaScript</p>
         <p class="project-meta">
-          <strong>Role:</strong> Front-end developer, content creator &amp; designer of my own brand
+          <strong>Role:</strong> Designer, front-end developer &amp; content creator
+        </p>
+
+        <h3 class="project-heading">Building a portfolio that feels like me and meets the brief</h3>
+        <p class="sub">
+          For this assignment I didn’t just make a single page — I designed a full portfolio site that
+          reflects my interests (business, tech, gym, gaming, design) and presents my work in a clear way.
         </p>
 
         <h4>Problem</h4>
         <ul>
-          <li>I needed a way to present my skills, assignments, and projects in a more engaging way than a PDF CV.</li>
-          <li>The portfolio had to follow the assignment brief, but I also wanted it to reflect my personality and interests.</li>
-          <li>I wanted to practise real front-end skills: structure (HTML5), layout and theme (CSS3), and interactivity (JavaScript).</li>
+          <li>I needed more than a basic CV to show my skills, certificates and projects.</li>
+          <li>The site had to follow the assignment brief, but still look modern and personal.</li>
+          <li>I wanted to practise using HTML5, CSS3 and JavaScript in a realistic, joined-up way.</li>
         </ul>
 
-        <h4>My role &amp; key decisions</h4>
+        <h4>My approach</h4>
         <ul>
-          <li>Designed a consistent burgundy × charcoal theme across all pages, with a custom “S” logo.</li>
-          <li>Built multiple pages: Home, Skills, Business Showcase, Contact, and Problem-Solving.</li>
-          <li>Used semantic HTML sections and headings so the content is clear and accessible.</li>
-          <li>Added fun but controlled interactivity: dark mode toggle, mini memory game, clickable images, and confetti.</li>
+          <li>Created a consistent burgundy × charcoal theme with a custom “S” logo.</li>
+          <li>Built separate pages for Home, Skills, Business Showcase, Contact, and Problem-Solving.</li>
+          <li>Used semantic HTML structure so headings and sections are easy to navigate.</li>
+          <li>Added interactive elements: dark mode, clickable photos, memory game, and a small AI-style chat helper.</li>
         </ul>
 
         <h4>Outcome</h4>
         <ul>
-          <li>A live portfolio that showcases my work, not just lists it.</li>
-          <li>Evidence that I can turn a written brief into a working multi-page website using front-end tools.</li>
-          <li>A base I can keep updating for placements, internships, and future roles in data or tech.</li>
+          <li>A live portfolio that I can reuse for future modules, placements and job applications.</li>
+          <li>Evidence that I can interpret a brief, plan content, and build a multi-page site from scratch.</li>
+          <li>More confidence with front-end development and presenting my work professionally.</li>
         </ul>
       </article>
 
       <aside class="card">
-        <h3 style="margin-top:0;">Features that show my skills</h3>
+        <h3 style="margin-top:0;">Features that showcase my skills</h3>
         <ul>
-          <li><strong>Dark mode toggle</strong> — uses localStorage and a data-theme attribute for a better user experience.</li>
-          <li><strong>AI-style helper</strong> — a small JS-powered chat widget that answers questions about my work and the Nori &amp; Ember concept.</li>
-          <li><strong>Skills mini-game</strong> — a Memory Match game coded in JavaScript to demonstrate logic and user interaction.</li>
-          <li><strong>Interactive images</strong> — clickable photos and cards that trigger toasts, highlights, or subtle animations.</li>
+          <li><strong>Dark mode toggle</strong> using <code>data-theme</code> and <code>localStorage</code>.</li>
+          <li><strong>AI-style assistant</strong> (via <code>ai-widget.js</code>) that can answer questions about my skills and the Nori &amp; Ember concept.</li>
+          <li><strong>Memory Match mini-game</strong> to show I can code basic game logic in JavaScript.</li>
+          <li><strong>Interactive toasts and confetti</strong> that appear on clicks, showing small UI details.</li>
         </ul>
         <p class="sub">
-          This project brings together everything from my degree so far: business communication, technology,
-          design, and the confidence to experiment and learn by doing.
+          This project brings together everything from my degree so far: business communication, basic data awareness,
+          design thinking, and hands-on HTML/CSS/JS.
         </p>
       </aside>
     </section>
@@ -511,7 +522,6 @@
       const cards = document.querySelectorAll('.food-card');
       cards.forEach(card => {
         card.addEventListener('click', () => {
-          // toggle highlight on this one, remove from others
           const isActive = card.classList.contains('active');
           cards.forEach(c => c.classList.remove('active'));
           if(!isActive){
