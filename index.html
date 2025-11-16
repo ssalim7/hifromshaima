@@ -6,6 +6,8 @@
   <title>Home — Shaima Salim</title>
   <meta name="description" content="Home page for Shaima Salim — Business Management with Innovation & Technology student portfolio." />
 
+  <link rel="stylesheet" href="falling.css" />
+  
   <style>
     :root{
       --burgundy:#7A1F2B; --charcoal:#1F1F1F;
@@ -141,7 +143,8 @@
     }
   </style>
 </head>
-<body>
+<body class="home-page">
+<div class="falling-container" id="falling"></div>
   <!-- Emoji background behind everything -->
   <div class="emoji-layer" id="emoji-layer" aria-hidden="true"></div>
 
@@ -330,5 +333,30 @@
 
   <!-- AI chat widget shared across pages -->
   <script src="ai-widget.js"></script>
+  <script>
+  // Only run falling emojis on the home page
+  if (document.body.classList.contains('home-page')) {
+
+    const emojis = ["🎮", "💪", "🥯", "🌹"];
+    const container = document.getElementById("falling");
+
+    function createEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("falling-emoji");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      // random position + speed
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = 3 + Math.random() * 5 + "s";
+
+      container.appendChild(emoji);
+
+      // remove after falling
+      setTimeout(() => emoji.remove(), 8000);
+    }
+
+    setInterval(createEmoji, 500);
+  }
+</script>
 </body>
 </html>
