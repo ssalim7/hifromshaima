@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shaima Salim — Portfolio</title>
-  <meta name="description" content="Business Management with Innovation & Technology student portfolio." />
+  <title>Home — Shaima Salim</title>
+  <meta name="description" content="Home page for Shaima Salim — Business Management with Innovation & Technology student portfolio." />
+
   <style>
     :root{
       --burgundy:#7A1F2B; --charcoal:#1F1F1F;
@@ -16,229 +17,275 @@
       --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
     }
     html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-         background:var(--mist);color:var(--text);line-height:1.6}
-    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
-    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);
-           background:color-mix(in oklab,var(--paper) 75%,transparent);border-bottom:1px solid var(--smoke)}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:var(--mist);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      position:relative;
+    }
+    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem;position:relative;z-index:1;}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:color-mix(in oklab,var(--paper) 75%,transparent);
+      border-bottom:1px solid var(--smoke);
+    }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
     .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
-    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .logo{
+      width:40px;height:40px;border-radius:50%;
+      border:2px solid var(--burgundy);object-fit:cover;background:#fff;
+    }
     .title{font-weight:700;letter-spacing:.2px}
-    .nav-links{display:flex;gap:.6rem;align-items:center}
-    .btn{appearance:none;border:1px solid var(--smoke);background:var(--paper);color:var(--text);
-         padding:.55rem .8rem;border-radius:999px;cursor:pointer;font-weight:600}
+    .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--smoke);
+      background:var(--paper);color:var(--text);
+      padding:.55rem .8rem;border-radius:999px;
+      cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+    }
     .btn:hover{border-color:var(--burgundy)}
     .btn-ghost{border-color:transparent;background:transparent}
-    /* Moving code banner */
-    .code-banner{position:relative;overflow:hidden;border-radius:18px;margin:1rem 0 1.25rem;
-                 background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-                 border:1px solid var(--smoke)}
-    .marquee{display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
-             font-family:ui-monospace,Menlo,Consolas,monospace;animation:scroll 22s linear infinite;
-             color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem}
-    .code-chip{background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));border:1px solid var(--smoke);
-               padding:.35rem .6rem;border-radius:10px}
+    .btn.active{border-color:var(--burgundy)}
+    #mode{min-width:2.4rem;text-align:center}
+
+    /* Moving banner */
+    .code-banner{
+      position:relative;overflow:hidden;border-radius:18px;
+      margin:1rem 0 1.25rem;
+      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
+      border:1px solid var(--smoke)
+    }
+    .marquee{
+      display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      animation:scroll 22s linear infinite;
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+    }
+    .code-chip{
+      background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
+      border:1px solid var(--smoke);
+      padding:.35rem .6rem;border-radius:10px
+    }
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    /* Layout */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center}
-    .hero-card{background:var(--paper);border:1px solid var(--smoke);border-radius:20px;padding:1.25rem;box-shadow:0 10px 24px rgb(0 0 0/0.04)}
-    .hero h1{margin:.2rem 0 .5rem;font-size:clamp(1.4rem,2.4vw + .8rem,2.25rem)}
-    .tag{display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px}
+
+    /* Layout + cards */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center;margin-top:.5rem}
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1.1rem 1.25rem;
+      box-shadow:0 10px 24px rgb(0 0 0/0.04)
+    }
+    .tag{
+      display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;
+      padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px;
+    }
     .sub{color:var(--muted)}
-    section{margin-top:2rem}
-    .section-title{display:flex;gap:.6rem;align-items:center;font-size:1.1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy)}
+    .section-title{
+      display:flex;gap:.6rem;align-items:center;
+      font-size:1.1rem;text-transform:uppercase;
+      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+    }
     .grid{display:grid;gap:1rem}
     .two-col{grid-template-columns:1.1fr .9fr}
-    .card{background:var(--paper);border:1px solid var(--smoke);border-radius:16px;padding:1rem;box-shadow:0 10px 24px rgb(0 0 0/0.04)}
-    .card img{width:100%;height:260px;object-fit:cover;border-radius:12px;border:1px solid var(--smoke);cursor:pointer}
-    .list{margin:.4rem 0 0;padding-left:1.1rem}
-    .list li{margin:.25rem 0}
-    /* Surprise toast + confetti */
-    .toast{position:fixed;inset:auto 0 1rem 0;margin-inline:auto;width:max-content;max-width:90vw;z-index:60;
-           background:var(--charcoal);color:#fff;padding:.6rem .9rem;border-radius:12px;transform:translateY(30px);opacity:0;transition:all .3s}
-    .toast.show{transform:translateY(0);opacity:1}
-    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
-    .piece{position:absolute;width:8px;height:14px;border-radius:2px;opacity:.9;animation:fall 1200ms ease-out forwards}
-    @keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
-    footer{margin-top:2.5rem;color:var(--muted);font-size:.95rem}
-    @media (max-width:880px){.hero{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}}
+    .pill{
+      display:inline-block;border-radius:999px;border:1px solid var(--smoke);
+      padding:.3rem .6rem;font-size:.85rem;margin:.15rem .25rem 0 0;background:var(--paper);
+    }
+
+    .image-frame{
+      border-radius:16px;
+      border:1px solid var(--smoke);
+      overflow:hidden;
+    }
+    .image-frame img{
+      width:100%;height:260px;object-fit:cover;
+      display:block;
+      transition:transform .35s ease, filter .35s ease;
+      cursor:pointer;
+    }
+    .image-frame img:hover{
+      transform:scale(1.03);
+      filter:saturate(1.15) contrast(1.05);
+    }
+
+    footer{margin-top:2.5rem;color:var(--muted);font-size:.95rem;text-align:center;}
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .grid.two-col{grid-template-columns:1fr}
+    }
+
+    /* Emoji background */
+    .emoji-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .emoji{
+      position:absolute;
+      font-size:1.4rem;
+      animation:fall 8s linear infinite;
+      opacity:.5;
+    }
+    @keyframes fall{
+      0%{transform:translateY(-10vh);}
+      100%{transform:translateY(110vh);}
+    }
   </style>
 </head>
 <body>
-  <!-- HEADER with Burgundy “S” logo -->
+  <!-- Emoji background behind everything -->
+  <div class="emoji-layer" id="emoji-layer" aria-hidden="true"></div>
+
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="#" aria-label="Home">
-        <img class="logo" src="https://svgshare.com/i/17vH.svg" alt="Letter S in burgundy logo" />
+      <a class="brand" href="index.html" aria-label="Home">
+        <!-- S logo -->
+        <img class="logo"
+             alt="Letter S in burgundy logo"
+             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
         <span class="title">Shaima Salim</span>
       </a>
       <div class="nav-links">
-        <a class="btn btn-ghost" href="index.html" aria-current="page">Home</a>
-        <a class="btn btn-ghost" href="contact.html">Contact</a>
+        <a class="btn btn-ghost active" href="index.html" aria-current="page">Home</a>
         <a class="btn btn-ghost" href="skills.html">Skills</a>
         <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
         <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <!-- Animated moving code banner -->
+    <!-- Moving code banner -->
     <div class="code-banner" aria-hidden="true">
-      <div class="marquee" id="marquee">
-        <span class="code-chip">const role = "Data Analyst";</span>
-        <span class="code-chip">let stack = ["HTML5","CSS3","JS","Excel","Python","Power BI"];</span>
-        <span class="code-chip">if (curiosity &gt; fear) { learn(); }</span>
-        <span class="code-chip">fetch("/ideas").then(build).catch(refactor);</span>
-        <span class="code-chip">/* innovation × business × UX */</span>
-        <span class="code-chip">for (let skill of stack) growth += practice(skill);</span>
-        <span class="code-chip">welcome to shaima's world ;)</span>
-        <span class="code-chip">// Urban Threads energy ✨</span>
-        <!-- duplicate set for seamless loop -->
-        <span class="code-chip">const role = "Data Analyst";</span>
-        <span class="code-chip">let stack = ["HTML5","CSS3","JS","Excel","Python","Power BI"];</span>
-        <span class="code-chip">if (curiosity &gt; fear) { learn(); }</span>
-        <span class="code-chip">fetch("/ideas").then(build).catch(refactor);</span>
-        <span class="code-chip">/* innovation × business × UX */</span>
-        <span class="code-chip">for (let skill of stack) growth += practice(skill);</span>
-        <span class="code-chip">welcome to shaima's world ;)</span>
-        <span class="code-chip">// Urban Threads energy ✨</span>
+      <div class="marquee">
+        <span class="code-chip">const name = "Shaima";</span>
+        <span class="code-chip">degree = "Business Management with Innovation &amp; Technology";</span>
+        <span class="code-chip">futureRole = "Data Analyst";</span>
+        <span class="code-chip">interests = ["gym","gaming","photography"];</span>
+        <span class="code-chip">if (idea) { prototype(); test(); learn(); }</span>
+        <span class="code-chip">welcome to shaima&apos;s world ;)</span>
       </div>
     </div>
 
-    <!-- Hero -->
+    <!-- HERO – main professional summary (hits the brief) -->
     <section class="hero" aria-labelledby="intro-title">
-      <div class="hero-card">
-        <span class="tag">Business Management (Innovation &amp; Technology)</span>
-        <h1 id="intro-title">Hi, I’m Shaima — building digital confidence through business &amp; code.</h1>
+      <article class="card">
+        <span class="tag">Professional Summary</span>
+        <h1 id="intro-title">Hi, I’m Shaima — bringing business, tech and creativity together.</h1>
         <p class="sub">
-          I’m a second-year Business student at the University of Salford with a strong interest in how technology and design can shape better business outcomes.
-          I combine strategic business thinking with practical web development and digital design skills to create ethical, sustainable, and user-friendly online experiences.
-          I’m particularly motivated by projects that promote environmental awareness and social responsibility, and I enjoy turning creative ideas into real, functional solutions that make a positive impact.
+          I’m a second-year Business Management with Innovation &amp; Technology student at the University of Salford.
+          My background includes customer-facing work at Billy’s Bagels and experience in a community gym, where I’ve
+          developed confidence, communication, and time-management skills. Outside of study and work, I’m into gym,
+          gaming and photography, and I’m working towards a future career in data analysis where I can turn real
+          business problems into data-driven decisions.
         </p>
-      </div>
-      <div class="hero-card" role="img" aria-label="Burgundy abstract tile">
-        <img style="width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--smoke)"
-             src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1200&q=80"
-             alt="Abstract burgundy and charcoal shapes" />
-      </div>
+        <div style="margin-top:.6rem">
+          <span class="pill">Business &amp; innovation</span>
+          <span class="pill">Customer experience</span>
+          <span class="pill">Digital tools</span>
+          <span class="pill">Data-focused future</span>
+        </div>
+      </article>
+
+      <aside class="card image-frame" aria-label="Photo of Shaima">
+        <img src="shaima.jpg" alt="Shaima smiling, representing a professional profile photo." id="hero-photo">
+      </aside>
     </section>
 
-    <!-- Professional Summary -->
-    <section id="summary" aria-labelledby="summary-title">
-      <h2 class="section-title" id="summary-title">Professional Summary</h2>
-      <div class="grid two-col">
-        <article class="card">
-          <h3>About Me</h3>
-          <p>I’m a second-year Business student at the University of Salford with a strong interest in how technology and design can shape better business outcomes. I combine strategic business thinking with practical web development and digital design skills to create ethical, sustainable, and user-friendly online experiences. I’m particularly motivated by projects that promote environmental awareness and social responsibility, and I enjoy turning creative ideas into real, functional solutions that make a positive impact.</p>
-          <h4>What I do at Billy’s Bagel</h4>
-          <ul class="list">
-            <li>Coordinate the morning prep list and track low-stock items into a simple spreadsheet for daily ordering.</li>
-            <li>Run the counter during rush hours, prioritising orders and communicating with the kitchen to keep queues moving.</li>
-            <li>Collect quick customer feedback (taste, wait time, allergens) and share insights with the team huddle.</li>
-            <li>Close-down checklist: food safety logs, till reconciliation, and a tidy, ready-to-open workspace.</li>
-          </ul>
-          <h4>Qualities I’ve gained</h4>
-          <ul class="list">
-            <li><strong>Operational discipline</strong> (checklists, accuracy, timekeeping)</li>
-            <li><strong>Service mindset</strong> (clear communication, empathy, upselling ethically)</li>
-            <li><strong>Data awareness</strong> (noticing patterns in sales &amp; feedback)</li>
-            <li><strong>Team reliability</strong> (covering roles, staying calm under pressure)</li>
-          </ul>
-        </article>
-        <figure class="card">
-          <img id="img-summary" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="Business team looking at analytics on a laptop" />
-          <figcaption>Click the image for a surprise 🎉</figcaption>
-        </figure>
-      </div>
+    <!-- ABOUT ME & EXPERIENCE -->
+    <h2 class="section-title">About Me &amp; Experience</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <p class="sub">
+          On my course, I explore how emerging technologies support strategy, data-driven decision-making and
+          customer experience. I enjoy modules that mix business thinking with digital tools, because they feel
+          closest to how real organisations work.
+        </p>
+        <p class="sub">
+          Alongside university, I’ve built up practical experience in service environments. At Billy’s Bagels,
+          I’ve taken on responsibilities like greeting customers, preparing orders accurately in busy periods,
+          handling payments and keeping the space clean and welcoming. This has helped me build reliability,
+          attention to detail and the confidence to speak to different types of people.
+        </p>
+        <p class="sub">
+          I also completed a placement at a community gym, supporting front-desk tasks and helping to create a
+          positive environment for members. Together, these roles have taught me how important communication,
+          patience and organisation are in any business.
+        </p>
+      </article>
+
+      <aside class="card image-frame" aria-label="Gym and work themed photo">
+        <img src="gymshaima.jpg" alt="Shaima in a gym or active setting." id="experience-photo">
+      </aside>
     </section>
 
-    <!-- About Me — Experience -->
-    <section id="about-placement" aria-labelledby="about2-title">
-      <h2 class="section-title" id="about2-title">About Me — Experience</h2>
-      <div class="grid two-col">
-        <article class="card">
-          <h3>About Me</h3>
-          <p>I study <strong>Business Management with Innovation &amp; Technology</strong>, where I explore how emerging tech supports strategy, data-driven decision making, and customer experience. Alongside university, I completed a <strong>6-month work experience placement at Youth on Solid Group Gym</strong>, a community-driven fitness space focused on wellbeing and personal growth.</p>
-          <h4>What I did at Youth on Solid Group Gym</h4>
-          <ul class="list">
-            <li>Supported the front desk by greeting members, managing bookings, and assisting with sign-ins.</li>
-            <li>Helped trainers prepare for sessions by setting up equipment and maintaining a safe, clean workout environment.</li>
-            <li>Recorded attendance and gathered feedback from members to help improve class schedules and service quality.</li>
-            <li>Contributed to promoting the gym by updating noticeboards, creating short posts for social media, and engaging with visitors.</li>
-          </ul>
-          <h4>Qualities I’ve gained</h4>
-          <ul class="list">
-            <li><strong>Customer confidence</strong> (approaching people, explaining services, and offering support)</li>
-            <li><strong>Professional communication</strong> (working with trainers, clients, and management effectively)</li>
-            <li><strong>Time management</strong> (balancing study commitments with regular shifts and early starts)</li>
-            <li><strong>Adaptability</strong> (staying organised and positive in a fast-paced, high-energy environment)</li>
-          </ul>
-        </article>
-        <figure class="card">
-          <img id="img-about2" src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=80" alt="Friendly front desk at a community gym" />
-          <figcaption>Click the image for a surprise 🤝</figcaption>
-        </figure>
-      </div>
+    <!-- INTERESTS -->
+    <h2 class="section-title">Interests</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0;">Photography, gym &amp; gaming</h3>
+        <p class="sub">
+          <strong>Photography</strong> helps me notice details, composition and mood — skills that transfer into
+          design, branding and how I present information on screen.
+        </p>
+        <p class="sub">
+          <strong>Going to the gym</strong> has taught me discipline and consistency. I understand how small,
+          regular improvements add up over time, which is the same mindset I use when learning new tools or
+          improving my coursework.
+        </p>
+        <p class="sub">
+          <strong>Gaming</strong> keeps me curious about user experience and digital worlds. I pay attention to
+          how interfaces, feedback and storytelling keep players engaged, and I bring that thinking into how I
+          design simple, user-friendly pages.
+        </p>
+      </article>
+
+      <aside class="card image-frame" aria-label="Collage of Shaima's interests">
+        <img src="interestsshaima.jpg" alt="Visual collage representing gym, gaming and photography." id="interests-photo">
+      </aside>
     </section>
 
-    <!-- Interests -->
-    <section id="interests" aria-labelledby="interests-title">
-      <h2 class="section-title" id="interests-title">Interests</h2>
-      <div class="grid two-col">
-        <article class="card">
-          <h3>Photography, Gym &amp; Gaming</h3>
-          <p><strong>Photography</strong> helps me notice details and tell stories visually — great for UX and presentation skills.
-             <strong>Gym</strong> builds consistency and measurable progress — the same mindset I bring to learning new tools.
-             <strong>Gaming</strong> keeps my problem-solving sharp and teaches systems thinking, which I apply to user flows and data models.</p>
-          <ul class="list">
-            <li>Photography → <em>composition, patience, visual communication</em></li>
-            <li>Gym → <em>discipline, habit tracking, resilience</em></li>
-            <li>Gaming → <em>strategic thinking, rapid iteration, collaboration</em></li>
-          </ul>
-        </article>
-        <figure class="card">
-          <img id="img-interests" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80" alt="Gym dumbbells in a modern fitness studio" />
-          <figcaption>Click the image for a surprise 💪</figcaption>
-        </figure>
-      </div>
-    </section>
+    <!-- FUTURE GOALS -->
+    <h2 class="section-title">Future Goals</h2>
+    <section class="grid two-col">
+      <article class="card">
+        <h3 style="margin-top:0;">Working towards a data-focused career</h3>
+        <p class="sub">
+          In the future, I’d like to move into a role such as data analyst or a similar position where I can mix
+          business understanding with data tools. I’m particularly interested in how data can be used to improve
+          customer journeys, spot trends early and support better decision-making.
+        </p>
+        <p class="sub">
+          Over time, I plan to keep building my skills in tools like Excel, dashboards and basic programming, while
+          also strengthening my communication so I can explain insights clearly to non-technical people. My goal is
+          to be the kind of person who can sit between data, design and business — and help teams turn numbers into
+          meaningful action.
+        </p>
+      </article>
 
-    <!-- Future Goals -->
-    <section id="goals" aria-labelledby="goals-title">
-      <h2 class="section-title" id="goals-title">Future Goals</h2>
-      <div class="grid two-col">
-        <article class="card">
-          <h3>Becoming a Data Analyst</h3>
-          <p>I’m aiming for a <strong>Data Analyst</strong> role where I can translate messy, real-world data into useful decisions for teams. I’m especially interested in customer behaviour, operations efficiency, and ethical use of data.</p>
-          <h4>Why this path?</h4>
-          <ul class="list">
-            <li>I enjoy spotting patterns and turning them into simple visuals and actions.</li>
-            <li>My coursework grows skills in <em>Excel, basic Python</em>, and <em>visualisation tools</em> like Power BI.</li>
-            <li>I practice clean datasets, clear questions, and reproducible steps so others can trust the results.</li>
-            <li>Long-term: build analytics for small businesses so they can make confident, data-backed choices.</li>
-          </ul>
-        </article>
-        <figure class="card">
-          <img id="img-goals" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Charts and analytics on a desk during a planning session" />
-          <figcaption>Click the image for a surprise 📊</figcaption>
-        </figure>
-      </div>
+      <aside class="card image-frame" aria-label="Future goals visual">
+        <img src="goalsshaima.jpg" alt="Visual representing future goals and data-focused career." id="goals-photo">
+      </aside>
     </section>
 
     <footer>
-      <p>© <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span> • <a href="#" style="color:var(--accent)">Back to top</a></p>
+      © <span id="year"></span> Shaima Salim • Home
     </footer>
   </main>
 
-  <!-- Toast + Confetti roots -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="confetti" id="confetti" aria-hidden="true"></div>
-
   <script>
-    // Dark mode toggle with persistence
+    // Dark mode toggle (same pattern as other pages)
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -248,57 +295,40 @@
       setIcon();
       modeBtn.addEventListener('click', () => {
         const next = isDark() ? '' : 'dark';
-        if(next){ document.documentElement.setAttribute('data-theme', next); } else { document.documentElement.removeAttribute('data-theme'); }
+        if(next){ document.documentElement.setAttribute('data-theme', next); }
+        else{ document.documentElement.removeAttribute('data-theme'); }
         localStorage.setItem('theme', next);
         modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
         setIcon();
       });
+      document.getElementById('year').textContent = new Date().getFullYear();
     })();
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Surprise (toast + confetti)
-    const confettiRoot = document.getElementById('confetti');
-    const toast = document.getElementById('toast');
-    function surprise(message){
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(()=>toast.classList.remove('show'), 2200);
-      const colors = ['#7A1F2B','#b84a59','#ffd166','#1F1F1F','#eceff4'];
-      const count = 80;
-      for(let i=0;i<count;i++){
-        const el = document.createElement('div');
-        el.className = 'piece';
-        const size = Math.random()*8+6, left = Math.random()*100, delay = Math.random()*300;
-        el.style.left = left + 'vw';
-        el.style.background = colors[Math.floor(Math.random()*colors.length)];
-        el.style.width = size + 'px';
-        el.style.height = (size*1.4) + 'px';
-        el.style.animationDelay = (delay/1000) + 's';
-        confettiRoot.appendChild(el);
-        setTimeout(()=> el.remove(), 1400 + delay);
-      }
-    }
-    function bindSurprise(id, msg){
-      const img = document.getElementById(id);
-      if(!img) return;
-      img.addEventListener('click', ()=> surprise(msg));
-      img.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); surprise(msg);} });
-      img.setAttribute('tabindex','0'); img.setAttribute('role','button'); img.setAttribute('aria-label','Click for a surprise');
-    }
-    bindSurprise('img-summary','Nice! Business brains with creative flair ✨');
-    bindSurprise('img-interests','Strong body, sharp mind — keep going! 💪');
-    bindSurprise('img-goals','Data tells a story — you’re the translator 📊');
-    bindSurprise('img-about2','Community-first experience — love that! 🙌');
-
-    // Reduce-motion: pause marquee animation
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){ const mq = document.querySelector('.code-banner .marquee'); if(mq) mq.style.animationPlayState = media.matches ? 'paused':'running'; }
-    media.addEventListener('change', updateMotion); updateMotion();
+    // Emoji background: gym, gaming, bagels, roses
+    (function(){
+      const layer = document.getElementById('emoji-layer');
+      if(!layer) return;
+      const emojis = ['🏋️‍♀️','🎮','🥯','🌹'];
+      const makeEmoji = () => {
+        const span = document.createElement('span');
+        span.className = 'emoji';
+        span.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        const left = Math.random()*100;
+        const delay = Math.random()*5;
+        const duration = 6 + Math.random()*5;
+        span.style.left = left + 'vw';
+        span.style.top = '-10vh';
+        span.style.animationDuration = duration + 's';
+        span.style.animationDelay = delay + 's';
+        layer.appendChild(span);
+        setTimeout(()=> span.remove(), (duration+delay)*1000);
+      };
+      for(let i=0;i<15;i++){ makeEmoji(); }
+      setInterval(makeEmoji, 1500);
+    })();
   </script>
-  
-  <script src="ai-widget.js"></script>
 
+  <!-- AI chat widget shared across pages -->
+  <script src="ai-widget.js"></script>
 </body>
 </html>
