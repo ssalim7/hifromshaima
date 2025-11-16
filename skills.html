@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Skills — Shaima Salim</title>
-  <meta name="description" content="Skills & tools — Business × Tech × Design by Shaima Salim." />
+  <meta name="description" content="Skills, education, certificates, and work experience of Shaima Salim." />
   <style>
     :root{
       --burgundy:#7A1F2B; --charcoal:#1F1F1F;
@@ -34,7 +34,10 @@
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
     .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
-    .logo{width:40px;height:40px;border-radius:50%;border:2px solid var(--burgundy);object-fit:cover;background:#fff}
+    .logo{
+      width:40px;height:40px;border-radius:50%;
+      border:2px solid var(--burgundy);background:#fff;object-fit:cover;
+    }
     .title{font-weight:700;letter-spacing:.2px}
     .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
     .btn{
@@ -46,6 +49,7 @@
     .btn:hover{border-color:var(--burgundy)}
     .btn-ghost{border-color:transparent;background:transparent}
     .btn.active{border-color:var(--burgundy)}
+    #mode{min-width:2.4rem;text-align:center}
 
     /* Moving banner */
     .code-banner{
@@ -104,39 +108,26 @@
     .stars .on{color:var(--burgundy)}
     .stars .off{color:var(--smoke)}
 
-    /* Memory game card styles */
-    .memory-card{
-      position:relative;
-      width:100%;
-      padding-top:100%;
-      cursor:pointer;
-      transform-style:preserve-3d;
-      transition:transform .45s ease;
-      border-radius:14px;
-    }
-    .memory-card.flipped{
-      transform:rotateY(180deg);
-    }
-    .memory-card .front,
-    .memory-card .back{
-      position:absolute;top:0;left:0;
-      width:100%;height:100%;
+    /* Education strip */
+    .edu-strip{
       display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:2rem;
+      gap:1rem;
+      overflow-x:auto;
+      padding-bottom:.4rem;
+      margin-top:.5rem;
+    }
+    .edu-item{
+      min-width:260px;
+      background:var(--mist);
       border-radius:14px;
-      backface-visibility:hidden;
+      padding:.75rem .9rem;
+      border:1px solid var(--smoke);
+      flex-shrink:0;
     }
-    .memory-card .front{
-      background:var(--burgundy);
-      color:#fff;
-    }
-    .memory-card .back{
-      background:var(--paper);
-      border:2px solid var(--burgundy);
-      transform:rotateY(180deg);
-    }
+    .edu-level{font-weight:700;margin-bottom:.2rem}
+    .edu-meta{font-size:.9rem;color:var(--muted);margin-bottom:.3rem}
+    .edu-strip::-webkit-scrollbar{height:6px}
+    .edu-strip::-webkit-scrollbar-thumb{background:var(--smoke);border-radius:999px}
 
     footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
 
@@ -153,10 +144,57 @@
     .piece{position:absolute;width:8px;height:14px;border-radius:2px;opacity:.9;animation:fall 1200ms ease-out forwards}
     @keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
 
+    /* Memory game */
+    .game-card{
+      max-width:100%;
+      text-align:center;
+    }
+    .memory-grid{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:.6rem;
+      max-width:520px;
+      margin:.75rem auto 0;
+    }
+    .memory-card{
+      position:relative;
+      width:100%;
+      padding-top:100%;
+      cursor:pointer;
+      transform-style:preserve-3d;
+      transition:transform .35s ease;
+      border-radius:14px;
+    }
+    .memory-card.flipped{transform:rotateY(180deg);}
+    .memory-card .front,
+    .memory-card .back{
+      position:absolute;top:0;left:0;
+      width:100%;height:100%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:2rem;
+      border-radius:14px;
+      backface-visibility:hidden;
+    }
+    .memory-card .front{
+      background:var(--burgundy);
+      color:#fff;
+    }
+    .memory-card .back{
+      background:var(--paper);
+      border:2px solid var(--burgundy);
+      transform:rotateY(180deg);
+    }
+    #game-message{
+      margin-top:.8rem;
+      font-weight:600;
+      color:var(--burgundy);
+    }
+
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
       .two-col{grid-template-columns:1fr}
       .skill-row{flex-direction:column;align-items:flex-start}
+      .memory-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
     }
   </style>
 </head>
@@ -164,16 +202,17 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Home">
+        <!-- S logo -->
         <img class="logo"
              alt="Letter S in burgundy logo"
-             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
+             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
         <span class="title">Shaima Salim</span>
       </a>
       <div class="nav-links">
         <a class="btn btn-ghost" href="index.html">Home</a>
-        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <a class="btn btn-ghost active" href="skills.html" aria-current="page">Skills</a>
         <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
         <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </div>
@@ -185,10 +224,14 @@
     <div class="code-banner" aria-hidden="true">
       <div class="marquee">
         <span class="code-chip">welcome to shaima’s world</span>
-        <span class="code-chip">love • live • laugh</span>
+        <span class="code-chip">love · live · laugh</span>
         <span class="code-chip">business × tech × design</span>
-        <span class="code-chip">curiosity++ • empathy++</span>
+        <span class="code-chip">learn &gt; fear</span>
+        <span class="code-chip">curiosity++ · empathy++</span>
+        <span class="code-chip">console.log("hi from skills")</span>
         <span class="code-chip">welcome to shaima’s world</span>
+        <span class="code-chip">love · live · laugh</span>
+        <span class="code-chip">business × tech × design</span>
       </div>
     </div>
 
@@ -196,7 +239,7 @@
     <section class="hero" aria-labelledby="title">
       <div class="card">
         <span class="tag">Skills &amp; Tools</span>
-        <h1 id="title" style="margin:.4rem 0 .5rem">Creative business thinker with hands-on tech.</h1>
+        <h1 id="title" style="margin:1.4rem 0 .5rem">Creative business thinker with hands-on tech.</h1>
         <p class="sub">
           A blend of business insight, data literacy, and digital creativity — here’s what I use to bring ideas to life.
         </p>
@@ -209,14 +252,52 @@
       </div>
 
       <div class="card" role="img" aria-label="Shaima photo">
-        <img
-          id="shaima-photo"
-          class="photo"
-          src="shaima.jpg"
-          alt="Photo of Shaima"
-        />
-        <p class="sub" style="margin-top:.6rem 0 0;text-align:center">Click the photo for a hi 👋</p>
+        <img id="shaima-photo" class="photo" src="shaima.jpg" alt="Photo of Shaima" />
+        <p class="sub" style="margin:.6rem 0 0;text-align:center">Click the photo for a hi 👋</p>
       </div>
+    </section>
+
+    <!-- Education -->
+    <h2 class="section-title">Education Journey</h2>
+    <section class="card">
+      <p class="sub">A quick scroll through my GCSEs, college diplomas, and current degree.</p>
+      <div class="edu-strip">
+        <div class="edu-item">
+          <div class="edu-level">GCSEs – High School</div>
+          <div class="edu-meta">Completed with strong grades across core subjects.</div>
+          <ul style="padding-left:1.1rem;margin:.3rem 0 0;">
+            <li>English Language – <strong>6</strong></li>
+            <li>English Literature – <strong>6</strong></li>
+            <li>Maths – <strong>5</strong></li>
+            <li>Combined Science – <strong>5</strong></li>
+            <li>History – <strong>5</strong></li>
+            <li>Business – <strong>6</strong></li>
+            <li>Arabic Language – <strong>6</strong></li>
+            <li>RE – <strong>5</strong></li>
+          </ul>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-level">College – BTEC Level 3</div>
+          <div class="edu-meta">Vocational route focused on real business and IT projects.</div>
+          <ul style="padding-left:1.1rem;margin:.3rem 0 0;">
+            <li><strong>Double Business BTEC</strong> – Grade <strong>MMD</strong></li>
+            <li><strong>IT BTEC</strong> – Grade <strong>MMM</strong></li>
+            <li>Developed skills in research, presentations, group projects and deadlines.</li>
+          </ul>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-level">University – Current Degree</div>
+          <div class="edu-meta">University of Salford · Year 2</div>
+          <ul style="padding-left:1.1rem;margin:.3rem 0 0;">
+            <li><strong>BSc (Hons) Business Management with Innovation &amp; Technology</strong></li>
+            <li>Exploring how tech, data and design support better business decisions.</li>
+            <li>Building towards data-focused roles and aiming for a <strong>First class</strong> band.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub" style="margin-top:.5rem;font-size:.9rem;">Tip: scroll sideways to see each stage.</p>
     </section>
 
     <!-- Business & Analytical Skills -->
@@ -238,9 +319,9 @@
         <p style="margin:.6rem 0">I like to keep solutions simple, ethical, and accessible for real users.</p>
         <h4 style="margin:.8rem 0 .4rem">Methods I use</h4>
         <ul>
-          <li>SWOT, PESTLE, and Porter’s Five Forces</li>
-          <li>KPIs &amp; simple dashboards for tracking</li>
-          <li>Customer journey mapping &amp; quick A/B tests</li>
+          <li>SWOT, PESTLE, and Porter’s Five Forces.</li>
+          <li>KPIs &amp; simple dashboards for tracking.</li>
+          <li>Customer journey mapping &amp; quick A/B tests.</li>
         </ul>
       </aside>
     </div>
@@ -250,19 +331,22 @@
     <div class="grid two-col">
       <section class="card" aria-labelledby="data-tools">
         <h3 id="data-tools" style="margin-top:0">Data &amp; Analysis</h3>
-        <div class="skill-row" data-toast="Excel level up! 📊">
+
+        <div class="skill-row" data-toast="Excel level up! ✨">
           <div class="skill-name">Excel (pivots, lookups, cleaning)</div>
           <div class="stars" aria-label="4 out of 5">
-            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
-        <div class="skill-row" data-toast="Power BI dashboards activated 📈">
+
+        <div class="skill-row" data-toast="Power BI flow activated 📊">
           <div class="skill-name">Power BI (dashboards)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
-        <div class="skill-row" data-toast="Pandas & plots incoming 🐍">
+
+        <div class="skill-row" data-toast="Pandas and plots incoming 🐍">
           <div class="skill-name">Python (pandas, charts)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
@@ -272,18 +356,21 @@
 
       <section class="card" aria-labelledby="web-tools">
         <h3 id="web-tools" style="margin-top:0">Web &amp; Content</h3>
-        <div class="skill-row" data-toast="Clean responsive layouts 💻">
+
+        <div class="skill-row" data-toast="Clean responsive layouts ✅">
           <div class="skill-name">HTML &amp; CSS (responsive UI)</div>
           <div class="stars" aria-label="4 out of 5">
-            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
+
         <div class="skill-row" data-toast="Tiny interactions FTW ⚡">
           <div class="skill-name">JavaScript (interactivity)</div>
           <div class="stars" aria-label="3 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span>
           </div>
         </div>
+
         <div class="skill-row" data-toast="Commit. Push. Repeat. 💾">
           <div class="skill-name">Git/GitHub (version control)</div>
           <div class="stars" aria-label="3 out of 5">
@@ -291,15 +378,20 @@
           </div>
         </div>
       </section>
+    </div>
 
+    <!-- Design & Soft skills -->
+    <div class="grid two-col" style="margin-top:1rem">
       <section class="card" aria-labelledby="design-tools">
         <h3 id="design-tools" style="margin-top:0">Design &amp; Assets</h3>
+
         <div class="skill-row" data-toast="Wireframe to mockup 🎨">
           <div class="skill-name">Figma/Canva (wireframes, posts)</div>
           <div class="stars" aria-label="4 out of 5">
             <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
           </div>
         </div>
+
         <div class="skill-row" data-toast="Compose the story 📷">
           <div class="skill-name">Photography (composition)</div>
           <div class="stars" aria-label="3 out of 5">
@@ -308,7 +400,6 @@
         </div>
       </section>
 
-      <!-- Soft skills -->
       <section class="card" aria-labelledby="soft-skills">
         <h3 id="soft-skills" style="margin-top:0">Soft Skills</h3>
         <ul>
@@ -321,52 +412,75 @@
       </section>
     </div>
 
-    <!-- MINI GAME — MEMORY MATCH -->
-    <h2 class="section-title">Mini Game — Memory Match</h2>
+    <!-- Certificates & Training -->
+    <h2 class="section-title">Certificates &amp; Training</h2>
     <section class="card">
-      <p style="text-align:center;margin-bottom:1rem;">
-        Tiny coding break — flip the cards and match the pairs 🎉
+      <p class="sub">Short online courses that build my confidence with data and digital tools.</p>
+      <ul style="padding-left:1.1rem;margin-top:.4rem">
+        <li><strong>LinkedIn Learning:</strong> Pivot Tables for Beginners (Excel)</li>
+        <li><strong>LinkedIn Learning:</strong> Introduction to Formatting (Excel)</li>
+        <li><strong>LinkedIn Learning:</strong> Introduction to Charts and Graphs (Excel)</li>
+        <li><strong>LinkedIn Learning:</strong> Introduction to Formulas and Functions (Excel)</li>
+      </ul>
+      <p class="sub" style="margin-top:.5rem">
+        These courses helped me use Excel for cleaning data, building charts, and simple analysis — a good foundation for my future goal of working in data.
       </p>
+    </section>
 
-      <div id="memory-game" style="
-        display:grid;
-        grid-template-columns:repeat(4, 1fr);
-        gap:12px;
-        max-width:420px;
-        margin:0 auto;
-      ">
-        <div class="memory-card" data-symbol="🌸">
-          <div class="front">?</div><div class="back">🌸</div>
-        </div>
-        <div class="memory-card" data-symbol="🌸">
-          <div class="front">?</div><div class="back">🌸</div>
-        </div>
+    <!-- Work Experience -->
+    <h2 class="section-title">Work Experience</h2>
+    <div class="grid two-col">
+      <section class="card">
+        <h3 style="margin-top:0">Crew Member — Billy’s Bagels (part-time)</h3>
+        <p class="sub">Customer-facing role in a busy, fast-paced food environment.</p>
+        <ul>
+          <li>Serve customers, take orders, and handle payments accurately.</li>
+          <li>Prepare drinks and support food assembly during peak times.</li>
+          <li>Keep the shop clean, stocked and welcoming throughout the day.</li>
+          <li>Work closely with the team to keep queues moving and mistakes low.</li>
+        </ul>
+        <p class="sub">This role has grown my confidence, resilience, and ability to stay calm when it’s busy.</p>
+      </section>
 
-        <div class="memory-card" data-symbol="💻">
-          <div class="front">?</div><div class="back">💻</div>
-        </div>
-        <div class="memory-card" data-symbol="💻">
-          <div class="front">?</div><div class="back">💻</div>
-        </div>
+      <section class="card">
+        <h3 style="margin-top:0">Front-of-House Assistant — Youth on Solid Group Gym</h3>
+        <p class="sub">6-month work experience placement in a community-focused gym.</p>
+        <ul>
+          <li>Greet members, manage sign-ins, and support basic booking queries.</li>
+          <li>Help trainers set up equipment and keep spaces safe and tidy.</li>
+          <li>Record attendance and collect informal feedback from members.</li>
+          <li>Support promotion by updating noticeboards and short social posts.</li>
+        </ul>
+        <p class="sub">I developed professional communication, time management and the ability to adapt quickly in an energetic, people-focused environment.</p>
+      </section>
+    </div>
 
-        <div class="memory-card" data-symbol="📊">
-          <div class="front">?</div><div class="back">📊</div>
-        </div>
-        <div class="memory-card" data-symbol="📊">
-          <div class="front">?</div><div class="back">📊</div>
-        </div>
+    <!-- Mini Game — Memory Match -->
+    <h2 class="section-title">Mini Game — Memory Match</h2>
+    <section class="card game-card">
+      <p class="sub">Tiny coding break — flip the cards and match the pairs 🎉</p>
 
-        <div class="memory-card" data-symbol="🎨">
-          <div class="front">?</div><div class="back">🎨</div>
-        </div>
-        <div class="memory-card" data-symbol="🎨">
-          <div class="front">?</div><div class="back">🎨</div>
-        </div>
+      <div id="memory-game" class="memory-grid">
+        <div class="memory-card" data-symbol="🎮"><div class="front">?</div><div class="back">🎮</div></div>
+        <div class="memory-card" data-symbol="🎮"><div class="front">?</div><div class="back">🎮</div></div>
+
+        <div class="memory-card" data-symbol="💻"><div class="front">?</div><div class="back">💻</div></div>
+        <div class="memory-card" data-symbol="💻"><div class="front">?</div><div class="back">💻</div></div>
+
+        <div class="memory-card" data-symbol="📊"><div class="front">?</div><div class="back">📊</div></div>
+        <div class="memory-card" data-symbol="📊"><div class="front">?</div><div class="back">📊</div></div>
+
+        <div class="memory-card" data-symbol="📷"><div class="front">?</div><div class="back">📷</div></div>
+        <div class="memory-card" data-symbol="📷"><div class="front">?</div><div class="back">📷</div></div>
+
+        <div class="memory-card" data-symbol="🏋️‍♀️"><div class="front">?</div><div class="back">🏋️‍♀️</div></div>
+        <div class="memory-card" data-symbol="🏋️‍♀️"><div class="front">?</div><div class="back">🏋️‍♀️</div></div>
+
+        <div class="memory-card" data-symbol="🌹"><div class="front">?</div><div class="back">🌹</div></div>
+        <div class="memory-card" data-symbol="🌹"><div class="front">?</div><div class="back">🌹</div></div>
       </div>
 
-      <p id="game-message" style="text-align:center;margin-top:1rem;font-weight:600;color:var(--burgundy);">
-        Flip two cards to start!
-      </p>
+      <p id="game-message">Flip two cards to start!</p>
     </section>
 
     <footer>
@@ -381,7 +495,7 @@
   <div class="confetti" id="confetti" aria-hidden="true"></div>
 
   <script>
-    // Dark mode toggle
+    // Dark mode toggle (same pattern as other pages)
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -391,7 +505,8 @@
       setIcon();
       modeBtn.addEventListener('click', () => {
         const next = isDark() ? '' : 'dark';
-        if(next){ document.documentElement.setAttribute('data-theme', next); } else { document.documentElement.removeAttribute('data-theme'); }
+        if(next){ document.documentElement.setAttribute('data-theme', next); }
+        else{ document.documentElement.removeAttribute('data-theme'); }
         localStorage.setItem('theme', next);
         modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
         setIcon();
@@ -430,39 +545,36 @@
     });
 
     const photo = document.getElementById('shaima-photo');
-    if(photo){
-      photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
-      photo.setAttribute('tabindex','0');
-      photo.setAttribute('role','button');
-      photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
-    }
+    photo.addEventListener('click', ()=>toastIt('hi shaima! 🔥'));
+    photo.setAttribute('tabindex','0');
+    photo.setAttribute('role','button');
+    photo.addEventListener('keypress', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toastIt('hi shaima! 🔥'); }});
 
-    /* -------------------------
-       MEMORY GAME LOGIC
-    ------------------------- */
+    // reduce-motion: pause marquee
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq=document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
+    }
+    media.addEventListener('change', updateMotion); updateMotion();
+
+    // Memory game logic
     (function(){
       const game = document.getElementById('memory-game');
-      if(!game) return; // if game is not on this page, do nothing
+      if(!game) return;
 
       const cards = Array.from(document.querySelectorAll('.memory-card'));
       const msg = document.getElementById('game-message');
-
       let first = null;
       let lock = false;
 
-      // Shuffle card order visually
-      cards.forEach(card => {
-        card.style.order = Math.floor(Math.random() * 12);
-      });
-
-      // Clicking a card
-      cards.forEach(card => {
+      cards.forEach(card=>{
+        card.style.order = Math.floor(Math.random()*12);
         card.addEventListener('click', () => flip(card));
       });
 
       function flip(card){
         if(lock || card.classList.contains('flipped')) return;
-
         card.classList.add('flipped');
 
         if(!first){
@@ -475,43 +587,31 @@
         first = null;
       }
 
-      function checkMatch(a, b){
+      function checkMatch(a,b){
         if(a.dataset.symbol === b.dataset.symbol){
-          // MATCH
           if(typeof toastIt === 'function'){
             toastIt('Matched! 🎉');
           }
           msg.textContent = 'Nice! You found a pair ✨';
 
-          // check for win
           if(cards.every(c => c.classList.contains('flipped'))){
             msg.textContent = 'You matched all pairs — well done! 👑';
           }
-
-        } else {
-          // NO MATCH
+        }else{
           lock = true;
-          setTimeout(() => {
+          setTimeout(()=>{
             a.classList.remove('flipped');
             b.classList.remove('flipped');
             lock = false;
-          }, 650);
+          },650);
         }
       }
     })();
 
-    // reduce-motion: pause marquee
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function updateMotion(){
-      const mq=document.querySelector('.code-banner .marquee');
-      if(mq) mq.style.animationPlayState=media.matches?'paused':'running';
-    }
-    media.addEventListener('change', updateMotion); updateMotion();
-
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  
-  <script src="ai-widget.js"></script>
 
+  <!-- AI chat widget used on all pages -->
+  <script src="ai-widget.js"></script>
 </body>
 </html>
