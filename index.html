@@ -3,11 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Home — Shaima Salim</title>
-  <meta name="description" content="Home page for Shaima Salim — Business Management with Innovation & Technology student portfolio." />
-
-  <!-- Optional extra CSS like glow.css can stay linked here if you already use it -->
-  <!-- <link rel="stylesheet" href="glow.css"> -->
+  <title>Shaima Salim — Portfolio</title>
+  <meta name="description" content="Portfolio of Shaima Salim — Business Management with Innovation & Technology student." />
 
   <style>
     :root{
@@ -19,6 +16,7 @@
       --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
       --text:#eceff4; --muted:#a7adb7; --focus:#ffdd88;
     }
+
     html,body{height:100%}
     body{
       margin:0;
@@ -27,7 +25,7 @@
       color:var(--text);
       line-height:1.6;
     }
-    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem;position:relative;z-index:1;}
+    .container{max-width:1100px;margin-inline:auto;padding:1rem 1.25rem 4rem}
 
     /* Header */
     header{
@@ -36,7 +34,10 @@
       background:color-mix(in oklab,var(--paper) 75%,transparent);
       border-bottom:1px solid var(--smoke);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:.75rem;padding:.75rem 1.25rem;
+    }
     .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
     .logo{
       width:40px;height:40px;border-radius:50%;
@@ -49,100 +50,147 @@
       background:var(--paper);color:var(--text);
       padding:.55rem .8rem;border-radius:999px;
       cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+      font-size:.9rem;
     }
     .btn:hover{border-color:var(--burgundy)}
     .btn-ghost{border-color:transparent;background:transparent}
     .btn.active{border-color:var(--burgundy)}
-    #mode{min-width:2.4rem;text-align:center}
 
     /* Moving banner */
     .code-banner{
       position:relative;overflow:hidden;border-radius:18px;
       margin:1rem 0 1.25rem;
       background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-      border:1px solid var(--smoke)
+      border:1px solid var(--smoke);
     }
     .marquee{
       display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
       font-family:ui-monospace,Menlo,Consolas,monospace;
       animation:scroll 22s linear infinite;
-      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem;
     }
     .code-chip{
       background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
       border:1px solid var(--smoke);
-      padding:.35rem .6rem;border-radius:10px
+      padding:.35rem .6rem;border-radius:10px;
     }
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* Layout + cards */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center;margin-top:.5rem}
-    .card{
+    /* Layout */
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:1.5rem;align-items:center;margin-top:.5rem;
+    }
+    .hero-main{
       background:var(--paper);border:1px solid var(--smoke);
-      border-radius:16px;padding:1.1rem 1.25rem;
-      box-shadow:0 10px 24px rgb(0 0 0/0.04)
+      border-radius:18px;padding:1.25rem 1.4rem;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
     }
-    .tag{
-      display:inline-block;font-weight:700;background:var(--burgundy);color:#fff;
-      padding:.25rem .6rem;border-radius:999px;font-size:.8rem;letter-spacing:.2px;
+    .hero-kicker{
+      text-transform:uppercase;letter-spacing:.16em;
+      font-size:.75rem;color:var(--burgundy);font-weight:700;
     }
-    .sub{color:var(--muted)}
+    .hero h1{
+      font-size:clamp(1.6rem,2.5vw + .8rem,2.4rem);
+      margin:.35rem 0 .4rem;
+    }
+    .hero-sub{color:var(--muted);margin-bottom:.9rem;max-width:32rem}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+    .pill{
+      border-radius:999px;border:1px solid var(--smoke);
+      padding:.25rem .6rem;background:var(--paper);
+      font-size:.8rem;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+
+    /* Photo + glow surprise */
+    .hero-photo-card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:18px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+      text-align:center;
+    }
+    .hero-photo-wrap{
+      position:relative;display:inline-block;
+    }
+    .hero-photo-wrap::before{
+      content:"";
+      position:absolute;inset:-10%;
+      border-radius:999px;
+      background:radial-gradient(circle at 20% 0%,rgba(255,221,150,.9),transparent 55%),
+                 radial-gradient(circle at 80% 100%,rgba(122,31,43,.85),transparent 55%);
+      opacity:0;transform:scale(.9);
+      filter:blur(14px);
+      transition:opacity .4s ease,transform .4s ease;
+      z-index:0;
+    }
+    .hero-photo-wrap:hover::before,
+    .hero-photo-wrap:focus-within::before{
+      opacity:1;transform:scale(1);
+    }
+    .hero-photo{
+      position:relative;z-index:1;
+      width:220px;height:220px;border-radius:26px;
+      object-fit:cover;object-position:center;
+      border:2px solid var(--smoke);
+    }
+    .hero-photo-caption{
+      margin-top:.6rem;font-size:.9rem;color:var(--muted);
+    }
+
+    /* Sections */
+    section{margin-top:2rem}
     .section-title{
       display:flex;gap:.6rem;align-items:center;
-      font-size:1.1rem;text-transform:uppercase;
-      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+      font-size:1rem;text-transform:uppercase;
+      letter-spacing:.16em;color:var(--burgundy);
+      margin-bottom:.75rem;
     }
-    .grid{display:grid;gap:1rem}
+    .grid{display:grid;gap:1.1rem}
     .two-col{grid-template-columns:1.1fr .9fr}
-    .pill{
-      display:inline-block;border-radius:999px;border:1px solid var(--smoke);
-      padding:.3rem .6rem;font-size:.85rem;margin:.15rem .25rem 0 0;background:var(--paper);
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+    }
+    .card h3{margin-top:0;margin-bottom:.35rem}
+    .card p{margin:.1rem 0}
+    .card ul{margin:.3rem 0 0;padding-left:1.1rem}
+    .card li{margin:.15rem 0}
+    .section-image{
+      width:100%;border-radius:16px;object-fit:cover;
+      height:230px;border:1px solid var(--smoke);
+    }
+    .image-wrap{position:relative;display:block}
+    .image-wrap::before{
+      content:"";
+      position:absolute;inset:-8%;
+      border-radius:22px;
+      background:radial-gradient(circle at 15% 0%,rgba(255,221,150,.85),transparent 55%),
+                 radial-gradient(circle at 85% 100%,rgba(122,31,43,.7),transparent 55%);
+      opacity:0;transform:scale(.9);
+      filter:blur(14px);
+      transition:opacity .4s ease,transform .4s ease;
+      z-index:0;
+    }
+    .image-wrap:hover::before,
+    .image-wrap:focus-within::before{
+      opacity:1;transform:scale(1);
+    }
+    .image-wrap img{position:relative;z-index:1;}
+
+    footer{
+      margin-top:2.5rem;color:var(--muted);font-size:.9rem;
     }
 
-    .image-frame{
-      border-radius:16px;
-      border:1px solid var(--smoke);
-      overflow:hidden;
-      position:relative;
-    }
-    .image-frame img{
-      width:100%;height:260px;object-fit:cover;
-      display:block;
-      transition:transform .35s ease, filter .35s ease;
-      cursor:pointer;
-      position:relative;
-      z-index:2;
-    }
-    .image-frame img:hover{
-      transform:scale(1.03);
-      filter:saturate(1.08) contrast(1.03);
-    }
-
-    /* Surprise behind the pictures – emoji overlay on hover */
-    .image-frame::before{
-      content:"🎮 🏋️‍♀️ 🥯 🌹";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:3rem;
-      opacity:0;
-      transition:opacity .35s ease, transform .35s ease;
-      filter:blur(1px);
-      z-index:1;
-      pointer-events:none;
-    }
-    .image-frame:hover::before{
-      opacity:0.28;
-      transform:scale(1.08);
-    }
-
-    footer{margin-top:2.5rem;color:var(--muted);font-size:.95rem;text-align:center;}
+    /* AI widget position tweak so it doesn't hide content */
+    body{scroll-padding-bottom:5rem}
 
     @media (max-width:880px){
       .hero{grid-template-columns:1fr}
-      .grid.two-col{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .hero-main{order:1}
+      .hero-photo-card{order:0}
     }
   </style>
 </head>
@@ -153,15 +201,15 @@
         <!-- S logo -->
         <img class="logo"
              alt="Letter S in burgundy logo"
-             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
+             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
         <span class="title">Shaima Salim</span>
       </a>
       <div class="nav-links">
         <a class="btn btn-ghost active" href="index.html" aria-current="page">Home</a>
+        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <a class="btn btn-ghost" href="skills.html">Skills</a>
         <a class="btn btn-ghost" href="showcase.html">Business Showcase</a>
         <a class="btn btn-ghost" href="problem-solving.html">Problem-Solving</a>
-        <a class="btn btn-ghost" href="contact.html">Contact</a>
         <button id="mode" class="btn" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </div>
     </nav>
@@ -172,102 +220,145 @@
     <div class="code-banner" aria-hidden="true">
       <div class="marquee">
         <span class="code-chip">const name = "Shaima";</span>
-        <span class="code-chip">degree = "Business Management with Innovation &amp; Technology";</span>
-        <span class="code-chip">futureRole = "Data Analyst";</span>
-        <span class="code-chip">interests = ["gym","gaming","photography"];</span>
-        <span class="code-chip">if (idea) { prototype(); test(); learn(); }</span>
-        <span class="code-chip">welcome to shaima&apos;s world ;)</span>
+        <span class="code-chip">business × tech × design</span>
+        <span class="code-chip">learn &gt; fear</span>
+        <span class="code-chip">curiosity++</span>
+        <span class="code-chip">// portfolio first draft → live site</span>
+        <span class="code-chip">console.log("Hi from Salford 👋");</span>
+        <span class="code-chip">const role = "future data-focused problem solver";</span>
+
+        <span class="code-chip">const name = "Shaima";</span>
+        <span class="code-chip">business × tech × design</span>
+        <span class="code-chip">learn &gt; fear</span>
+        <span class="code-chip">curiosity++</span>
+        <span class="code-chip">// portfolio first draft → live site</span>
+        <span class="code-chip">console.log("Hi from Salford 👋");</span>
+        <span class="code-chip">const role = "future data-focused problem solver";</span>
       </div>
     </div>
 
-    <!-- HERO – shorter professional summary -->
+    <!-- Hero -->
     <section class="hero" aria-labelledby="intro-title">
-      <article class="card">
-        <span class="tag">Professional Summary</span>
-        <h1 id="intro-title">Hi, I’m Shaima — bringing business, tech and creativity together.</h1>
-        <p class="sub">
+      <div class="hero-main">
+        <p class="hero-kicker">Hey, I’m Shaima</p>
+        <h1 id="intro-title">Business student exploring design, tech, and data.</h1>
+        <p class="hero-sub">
           I’m a second-year Business Management with Innovation &amp; Technology student at the University of Salford.
-          I’m interested in how data, digital tools and simple design choices can improve customer experience and support
-          better decisions. Through part-time work at Billy’s Bagels and a community gym placement, I’ve built confidence
-          working with people, staying calm during busy periods and managing responsibilities alongside my studies. This
-          portfolio brings together my interests in business, technology and design as I work towards a future in data-focused roles.
+          I enjoy turning ideas into simple, user-friendly digital projects — from restaurant case studies to interactive
+          web pages like this one.
         </p>
-        <div style="margin-top:.6rem">
-          <span class="pill">Business &amp; innovation</span>
-          <span class="pill">Customer experience</span>
-          <span class="pill">Digital tools</span>
-          <span class="pill">Data-focused future</span>
+
+        <div class="hero-tags">
+          <span class="pill">Business analysis</span>
+          <span class="pill">Front-end basics (HTML, CSS, JS)</span>
+          <span class="pill">UX &amp; visual layout</span>
+          <span class="pill">Data &amp; problem-solving</span>
         </div>
-      </article>
 
-      <aside class="card image-frame" aria-label="Photo of Shaima">
-        <img src="shaima.jpg" alt="Shaima smiling, representing a professional profile photo." id="hero-photo">
+        <div class="hero-actions">
+          <a class="btn" href="skills.html" style="background:var(--burgundy);color:#fff;border-color:var(--burgundy);">
+            View my skills
+          </a>
+          <a class="btn" href="mycvshaimasalim!.docx" download>
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-photo-card" aria-label="Photo of Shaima">
+        <div class="hero-photo-wrap">
+          <img src="shaima.jpg" alt="Shaima smiling" class="hero-photo" />
+        </div>
+        <p class="hero-photo-caption">
+          A mix of business, gym sessions, café work, and late-night CSS tweaks.
+        </p>
       </aside>
     </section>
 
-    <!-- ABOUT ME & EXPERIENCE -->
-    <h2 class="section-title">About Me &amp; Experience</h2>
-    <section class="grid two-col">
-      <article class="card">
-        <p class="sub">
-          On my course, I explore how emerging technology supports strategy, data-driven decision making and customer experience.
-          I enjoy modules where I can connect theory with real examples, such as using technology to improve processes or
-          visualising information more clearly for different audiences.
-        </p>
-        <p class="sub">
-          Outside lectures, I’ve gained experience in customer-facing roles. At Billy’s Bagels, I help greet customers, prepare
-          orders accurately and keep the space organised and welcoming. A community gym placement also gave me experience with
-          front-desk tasks, supporting members and working as part of a small team. Together, these have helped me grow in
-          confidence, reliability and communication.
-        </p>
-      </article>
-
-      <aside class="card image-frame" aria-label="Gym and work themed photo">
-        <img src="gymshaima.jpg" alt="Shaima in a gym or active setting." id="experience-photo">
-      </aside>
+    <!-- Career background -->
+    <section aria-labelledby="career-title">
+      <h2 class="section-title" id="career-title">Career Background</h2>
+      <div class="grid two-col">
+        <article class="card">
+          <h3>Where I am now</h3>
+          <p>
+            I’m building a foundation in business management and digital skills — focusing on analysis, customer
+            experience, and how technology supports better decisions.
+          </p>
+          <ul>
+            <li>Current degree: Business Management with Innovation &amp; Technology (Year 2).</li>
+            <li>Comfortable with spreadsheets, basic dashboards, and simple web pages.</li>
+            <li>Part-time work experience that’s improved my teamwork and customer skills.</li>
+          </ul>
+        </article>
+        <div class="card">
+          <div class="image-wrap">
+            <img src="gymshaima.jpg" alt="Shaima in the gym" class="section-image" />
+          </div>
+          <p style="margin-top:.4rem;font-size:.9rem;color:var(--muted);">
+            The same discipline I use in the gym helps with uni deadlines and projects.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- INTERESTS -->
-    <h2 class="section-title">Interests</h2>
-    <section class="grid two-col">
-      <article class="card">
-        <h3 style="margin-top:0;">Photography, gym &amp; gaming</h3>
-        <p class="sub">
-          Photography helps me think about composition, detail and mood, which links well with branding and layout work. Training
-          at the gym has taught me discipline and consistency, and I use the same mindset when learning new tools or improving my
-          coursework. Gaming keeps me curious about user experience and interaction design, because I notice how small choices in
-          feedback, controls and visuals can change how people feel while using a system.
-        </p>
-      </article>
-
-      <aside class="card image-frame" aria-label="Collage of Shaima's interests">
-        <img src="interestsshaima.jpg" alt="Visual collage representing gym, gaming and photography." id="interests-photo">
-      </aside>
+    <!-- Interests -->
+    <section aria-labelledby="interests-title">
+      <h2 class="section-title" id="interests-title">Interests</h2>
+      <div class="grid two-col">
+        <article class="card">
+          <h3>What I enjoy learning</h3>
+          <ul>
+            <li>Exploring how small design changes make websites easier to use.</li>
+            <li>Trying out data tools to turn messy information into clear visuals.</li>
+            <li>Blending business thinking with creativity — like my Nori &amp; Ember restaurant concept.</li>
+          </ul>
+        </article>
+        <div class="card">
+          <div class="image-wrap">
+            <img src="interestsshaima.jpg" alt="Shaima relaxing and hobbies" class="section-image" />
+          </div>
+          <p style="margin-top:.4rem;font-size:.9rem;color:var(--muted);">
+            Outside uni I like anime, gaming, and finding new café spots — they often inspire my design ideas.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- FUTURE GOALS -->
-    <h2 class="section-title">Future Goals</h2>
-    <section class="grid two-col">
-      <article class="card">
-        <h3 style="margin-top:0;">Working towards a data-focused career</h3>
-        <p class="sub">
-          In the future, I’d like to move into a data-focused role, such as data analyst, where I can combine business understanding
-          with tools that help turn information into clear insights. I’m interested in using data to understand customer behaviour,
-          spot patterns and support decisions that make products and services fairer and easier to use. As I progress through my
-          degree, I plan to keep building my skills with spreadsheets, visualisation tools and basic coding, while improving how I
-          explain findings to non-technical audiences.
-        </p>
-      </article>
-
-      <aside class="card image-frame" aria-label="Future goals visual">
-        <img src="goalsshaima.jpg" alt="Visual representing future goals and data-focused career." id="goals-photo">
-      </aside>
+    <!-- Future goals -->
+    <section aria-labelledby="goals-title">
+      <h2 class="section-title" id="goals-title">Future Goals</h2>
+      <div class="grid two-col">
+        <article class="card">
+          <h3>Where I’m heading</h3>
+          <p>
+            Long-term, I’d like to move into a data-focused or digital business role where I can mix analysis,
+            communication, and design.
+          </p>
+          <ul>
+            <li>Keep improving my HTML, CSS and JavaScript with small personal projects.</li>
+            <li>Build stronger skills in Excel, Power BI, and other data tools.</li>
+            <li>Work on projects that are ethical, inclusive, and good for the environment.</li>
+          </ul>
+        </article>
+        <div class="card">
+          <div class="image-wrap">
+            <img src="goalsshaima.jpg" alt="Goals moodboard" class="section-image" />
+          </div>
+          <p style="margin-top:.4rem;font-size:.9rem;color:var(--muted);">
+            This portfolio is my starting point — a first version I can keep improving as I learn more.
+          </p>
+        </div>
+      </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Shaima Salim • Home
+      © <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span>
     </footer>
   </main>
+
+  <!-- shared AI chat widget -->
+  <script src="ai-widget.js"></script>
 
   <script>
     // Dark mode toggle (same pattern as other pages)
@@ -286,11 +377,18 @@
         modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
         setIcon();
       });
-      document.getElementById('year').textContent = new Date().getFullYear();
     })();
-  </script>
 
-  <!-- AI chat widget shared across pages (if you already have this file) -->
-  <script src="ai-widget.js"></script>
+    // Reduce-motion: pause marquee if user prefers
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq = document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState = media.matches ? 'paused' : 'running';
+    }
+    media.addEventListener('change', updateMotion);
+    updateMotion();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
