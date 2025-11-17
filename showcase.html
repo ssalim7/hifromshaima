@@ -4,15 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Business Showcase — Shaima Salim</title>
-  <meta name="description" content="Three projects demonstrating business analysis, digital transformation and portfolio design by Shaima Salim." />
+  <meta name="description" content="Business showcase page highlighting three projects and the Nori & Ember restaurant concept by Shaima Salim." />
 
-<link rel="stylesheet" href="glow.css">
-  
+  <!-- Glow effect -->
+  <link rel="stylesheet" href="glow.css" />
+
   <style>
     :root{
       --burgundy:#7A1F2B; --charcoal:#1F1F1F;
       --paper:#ffffff; --mist:#f4f4f5; --smoke:#e9eaec;
-      --text:#111113; --muted:#5a5d64; --accent:#b84a59; --focus:#ffd166;
+      --text:#111113; --muted:#5a5d64; --focus:#ffd166;
     }
     [data-theme="dark"]{
       --paper:#0d0e10; --mist:#121316; --smoke:#1a1c20;
@@ -35,11 +36,14 @@
       background:color-mix(in oklab,var(--paper) 75%,transparent);
       border-bottom:1px solid var(--smoke);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1.25rem}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:.75rem;padding:.75rem 1.25rem;
+    }
     .brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:inherit}
     .logo{
       width:40px;height:40px;border-radius:50%;
-      border:2px solid var(--burgundy);background:#fff;object-fit:cover;
+      border:2px solid var(--burgundy);object-fit:cover;background:#fff;
     }
     .title{font-weight:700;letter-spacing:.2px}
     .nav-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
@@ -48,145 +52,170 @@
       background:var(--paper);color:var(--text);
       padding:.55rem .8rem;border-radius:999px;
       cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;
+      font-size:.9rem;
     }
     .btn:hover{border-color:var(--burgundy)}
-    .btn-ghost{border-color:transparent;background:transparent}
     .btn.active{border-color:var(--burgundy)}
     #mode{min-width:2.4rem;text-align:center}
 
-    /* Moving banner */
+    /* Banner */
     .code-banner{
       position:relative;overflow:hidden;border-radius:18px;
       margin:1rem 0 1.25rem;
-      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 30%,var(--paper)),var(--paper));
-      border:1px solid var(--smoke)
+      background:linear-gradient(135deg,color-mix(in oklab,var(--burgundy) 24%,var(--paper)),var(--paper));
+      border:1px solid var(--smoke);
     }
     .marquee{
       display:flex;gap:2rem;white-space:nowrap;padding:.85rem 0;
       font-family:ui-monospace,Menlo,Consolas,monospace;
       animation:scroll 22s linear infinite;
-      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem
+      color:color-mix(in oklab,var(--text) 80%,var(--burgundy));font-size:.95rem;
     }
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .code-chip{
       background:color-mix(in oklab,var(--paper) 65%,var(--burgundy));
       border:1px solid var(--smoke);
-      padding:.35rem .6rem;border-radius:10px
+      padding:.35rem .6rem;border-radius:10px;
     }
-    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* Layout + cards */
     .section-title{
       display:flex;gap:.6rem;align-items:center;
       font-size:1.1rem;text-transform:uppercase;
-      letter-spacing:.12em;color:var(--burgundy);margin-top:2rem
+      letter-spacing:.14em;color:var(--burgundy);margin-top:2rem;
     }
-    .section-kicker{
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      color:var(--muted);
+    .section-tag{
+      background:var(--burgundy);color:#fff;
+      padding:.18rem .55rem;border-radius:999px;
+      font-size:.75rem;letter-spacing:.18em;
     }
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:1.25rem;
-      align-items:center;
-      margin-top:.75rem;
-    }
-    .card{
-      background:var(--paper);
-      border:1px solid var(--smoke);
-      border-radius:16px;
-      padding:1.1rem 1.25rem;
-      box-shadow:0 10px 24px rgb(0 0 0/0.04);
-    }
-    .tag{
-      display:inline-block;
-      font-weight:700;
-      background:var(--burgundy);
-      color:#fff;
-      padding:.25rem .6rem;
-      border-radius:999px;
-      font-size:.8rem;
-      letter-spacing:.2px;
-    }
-    .sub{color:var(--muted)}
-    .grid{display:grid;gap:1rem}
-    .two-col{grid-template-columns:1.15fr .85fr}
-    ul{padding-left:1.1rem}
-    .pill{
-      display:inline-block;
-      border-radius:999px;
-      border:1px solid var(--smoke);
-      padding:.3rem .6rem;
-      font-size:.85rem;
-      margin:.15rem .25rem 0 0;
-      background:var(--paper);
-    }
-    .project-heading{
-      margin-top:0;
-      margin-bottom:.3rem;
-      color:var(--burgundy);
-    }
-    .project-meta{
-      font-size:.9rem;
-      color:var(--muted);
-      margin-bottom:.4rem;
-    }
+    .lead{color:var(--muted);font-size:.95rem;max-width:70ch}
 
-    /* Map + food gallery + interior image */
-    .interior{
-      width:100%;
-      height:180px;
-      border-radius:14px;
-      border:1px solid var(--smoke);
-      object-fit:cover;
-      margin-top:.5rem;
+    .grid{display:grid;gap:1rem}
+    .three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .two-col-balanced{grid-template-columns:1fr 1fr}
+
+    .card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;padding:1rem;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+      transition:all .18s ease;
     }
-    .map-box{
-      width:100%;height:240px;border-radius:14px;border:1px solid var(--smoke);
-      overflow:hidden;margin-top:.75rem;
-    }
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:.5rem;
-      margin-top:.75rem;
-    }
-    .food-card{
-      position:relative;
-      border-radius:12px;
-      overflow:hidden;
-      cursor:pointer;
-      border:1px solid var(--smoke);
-      transition:border .25s, transform .25s;
-    }
-    .food-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:filter .25s, transform .25s;
-    }
-    .food-card.active{
+    .card:hover{
       border-color:var(--burgundy);
+      box-shadow:0 16px 32px rgb(0 0 0 / 0.08);
       transform:translateY(-2px);
     }
-    .food-card.active img{
-      filter:saturate(1.2) contrast(1.1) brightness(1.1);
-      transform:scale(1.03);
+    .card h2,.card h3{margin-top:0;margin-bottom:.35rem}
+    .card p{margin:.15rem 0}
+    .card ul{margin:.3rem 0 0;padding-left:1.1rem;font-size:.92rem}
+    .card li{margin:.15rem 0}
+
+    .project-label{
+      font-size:.9rem;
+      display:flex;align-items:center;gap:.35rem;
+    }
+    .grade-focus{
+      font-size:.8rem;
+      font-style:italic;
+      color:var(--muted);
+      margin-top:.15rem;
+    }
+
+    /* Menu cards */
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+    .menu-card{
+      background:var(--paper);border:1px solid var(--smoke);
+      border-radius:16px;overflow:hidden;
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+      font-size:.9rem;
+    }
+    .menu-card img{
+      width:100%;height:170px;object-fit:cover;display:block;
+    }
+    .menu-card-body{padding:.7rem .8rem}
+    .menu-card-body h4{margin:0 0 .2rem;font-size:.98rem}
+    .menu-card-body p{margin:.1rem 0;color:var(--muted);}
+
+    /* Interior slider */
+    .slider{
+      position:relative;
+      border-radius:16px;
+      border:1px solid var(--smoke);
+      overflow:hidden;
+      background:var(--paper);
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+    }
+    .slider-inner{position:relative}
+    .slider img{
+      width:100%;height:230px;object-fit:cover;display:block;
+    }
+    .slider-caption{
+      padding:.6rem .8rem;
+      font-size:.9rem;color:var(--muted);
+    }
+    .slider-controls{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+      padding:0 .3rem;
+    }
+    .slider-btn{
+      pointer-events:auto;
+      background:rgba(0,0,0,.35);
+      border:none;
+      color:#fff;
+      width:28px;height:28px;
+      border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+      font-size:1rem;
+    }
+    .slider-btn:hover{background:rgba(0,0,0,.5)}
+
+    /* Map */
+    .map-wrapper{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--smoke);
+      box-shadow:0 10px 24px rgb(0 0 0 / 0.04);
+    }
+    .map-wrapper iframe{
+      display:block;
+      width:100%;
+      height:230px;
+      border:0;
+    }
+
+    .notes{
+      margin-top:.4rem;
+      font-size:.9rem;
+      color:var(--muted);
     }
 
     footer{
       margin-top:2.5rem;
+      padding-top:1rem;
+      border-top:1px solid var(--smoke);
+      font-size:.9rem;
       color:var(--muted);
-      font-size:.95rem;
-      text-align:center;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.75rem;
     }
 
     @media (max-width:880px){
-      .hero{grid-template-columns:1fr}
-      .grid.two-col{grid-template-columns:1fr}
+      .three-col{grid-template-columns:1fr}
+      .two-col-balanced{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -194,10 +223,9 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Home">
-        <!-- S logo -->
         <img class="logo"
              alt="Letter S in burgundy logo"
-             src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><rect width='160' height='160' rx='80' ry='80' fill='white'/><circle cx='80' cy='80' r='78' fill='none' stroke='%237A1F2B' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='92' fill='%237A1F2B'>S</text></svg>" />
+             src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" rx="80" ry="80" fill="white"/><circle cx="80" cy="80" r="78" fill="none" stroke="%237A1F2B" stroke-width="4"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="92" fill="%237A1F2B">S</text></svg>' />
         <span class="title">Shaima Salim</span>
       </a>
       <div class="nav-links">
@@ -212,230 +240,191 @@
   </header>
 
   <main class="container">
-    <!-- Moving banner -->
+    <!-- Banner -->
     <div class="code-banner" aria-hidden="true">
       <div class="marquee">
-        <span class="code-chip">projects = ["Nori & Ember","Problem-Solving Page","Portfolio Site"];</span>
-        <span class="code-chip">role = "Business × Tech × Design";</span>
-        <span class="code-chip">if (problem) { research(); prototype(); test(); }</span>
-        <span class="code-chip">caseStudy("digital transformation", "Salford");</span>
-        <span class="code-chip">console.log("showcase loaded")</span>
-        <span class="code-chip">businessShowcase.render();</span>
+        <span class="code-chip">showcase.projects = ["data","wellbeing","restaurant"];</span>
+        <span class="code-chip">role = "business × tech × design";</span>
+        <span class="code-chip">problem -&gt; analysis -&gt; outcome;</span>
+        <span class="code-chip">Nori &amp; Ember · Urban concept</span>
+        <span class="code-chip">Excel · slides · web</span>
+        <span class="code-chip">caseStudy("digital transformation")</span>
       </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="bs-title">
-      <article class="card">
-        <span class="tag">Business Showcase</span>
-        <h1 id="bs-title" style="margin:.6rem 0 .4rem;">Three projects I’ve been involved in.</h1>
-        <p class="sub">
-          This page summarises three project-style pieces of work I’ve been involved in:
-          the Nori &amp; Ember restaurant concept, my Problem-Solving page design, and this
-          portfolio website. For each one, I outline my role, the problem I was addressing,
-          the approach I took, and the outcomes.
-        </p>
-        <div style="margin-top:.6rem">
-          <span class="pill">Digital transformation</span>
-          <span class="pill">UX &amp; content</span>
-          <span class="pill">Business analysis</span>
-          <span class="pill">Front-end development</span>
-        </div>
-      </article>
-
-      <aside class="card">
-        <p class="section-kicker">What this page shows</p>
-        <p class="sub">
-          Together, these projects demonstrate how I:
-        </p>
-        <ul class="sub" style="margin-top:.2rem;">
-          <li>Analyse a business context and define a clear problem.</li>
-          <li>Plan and structure digital content for different audiences.</li>
-          <li>Use HTML5, CSS3 and JavaScript in a practical way.</li>
-          <li>Reflect on outcomes and link them back to my degree.</li>
-        </ul>
-      </aside>
-    </section>
-
-    <!-- PROJECT 1 -->
-    <h2 class="section-title">Project 1 · Nori &amp; Ember Restaurant Concept</h2>
-    <section class="grid two-col">
-      <article class="card">
-        <h3 class="project-heading">Japanese-inspired restaurant concept near Salford Quays</h3>
-        <p class="project-meta">
-          <strong>Role:</strong> Concept designer and business analyst
-        </p>
-
-        <p class="sub">
-          In this project, I developed Nori &amp; Ember as a restaurant concept designed for students,
-          young professionals and local residents. I treated it as a small business case, thinking
-          about the brand, customer experience, and the role of digital tools.
-        </p>
-
-        <h4>Problem I addressed</h4>
-        <ul>
-          <li>Independent restaurants can struggle to stand out online against large chains.</li>
-          <li>Customers often want to see location, food style, and atmosphere before they decide to visit.</li>
-          <li>Without a clear digital presence, it is harder to build awareness and customer trust.</li>
-        </ul>
-
-        <h4>Approach I took</h4>
-        <ul>
-          <li>Researched Salford Quays / MediaCity as a location with a mix of offices, students and visitors.</li>
-          <li>Defined a target audience and a clear food identity (bowls, skewers, small plates).</li>
-          <li>Created a simple visual concept using interior imagery and food photos.</li>
-          <li>Planned how data (for example bookings or feedback) could be used to improve decision making later.</li>
-        </ul>
-
-        <h4>Outcome</h4>
-        <ul>
-          <li>A digital concept that clearly communicates what Nori &amp; Ember offers and who it is for.</li>
-          <li>An understanding of how location, visuals and copy work together to attract customers.</li>
-          <li>A base I can develop further with detailed financials, menus or loyalty ideas in future modules.</li>
-        </ul>
-      </article>
-
-      <aside class="card" aria-label="Interior, map and food visuals for Nori & Ember">
-        <p class="section-kicker">Visuals &amp; location</p>
-        <p class="sub" style="margin-top:.1rem;">
-          To make the concept feel realistic, I combined an interior moodboard, a map, and food visuals.
-        </p>
-
-        <!-- Interior image -->
-        <img src="interior1.jpg" alt="Interior concept for Nori & Ember" class="interior" />
-
-        <!-- Map -->
-        <div class="map-box">
-          <iframe
-            width="100%" height="100%" style="border:0"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.4379043372095!2d-2.2979570233893174!3d53.47018547231175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bae0cd341c7a5%3A0xeeceec76e95d85f9!2sMediaCityUK!5e0!3m2!1sen!2uk!4v1700000000000"
-          ></iframe>
-        </div>
-
-        <!-- Food gallery -->
-        <div class="gallery" aria-label="Food visuals">
-          <div class="food-card">
-            <img src="food1.jpg" alt="Japanese-inspired dish 1">
-          </div>
-          <div class="food-card">
-            <img src="food2.jpg" alt="Japanese-inspired dish 2">
-          </div>
-          <div class="food-card">
-            <img src="food3.jpg" alt="Japanese-inspired dish 3">
-          </div>
-        </div>
-        <p class="sub" style="margin-top:.4rem;font-size:.9rem;">
-          The images subtly highlight when interacted with, hinting at how the full site could respond to user actions.
-        </p>
-      </aside>
-    </section>
-
-    <!-- PROJECT 2 -->
-    <h2 class="section-title">Project 2 · Problem-Solving Page Design Concept</h2>
-    <section class="card">
-      <p class="section-kicker">Digital transformation case study</p>
-      <p class="project-meta">
-        <strong>Role:</strong> Page designer, content writer and front-end developer
+    <!-- Intro -->
+    <section>
+      <h1 class="section-title">
+        <span class="section-tag">Showcase</span>
+        Business projects in context
+      </h1>
+      <p class="lead">
+        This page highlights three projects from my studies that show how I work with data, communicate ideas,
+        and connect business thinking with design. It also includes a visual concept for my restaurant project,
+        Nori &amp; Ember, to show how research can be turned into a customer-facing experience.
       </p>
-
-      <h3 class="project-heading">Explaining a digital transformation case clearly</h3>
-      <p class="sub">
-        The Problem-Solving page was a project where I turned the assignment brief into
-        a digital case study for Nori &amp; Ember. I had to explain the restaurant’s
-        digital transformation goals, show contact and social channels, and design an
-        interactive form that could generate an email message.
-      </p>
-
-      <h4>Problem I addressed</h4>
-      <ul>
-        <li>The brief required all digital transformation information to sit on one page without confusing the reader.</li>
-        <li>I needed to balance business content (context, goals, challenges) with practical web features (form and integration).</li>
-        <li>The page had to demonstrate HTML5, CSS3 and JavaScript working together in a realistic way.</li>
-      </ul>
-
-      <h4>Design concept &amp; structure</h4>
-      <ul>
-        <li>I opened with a short introduction explaining the restaurant and its digital goals, so readers quickly understand the context.</li>
-        <li>I used separate cards/sections for business context, digital challenges and goals to keep the information skimmable.</li>
-        <li>I added clear contact details and social media links to represent a modern hospitality business.</li>
-        <li>I designed an interactive form that uses JavaScript to build a <code>mailto:</code> link, turning user input into a ready-to-send email.</li>
-        <li>I included a small reflection area at the end of the page, linking the design choices back to digital transformation and my degree.</li>
-      </ul>
-
-      <h4>Outcome</h4>
-      <ul>
-        <li>A structured case study page that follows the brief and reads like a professional digital proposal.</li>
-        <li>A working example of how simple JavaScript can support bookings and feedback without a full database.</li>
-        <li>A project that clearly links Business Management with Innovation &amp; Technology to a realistic scenario.</li>
-      </ul>
     </section>
 
-    <!-- PROJECT 3 -->
-    <h2 class="section-title">Project 3 · Multi-Page Portfolio Website</h2>
-    <section class="grid two-col">
+    <!-- Three projects -->
+    <section class="grid three-col" aria-label="Three project examples">
+      <!-- Project 1 -->
       <article class="card">
-        <p class="section-kicker">HTML5 · CSS3 · JavaScript</p>
-        <p class="project-meta">
-          <strong>Role:</strong> Designer, front-end developer and content creator
+        <p class="project-label">📊 <strong>Project 1: Data Visualisation &amp; Analysis Task</strong></p>
+        <p class="grade-focus">
+          Grade focus: Analytical skills · Independent work · Technical accuracy
         </p>
-
-        <h3 class="project-heading">Building a portfolio that represents my skills</h3>
-        <p class="sub">
-          In this project, I developed a multi-page portfolio website that combines my
-          business, technology and design interests. The aim was to create a space that
-          I could use for this assignment and later adapt for placements or job
-          applications.
-        </p>
-
-        <h4>Problem I addressed</h4>
-        <ul>
-          <li>I needed more than a static CV to show my skills, certificates, and projects.</li>
-          <li>The site had to meet the assignment requirements while still feeling personal and modern.</li>
-          <li>I wanted to practise using front-end tools in a real, joined-up way.</li>
-        </ul>
-
-        <h4>Approach I took</h4>
-        <ul>
-          <li>Created a consistent burgundy × charcoal theme with a custom “S” logo used across pages.</li>
-          <li>Built separate pages for Home, Skills, Business Showcase, Problem-Solving, and Contact.</li>
-          <li>Used semantic HTML5 structure so sections and headings are easy to navigate and mark.</li>
-          <li>Added interactive features such as dark mode, small animations, a memory mini-game and subtle hover/tap effects.</li>
-          <li>Integrated a simple AI-style assistant widget to answer common questions about my work.</li>
-        </ul>
-
-        <h4>Outcome</h4>
-        <ul>
-          <li>A live portfolio that showcases my work in a structured, professional format.</li>
-          <li>Evidence that I can interpret a brief, plan content, and build a multi-page site from scratch.</li>
-          <li>More confidence in combining business thinking with web design and basic interactivity.</li>
-        </ul>
+        <p><strong>Problem:</strong> The original dataset on student productivity was messy and difficult to interpret.</p>
+        <p><strong>What I did:</strong> Cleaned the data, used formulas, and built pivot tables and charts in Excel
+          to explore patterns such as peak study times and changes in productivity.</p>
+        <p><strong>Outcome:</strong> A simple dashboard that presented clear insights and showed I can handle data
+          in a structured and careful way.</p>
       </article>
 
-      <aside class="card">
-        <h3 style="margin-top:0;">Features that support my learning</h3>
-        <ul>
-          <li><strong>Dark mode toggle</strong> using <code>data-theme</code> and <code>localStorage</code> to remember user preference.</li>
-          <li><strong>Skills mini-game</strong> on the Skills page to demonstrate JavaScript logic and user feedback.</li>
-          <li><strong>AI-style assistant</strong> that responds differently on the Business Showcase page versus other pages.</li>
-          <li><strong>Responsive layout</strong> so the site remains usable on mobile, tablet and desktop.</li>
-        </ul>
-        <p class="sub">
-          Overall, this project helped me turn what I am learning at university into something practical and
-          visible, which I can keep updating as I progress.
+      <!-- Project 2 -->
+      <article class="card">
+        <p class="project-label">🧠 <strong>Project 2: Digital Wellbeing Group Presentation</strong></p>
+        <p class="grade-focus">
+          Grade focus: Research quality · Communication · Teamwork
         </p>
-      </aside>
+        <p><strong>Problem:</strong> Many students are not fully aware of how algorithms shape their online behaviour
+          and wellbeing.</p>
+        <p><strong>What I did:</strong> Helped lead the research, selected key academic sources, and designed the slides
+          so complex ideas about algorithms and attention were explained in clear, student-friendly language.</p>
+        <p><strong>Outcome:</strong> A presentation praised for its structure, visual design and coordinated delivery,
+          showing that our group could share research in a confident and practical way.</p>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="card">
+        <p class="project-label">🍣 <strong>Project 3: Nori &amp; Ember – Digital Restaurant Case Study</strong></p>
+        <p class="grade-focus">
+          Grade focus: Digital transformation · User experience · Problem-solving
+        </p>
+        <p><strong>Problem:</strong> The case study restaurant needed a clearer way to communicate its digital
+          transformation and make it easier for customers to get in touch or request bookings.</p>
+        <p><strong>What I did:</strong> Designed the Problem-Solving page for Nori &amp; Ember with separate sections
+          for context, goals, customer journey and an interactive form. I also added social media links and an
+          AI-style assistant so visitors can quickly find the information they need.</p>
+        <p><strong>Outcome:</strong> A structured online layout that tells the story step by step and gives users a
+          simple way to send booking or feedback requests without needing a full database.</p>
+      </article>
+    </section>
+        <!-- Nori & Ember visual concept -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-tag">Nori &amp; Ember</span>
+        Visual restaurant concept
+      </h2>
+      <p class="lead">
+        To support the written case study, I also developed a small visual concept for Nori &amp; Ember. This includes
+        menu ideas, interior mood and a suggested location that fits the target audience of students and young professionals.
+      </p>
+    </section>
+
+    <!-- Menu + interior + map -->
+    <section class="grid two-col-balanced" aria-label="Menu, interior and location">
+      <!-- Left column: menu + interior -->
+      <div class="grid" style="gap:1.1rem">
+        <!-- Menu ideas -->
+        <article class="card">
+          <h3>Menu ideas for the target audience</h3>
+          <p class="lead" style="font-size:.9rem;margin-top:.2rem">
+            The food is designed to be comforting, quick to serve and easy to photograph. Each idea links back to
+            value for money, flexibility and social sharing.
+          </p>
+          <div class="menu-grid" style="margin-top:.8rem">
+            <div class="menu-card">
+              <img src="food1.jpg" alt="Bowl of Japanese-inspired food" />
+              <div class="menu-card-body">
+                <h4>Miso Glazed Chicken Bowl</h4>
+                <p>Customisable rice bowl with toppings that can be adjusted for different budgets and diets.</p>
+                <p>Works well for quick lunches between lectures or shifts.</p>
+              </div>
+            </div>
+            <div class="menu-card">
+              <img src="food2.jpg" alt="Small plates and skewers" />
+              <div class="menu-card-body">
+                <h4>Street Skewer Platter</h4>
+                <p>Shareable skewers and sides that encourage groups to stay longer and try more items.</p>
+                <p>Good for evenings and casual meet-ups.</p>
+              </div>
+            </div>
+            <div class="menu-card">
+              <img src="food3.jpg" alt="Desserts and drink set" />
+              <div class="menu-card-body">
+                <h4>Matcha &amp; Mochi Set</h4>
+                <p>Small dessert and drink combination designed to be “Instagram friendly”.</p>
+                <p>Supports social media marketing and add-on sales.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Interior slider -->
+        <article class="card">
+          <h3>Interior concept &amp; atmosphere</h3>
+          <div class="slider" id="interior-slider">
+            <div class="slider-inner">
+              <img src="interior1.jpg" alt="Nori &amp; Ember interior" id="interior-image" />
+              <div class="slider-controls">
+                <button class="slider-btn" type="button" id="prev-interior" aria-label="Previous interior">&#8249;</button>
+                <button class="slider-btn" type="button" id="next-interior" aria-label="Next interior">&#8250;</button>
+              </div>
+            </div>
+            <div class="slider-caption" id="interior-caption">
+              Warm lighting and soft textures to make the space feel cosy for evening visits.
+            </div>
+          </div>
+          <p class="notes">
+            The interior is planned as a relaxed “third space” where people can study, catch up or eat alone without feeling rushed.
+          </p>
+        </article>
+      </div>
+
+      <!-- Right column: map + summary -->
+      <div class="grid" style="gap:1.1rem">
+        <article class="card">
+          <h3>Location: Salford Quays / MediaCity</h3>
+          <div class="map-wrapper">
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9483.350762962152!2d-2.297!3d53.474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bae7b4e5f5c03%3A0x4f5f4a0f2a3afac4!2sSalford%20Quays!5e0!3m2!1sen!2suk!4v1700000000000">
+            </iframe>
+          </div>
+          <p class="notes">
+            Being close to MediaCity, offices and student accommodation means the concept can serve daytime workers,
+            evening visitors and local residents. Good tram links also help with consistent footfall across the week.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>How this page links to my skills</h3>
+          <p class="lead" style="font-size:.9rem;margin-top:.2rem">
+            Overall, this Business Showcase page brings together:
+          </p>
+          <ul>
+            <li>Analytical skills from the data visualisation project.</li>
+            <li>Communication and teamwork from the digital wellbeing presentation.</li>
+            <li>Digital problem-solving through the Nori &amp; Ember case study and its web design.</li>
+          </ul>
+          <p class="notes">
+            It shows how I connect research, visuals and simple web development to communicate business ideas clearly.
+          </p>
+        </article>
+      </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Shaima Salim • Business Showcase
+      <span>© <span id="year"></span> Shaima Salim</span>
+      <span>Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span></span>
     </footer>
   </main>
+    <!-- shared AI chat widget -->
+  <script src="ai-widget.js"></script>
 
   <script>
-    // Dark mode toggle
+    // dark mode toggle (same pattern as other pages)
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -451,25 +440,62 @@
         modeBtn.setAttribute('aria-pressed', String(Boolean(next)));
         setIcon();
       });
-      document.getElementById('year').textContent = new Date().getFullYear();
     })();
 
-    // Hidden highlight effect for food images (no text hint)
+    // reduce-motion: pause banner if user prefers
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion(){
+      const mq = document.querySelector('.code-banner .marquee');
+      if(mq) mq.style.animationPlayState = media.matches ? 'paused' : 'running';
+    }
+    media.addEventListener('change', updateMotion);
+    updateMotion();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // small slider for interior photos
     (function(){
-      const cards = document.querySelectorAll('.food-card');
-      cards.forEach(card => {
-        card.addEventListener('click', () => {
-          const isActive = card.classList.contains('active');
-          cards.forEach(c => c.classList.remove('active'));
-          if(!isActive){
-            card.classList.add('active');
-          }
-        });
+      const images = [
+        {
+          src: 'interior1.jpg',
+          caption: 'Warm lighting and soft textures to make the space feel cosy for evening visits.'
+        },
+        {
+          src: 'interior2.jpg',
+          caption: 'Window seating and small tables that work for solo study sessions or quiet meals.'
+        },
+        {
+          src: 'interior3.jpg',
+          caption: 'Group seating that suits friends, flatmates and small celebrations.'
+        }
+      ];
+      const imgEl = document.getElementById('interior-image');
+      const capEl = document.getElementById('interior-caption');
+      const prevBtn = document.getElementById('prev-interior');
+      const nextBtn = document.getElementById('next-interior');
+      if(!imgEl || !capEl || !prevBtn || !nextBtn) return;
+
+      let index = 0;
+
+      function show(idx){
+        const item = images[idx];
+        imgEl.src = item.src;
+        capEl.textContent = item.caption;
+      }
+
+      prevBtn.addEventListener('click', function(){
+        index = (index - 1 + images.length) % images.length;
+        show(index);
       });
+
+      nextBtn.addEventListener('click', function(){
+        index = (index + 1) % images.length;
+        show(index);
+      });
+
+      // show first slide
+      show(index);
     })();
   </script>
-
-  <!-- AI chat widget (same file you already use on other pages) -->
-  <script src="ai-widget.js"></script>
 </body>
 </html>
