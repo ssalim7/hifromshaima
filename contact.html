@@ -201,9 +201,15 @@
 
           <label for="email">Email</label>
           <input id="email" type="email" name="email" placeholder="Your email" />
+          <p id="email-error" style="color: var(--burgundy); font-size: 14px; margin-top: 4px;"></p>
+
 
           <label for="subject">Subject</label>
           <input id="subject" type="text" name="subject" placeholder="What’s the message about?" />
+          <label for="password">Password</label>
+<input id="password" type="password" name="password" placeholder="Enter password" />
+<p id="password-error" style="color: var(--burgundy); font-size: 14px; margin-top: 4px;"></p>
+
 
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Write your message..."></textarea>
@@ -276,6 +282,50 @@
     })();
   </script>
   
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  
+  const form = document.querySelector(".contact-form");
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("email-error");
+
+  // Only run password validation if password exists
+  const passwordInput = document.getElementById("password");
+  const passwordError = document.getElementById("password-error");
+
+  form.addEventListener("submit", function(e) {
+    let valid = true;
+
+    // EMAIL VALIDATION
+    const emailValue = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailValue)) {
+      emailError.textContent = "Please enter a valid email address.";
+      valid = false;
+    } else {
+      emailError.textContent = "";
+    }
+
+    // PASSWORD VALIDATION
+    if (passwordInput) {
+      if (passwordInput.value !== "shaima123") {
+        passwordError.textContent = "Incorrect password.";
+        valid = false;
+      } else {
+        passwordError.textContent = "";
+      }
+    }
+
+    // STOP form submission if invalid
+    if (!valid) {
+      e.preventDefault();
+    }
+  });
+
+});
+</script>
+
 <script src="cookie-banner.js"></script>
 
   <!-- AI chat widget (same file used on every page) -->
